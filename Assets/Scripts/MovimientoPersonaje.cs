@@ -36,8 +36,8 @@ public class MovimientoPersonaje : MonoBehaviour
             Atacando();
         }
 
-        animator.SetBool("ensuelo", enSuelo);
-        animator.SetBool("Atacando", atacando);
+        //animator.SetBool("ensuelo", enSuelo);
+        //animator.SetBool("Atacando", atacando);
     }
 
     void ProcesarMovimiento()
