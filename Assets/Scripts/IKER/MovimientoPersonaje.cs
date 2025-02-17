@@ -107,7 +107,6 @@ public class MovimientoPersonaje : MonoBehaviour
             }
         }
         
-
         animator.SetBool("ensuelo", enSuelo);
         animator.SetBool("Atacando", atacando);
     }
@@ -131,7 +130,6 @@ public class MovimientoPersonaje : MonoBehaviour
         }
 
         transform.position = transform.position + dir;
-
     }
 
     public void RecibeDanio(Vector2 direccion, int cantDanio)
@@ -156,8 +154,6 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         atacando = false;
     }
-
-    
 
     void OnDrawGizmos()
     {

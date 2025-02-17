@@ -7,7 +7,7 @@ public class ControladorEnemigos : MonoBehaviour
     public Transform player;
     public float detectionRadius;
     public float speed;
-    public float fuerzaRebote = 6f;
+    public float fuerzaRebote;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -56,7 +56,6 @@ public class ControladorEnemigos : MonoBehaviour
             if (transform.position == player.position)
             {
                 movement = new Vector2(0, 0);
-
             }
         }
         
