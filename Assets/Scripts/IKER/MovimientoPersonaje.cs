@@ -59,11 +59,15 @@ public class MovimientoPersonaje : MonoBehaviour
                     //Planear
                     if (!enSuelo && Input.GetKey(KeyCode.Space))
                     {
-                        rb.gravityScale = 0.5f;
+                        if (rb.velocity.y <= 0f)
+                        {
+                            rb.gravityScale = 0.25f;
+                        }
+
                     }
                     else
                     {
-                        rb.gravityScale = 1.5f;
+                        rb.gravityScale = 1f;
                     }
                     //Correr
                     if (Input.GetKeyDown(KeyCode.B) && puedeCorrer)
@@ -137,12 +141,22 @@ public class MovimientoPersonaje : MonoBehaviour
         if (!recibiendoDanio)
         {
             recibiendoDanio = true;
-            Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
-            rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+            vida -= cantDanio;
+            if (vida <= 0)
+            {
+                muerto = true;
+            }
+            if (!muerto)
+            {
+                Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
+                rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+                StartCoroutine(DesactivarDanio());
+            }
         }
     }
-    public void DesactivarDanio()
+    IEnumerator DesactivarDanio()
     {
+        yield return new WaitForSeconds(0.4f);
         recibiendoDanio = false;
         rb.velocity = Vector2.zero;
     }
