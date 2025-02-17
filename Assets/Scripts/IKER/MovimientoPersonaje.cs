@@ -16,8 +16,18 @@ public class MovimientoPersonaje : MonoBehaviour
 
     private bool enSuelo;
     private bool recibiendoDanio;
-    private bool muerto;
+    public bool muerto;
     private bool atacando;
+
+    public float velocidadDeMovimientoBase;
+    public float velocidadExtra;
+    public float tiempoSprint;
+    private float tiempoActualSprint;
+    private float tiempoSiguienteSprint;
+
+    public float tiempoEntreSprints;
+    private bool puedeCorrer = true;
+    private bool estaCorriendo = false;
 
     private Rigidbody2D rb;
     public Animator animator;
@@ -25,25 +35,75 @@ public class MovimientoPersonaje : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        animator = GetComponent<Animator>();
+        tiempoActualSprint = tiempoSprint;
     }
 
     void Update()
     {
         if (!muerto)
         {
-            ProcesarMovimiento();
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
-            enSuelo = hit.collider != null;
-
-            if (enSuelo && Input.GetKeyDown(KeyCode.Space))// && !RecibiendoDaño)
+            if (!recibiendoDanio)
             {
-                rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
-            }
+                if (!atacando)
+                {
+                    ProcesarMovimiento();
+                    RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
+                    enSuelo = hit.collider != null;
 
-            if (Input.GetKeyDown(KeyCode.Z) && !atacando && enSuelo)
-            {
-                Atacando();
+                    //Salto
+                    if (enSuelo && Input.GetKeyDown(KeyCode.Space))// && !RecibiendoDaño)
+                    {
+                        rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
+                    }
+                    //Planear
+                    if (!enSuelo && Input.GetKey(KeyCode.Space))
+                    {
+                        rb.gravityScale = 0.5f;
+                    }
+                    else
+                    {
+                        rb.gravityScale = 1.5f;
+                    }
+                    //Correr
+                    if (Input.GetKeyDown(KeyCode.B) && puedeCorrer)
+                    {
+                        velocidad = velocidadExtra;
+                        estaCorriendo = true;
+                    }
+                    if (Input.GetKeyUp(KeyCode.B))
+                    {
+                        velocidad = velocidadDeMovimientoBase;
+                        estaCorriendo = false;
+                    }
+                    if (Mathf.Abs(rb.velocity.x) >= 0.1f && estaCorriendo)
+                    {
+                        if(tiempoActualSprint > 0)
+                        {
+                            tiempoActualSprint -= Time.deltaTime;
+                        }
+                        else
+                        {
+                            velocidad = velocidadDeMovimientoBase;
+                            estaCorriendo = false;
+                            puedeCorrer = false;
+                            tiempoSiguienteSprint = Time.time + tiempoEntreSprints;
+                        }
+                    }
+                    if (!estaCorriendo && tiempoActualSprint <= tiempoSprint && Time.time >= tiempoSiguienteSprint)
+                    {
+                        tiempoActualSprint += Time.deltaTime;
+                        if (tiempoActualSprint >= tiempoSprint)
+                        {
+                            puedeCorrer = true;
+                        }
+                    }
+                }
+                //Atacar
+                if (Input.GetKeyDown(KeyCode.Z) && !atacando && enSuelo)
+                {
+                    Atacando();
+                }
             }
         }
         
@@ -55,9 +115,23 @@ public class MovimientoPersonaje : MonoBehaviour
     void ProcesarMovimiento()
     {
         //Logica de movimiento
-        float inputMovimiento = Input.GetAxis("Horizontal");
-        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.velocity = new Vector2(inputMovimiento * velocidad, rigidbody.velocity.y);
+        float horizontal = Input.GetAxis("Horizontal");
+
+        Vector3 dir = new Vector3(horizontal, 0) * velocidad * Time.deltaTime;
+
+        animator.SetFloat("movement", horizontal * velocidad);
+
+        if (horizontal < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 0);
+        }
+        if (horizontal > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 0);
+        }
+
+        transform.position = transform.position + dir;
+
     }
 
     public void RecibeDanio(Vector2 direccion, int cantDanio)
@@ -65,29 +139,25 @@ public class MovimientoPersonaje : MonoBehaviour
         if (!recibiendoDanio)
         {
             recibiendoDanio = true;
-            vida -= cantDanio;
-            
-            if (vida<=0)
-            {
-                muerto = true;
-            }
-            if (!muerto)
-            {
-                Vector2 rebote = new Vector2(transform.position.x - direccion.x, 0.2f).normalized;
-                rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
-            }
+            Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
+            rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
         }
     }
-
+    public void DesactivarDanio()
+    {
+        recibiendoDanio = false;
+        rb.velocity = Vector2.zero;
+    }
     public void Atacando()
     {
         atacando = true;
     }
-
     public void DesactivarAtaque()
     {
         atacando = false;
     }
+
+    
 
     void OnDrawGizmos()
     {

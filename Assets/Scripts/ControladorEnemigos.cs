@@ -7,13 +7,22 @@ public class ControladorEnemigos : MonoBehaviour
     public Transform player;
     public float detectionRadius;
     public float speed;
+    public float fuerzaRebote = 6f;
 
     private Rigidbody2D rb;
     private Vector2 movement;
-    
+    private bool playervivo;
+    private bool muerto;
+    private bool EnMovimiento;
+    private bool recibiendoDanio;
+    private bool Atacando;
+
+    private Animator animator;
     void Start()
     {
-        rb = transform.parent.GetComponent<Rigidbody2D>();   
+        playervivo = true;
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -25,6 +34,15 @@ public class ControladorEnemigos : MonoBehaviour
             if (distanceToPlayer < detectionRadius)
             {
                 Vector2 direction = (player.position - transform.position).normalized;
+
+                if (direction.x < 0)
+                {
+                    transform.localScale = new Vector3(-1, 1, 0);
+                }
+                if (direction.x > 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 0);
+                }
 
                 movement = new Vector2(direction.x, 0);
             }
@@ -42,11 +60,59 @@ public class ControladorEnemigos : MonoBehaviour
             }
         }
         
-        if(rb != null)
+        if(!recibiendoDanio)
         {
             rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
         }
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Vector2 direcciondanio = new Vector2(transform.position.x, 0);
+            MovimientoPersonaje movimientoScript = collision.gameObject.GetComponent<MovimientoPersonaje>();
+
+            movimientoScript.RecibeDanio(direcciondanio, 1);
+            playervivo = !movimientoScript.muerto;
+
+            //GameManager.Instance.PerderVida();
+
+            if (!playervivo)
+            {
+                EnMovimiento = false;
+            }
+            Atacando = true;
+        }
+        else
+        {
+            Atacando = false;
+        }
+
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Espada"))
+        {
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 1);
+        }
+    }
+    public void RecibeDanio(Vector2 direccion, int cantDanio)
+    {
+        if (!recibiendoDanio)
+        {
+            recibiendoDanio = true;
+            Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
+            rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+            StartCoroutine(DesactivarDanio());
+        }
+    }
+    IEnumerator DesactivarDanio()
+    {
+        yield return new WaitForSeconds(0.2f);
+        recibiendoDanio = false;
     }
 
     private void OnDrawGizmosSelected()
