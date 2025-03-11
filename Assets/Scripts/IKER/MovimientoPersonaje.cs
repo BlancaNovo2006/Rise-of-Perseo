@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
-    public int vida = 3;
+    public int vida = 5;
 
     public float velocidad;
     public float fuerzaSalto = 10f;
