@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b6770752432596e4393bfc3e76eb5d04
+guid: 66615f9455387ec4d975c7ee31b63378
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PerseoIDLE9_0
+      name: cosarandom_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 46
-        height: 62
+        width: 160
+        height: 160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d59ae26166e18a544ad39b3d12ceec3e
-      internalID: 1544359466
+      spriteID: 3978271dc05daf54a9c92fdd67adb9f0
+      internalID: 1978441111
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PerseoIDLE9_0: 1544359466
+      cosarandom_0: 1978441111
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

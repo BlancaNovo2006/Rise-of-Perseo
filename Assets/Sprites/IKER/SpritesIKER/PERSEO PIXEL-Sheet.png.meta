@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ac3cf669e0864b6488ec2c886c4b101b
+guid: bd81a01e3e770b941ae06edd36cc1200
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 24
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PerseoIDLE1_0
+      name: PERSEO PIXEL-Sheet_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 0
         y: 0
-        width: 46
-        height: 62
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73a167f01e6a4c94f8512cbf591f0af0
-      internalID: -758209700
+      spriteID: 1d2ca511fdaf2ce4faef552d74296588
+      internalID: -2136782538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PERSEO PIXEL-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a75ec08c10fbc564f96da165c7e8fc1e
+      internalID: 252689044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PERSEO PIXEL-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ddea6b780c425f4996f13451c43c531
+      internalID: 1608880967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PERSEO PIXEL-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992dfe45ceca8db40b8d2a5e89ce79b0
+      internalID: -716712839
       vertices: []
       indices: 
       edges: []
@@ -141,7 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PerseoIDLE1_0: -758209700
+      PERSEO PIXEL-Sheet_0: -2136782538
+      PERSEO PIXEL-Sheet_1: 252689044
+      PERSEO PIXEL-Sheet_2: 1608880967
+      PERSEO PIXEL-Sheet_3: -716712839
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

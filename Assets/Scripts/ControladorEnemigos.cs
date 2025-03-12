@@ -17,6 +17,8 @@ public class ControladorEnemigos : MonoBehaviour
     private bool recibiendoDanio;
     private bool Atacando;
 
+    private bool canseePlayer = true;
+
     private Animator animator;
     void Start()
     {
@@ -27,39 +29,54 @@ public class ControladorEnemigos : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (player != null && playervivo && !muerto)
         {
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-            if (distanceToPlayer < detectionRadius)
+            MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
+            if (playerScript != null && playerScript.isInvisible)
             {
-                Vector2 direction = (player.position - transform.position).normalized;
-
-                if (direction.x < 0)
-                {
-                    transform.localScale = new Vector3(-1, 1, 0);
-                }
-                if (direction.x > 0)
-                {
-                    transform.localScale = new Vector3(1, 1, 0);
-                }
-
-                movement = new Vector2(direction.x, 0);
+                canseePlayer = false;
             }
-            
             else
             {
-                movement = Vector2.zero;
-            }
-            //Debug.Log("ola");
+                canseePlayer = true;
+                Movimiento();
 
-            if (transform.position == player.position)
-            {
-                movement = new Vector2(0, 0);
+                if (transform.position == player.position)
+                {
+                    movement = new Vector2(0, 0);
+                }
             }
         }
-        
-        if(!recibiendoDanio)
+    }
+        private void Movimiento()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer < detectionRadius)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+
+            if (direction.x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 0);
+            }
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 0);
+            }
+
+            movement = new Vector2(direction.x, 0);
+
+            EnMovimiento = true;
+        }
+        else
+        {
+            movement = Vector2.zero;
+
+            EnMovimiento = false;
+        }
+
+        if (!recibiendoDanio)
         {
             rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
         }
@@ -67,7 +84,7 @@ public class ControladorEnemigos : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && canseePlayer)
         {
             Vector2 direcciondanio = new Vector2(transform.position.x, 0);
             MovimientoPersonaje movimientoScript = collision.gameObject.GetComponent<MovimientoPersonaje>();

@@ -24,6 +24,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private float radioAtaque;
     [SerializeField] private int cantdanio;
 
+    private bool canseePlayer = true;
+
 
     // Start is called before the first frame update
     void Start()

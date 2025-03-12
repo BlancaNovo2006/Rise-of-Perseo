@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 //using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
@@ -14,10 +16,22 @@ public class MovimientoPersonaje : MonoBehaviour
     public float longitudRaycast = 0.1f;
     public LayerMask capaSuelo;
 
+    public float invisibilityDuration = 5f;
+    public float invisibleAlpha = 0.3f;
+    public bool isInvisible = false;
+    private SpriteRenderer spriteRenderer;
+    private int enemyLayer;
+    public float cooldownTime = 3f;
+    private bool onCooldown = false;
+    public Image CooldownFill;
+    public TextMeshProUGUI CooldownText;
+
+
     private bool enSuelo;
     private bool recibiendoDanio;
     public bool muerto;
     private bool atacando;
+    private bool caminar;
 
     public float velocidadDeMovimientoBase;
     public float velocidadExtra;
@@ -29,6 +43,11 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool puedeCorrer = true;
     private bool estaCorriendo = false;
 
+    public float tiempoRodar = 0.5f;
+    public float velocidadRodar = 10f;
+    private bool rodando = false;
+    private bool invencible = false;
+
     private Rigidbody2D rb;
     public Animator animator;
 
@@ -37,6 +56,21 @@ public class MovimientoPersonaje : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         tiempoActualSprint = tiempoSprint;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyLayer = LayerMask.NameToLayer("Enemy");
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("El objeto no tiene un SpriteRenderer asignado");
+        }
+        if (CooldownFill != null)
+        {
+            CooldownFill.fillAmount = 0;
+        }
+        if (CooldownText != null)
+        {
+            CooldownText.text = "";
+        }
     }
 
     void Update()
@@ -45,14 +79,21 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             if (!recibiendoDanio)
             {
-                if (!atacando)
+                if (!rodando && !atacando)
                 {
                     ProcesarMovimiento();
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
                     enSuelo = hit.collider != null;
 
+                    if (Input.GetKeyDown(KeyCode.LeftShift) && enSuelo)
+                    {
+                        StartCoroutine(Rodar());
+                    }
+
+                    enSuelo = hit.collider != null;
+
                     //Salto
-                    if (enSuelo && Input.GetKeyDown(KeyCode.Space))// && !RecibiendoDaño)
+                    if (enSuelo && Input.GetKeyDown(KeyCode.Space))// && !RecibiendoDaÃ±o)
                     {
                         rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
                     }
@@ -82,7 +123,7 @@ public class MovimientoPersonaje : MonoBehaviour
                     }
                     if (Mathf.Abs(rb.velocity.x) >= 0.1f && estaCorriendo)
                     {
-                        if(tiempoActualSprint > 0)
+                        if (tiempoActualSprint > 0)
                         {
                             tiempoActualSprint -= Time.deltaTime;
                         }
@@ -108,11 +149,41 @@ public class MovimientoPersonaje : MonoBehaviour
                 {
                     Atacando();
                 }
+
+                if (Input.GetKeyDown(KeyCode.I) && !atacando && enSuelo && !isInvisible && !onCooldown)
+                {
+                    StartCoroutine(BecomeInvisible());
+                }
             }
         }
-        
+
         animator.SetBool("ensuelo", enSuelo);
         animator.SetBool("Atacando", atacando);
+        animator.SetBool("Caminar", caminar);
+        animator.SetBool("Rodando", rodando);
+    }
+
+    IEnumerator Rodar()
+    {
+        rodando = true;
+        invencible = true;
+        animator.SetTrigger("Rodar");
+
+        // Ignorar colisión entre Jugador y Enemigos
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+
+        float direccion = transform.localScale.x; // 1 si mira derecha, -1 si mira izquierda
+        rb.velocity = new Vector2(velocidadRodar * direccion, rb.velocity.y);
+
+        yield return new WaitForSeconds(tiempoRodar);
+
+        rb.velocity = Vector2.zero;  // Detiene el deslizamiento
+
+        // Restaurar colisión entre Jugador y Enemigos
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+
+        invencible = false;
+        rodando = false;
     }
 
     void ProcesarMovimiento()
@@ -138,6 +209,8 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public void RecibeDanio(Vector2 direccion, int cantDanio)
     {
+        if (invencible) return; // Si es invencible, no recibe daño
+
         if (!recibiendoDanio)
         {
             recibiendoDanio = true;
@@ -167,6 +240,61 @@ public class MovimientoPersonaje : MonoBehaviour
     public void DesactivarAtaque()
     {
         atacando = false;
+    }
+
+    IEnumerator BecomeInvisible()
+    {
+        isInvisible = true;
+        onCooldown = true;
+        SetOpacity(invisibleAlpha);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, enemyLayer, true);
+        yield return new WaitForSeconds(invisibilityDuration);
+        SetOpacity(1f);
+        Physics2D.IgnoreLayerCollision(gameObject.layer, enemyLayer, false);
+        isInvisible = false;
+        StartCoroutine(StartCooldown());
+    }
+
+    IEnumerator StartCooldown()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < cooldownTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float remainingTime = cooldownTime - elapsedTime;
+
+            //Actualizar la UI
+            if (CooldownFill != null)
+            {
+                CooldownFill.fillAmount = remainingTime / cooldownTime; //Relleno radial
+            }
+
+            if (CooldownText != null)
+            {
+                CooldownText.text = Mathf.Ceil(remainingTime).ToString(); //Cuenta regresiva
+            }
+            yield return null;
+        }
+
+        //Reiniciar cooldown
+        if (CooldownFill != null)
+        {
+            CooldownFill.fillAmount = 0;
+        }
+        if (CooldownText != null)
+        {
+            CooldownText.text = "";
+        }
+        onCooldown = false;
+    }
+    void SetOpacity(float alpha)
+    {
+        if (spriteRenderer != null)
+        {
+            Color color = spriteRenderer.color;
+            color.a = alpha;
+            spriteRenderer.color = color;
+        }
     }
 
     void OnDrawGizmos()
