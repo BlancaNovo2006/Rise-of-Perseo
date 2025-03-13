@@ -26,12 +26,27 @@ public class MovimientoPersonaje : MonoBehaviour
     public Image CooldownFill;
     public TextMeshProUGUI CooldownText;
 
+    public float freezeRadius = 5f;
+    public LayerMask Enemy;
+    public float freezeDuration = 3f;
+    public float cooldownFreezeTime = 5f;
+    private bool onFreezeCooldown = false;
+    public Image CooldownFreezeFill;
+    public TextMeshProUGUI CooldownFreezeText;
+
+    public PegasoHabilidad pegasoHabilidad;
+    private Vector3 direccionCarga;
+    public float cooldownGPegasoTime = 4f;
+    private bool onCooldownPegaso = false;
+    public Image CooldownFillPegaso;
+    public TextMeshProUGUI CooldownTextPegaso;
 
     private bool enSuelo;
     private bool recibiendoDanio;
     public bool muerto;
     private bool atacando;
     private bool caminar;
+    private bool Salto;
 
     public float velocidadDeMovimientoBase;
     public float velocidadExtra;
@@ -56,6 +71,7 @@ public class MovimientoPersonaje : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         tiempoActualSprint = tiempoSprint;
+        pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyLayer = LayerMask.NameToLayer("Enemy");
@@ -65,11 +81,19 @@ public class MovimientoPersonaje : MonoBehaviour
         }
         if (CooldownFill != null)
         {
-            CooldownFill.fillAmount = 0;
+            CooldownFill.fillAmount = 1;
         }
         if (CooldownText != null)
         {
             CooldownText.text = "";
+        }
+        if (CooldownFreezeFill != null)
+        {
+            CooldownFreezeFill.fillAmount = 1;
+        }
+        if(CooldownFreezeText != null)
+        {
+            CooldownFreezeText.text = "";
         }
     }
 
@@ -93,9 +117,10 @@ public class MovimientoPersonaje : MonoBehaviour
                     enSuelo = hit.collider != null;
 
                     //Salto
-                    if (enSuelo && Input.GetKeyDown(KeyCode.Space))// && !RecibiendoDaÃ±o)
+                    if (enSuelo && Input.GetKeyDown(KeyCode.Space))
                     {
                         rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
+                        animator.SetBool("Salto", true);
                     }
                     //Planear
                     if (!enSuelo && Input.GetKey(KeyCode.Space))
@@ -150,9 +175,23 @@ public class MovimientoPersonaje : MonoBehaviour
                     Atacando();
                 }
 
-                if (Input.GetKeyDown(KeyCode.I) && !atacando && enSuelo && !isInvisible && !onCooldown)
+                if (Input.GetKeyDown(KeyCode.X) && !atacando && enSuelo && !isInvisible && !onCooldown)
                 {
                     StartCoroutine(BecomeInvisible());
+                }
+
+                if (Input.GetKeyDown(KeyCode.C) && !onFreezeCooldown)
+                {
+                    FreezeEnemies();
+                }
+                if (onFreezeCooldown)
+                {
+                    StartCoroutine(FreezeCooldown());
+                }
+                if (Input.GetKeyDown(KeyCode.V) && pegasoHabilidad != null && !onCooldownPegaso)
+                {
+                    Vector3 direccionCarga = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
+                    pegasoHabilidad.ActivarCarga(transform.position, direccionCarga);
                 }
             }
         }
@@ -161,6 +200,7 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("Atacando", atacando);
         animator.SetBool("Caminar", caminar);
         animator.SetBool("Rodando", rodando);
+        animator.SetBool("Salto", Salto);
     }
 
     IEnumerator Rodar()
@@ -185,7 +225,6 @@ public class MovimientoPersonaje : MonoBehaviour
         invencible = false;
         rodando = false;
     }
-
     void ProcesarMovimiento()
     {
         //Logica de movimiento
@@ -193,7 +232,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
         Vector3 dir = new Vector3(horizontal, 0) * velocidad * Time.deltaTime;
 
-        animator.SetFloat("movement", horizontal * velocidad);
+        caminar = horizontal != 0;
 
         if (horizontal < 0)
         {
@@ -206,7 +245,6 @@ public class MovimientoPersonaje : MonoBehaviour
 
         transform.position = transform.position + dir;
     }
-
     public void RecibeDanio(Vector2 direccion, int cantDanio)
     {
         if (invencible) return; // Si es invencible, no recibe daño
@@ -241,9 +279,14 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         atacando = false;
     }
-
     IEnumerator BecomeInvisible()
     {
+        SetCooldownOpacity(0.3f);
+        if (CooldownFill != null)
+        {
+            CooldownFill.fillAmount = 1;
+        }
+
         isInvisible = true;
         onCooldown = true;
         SetOpacity(invisibleAlpha);
@@ -254,10 +297,11 @@ public class MovimientoPersonaje : MonoBehaviour
         isInvisible = false;
         StartCoroutine(StartCooldown());
     }
-
     IEnumerator StartCooldown()
     {
         float elapsedTime = 0f;
+        
+        onCooldown = true;
         while (elapsedTime < cooldownTime)
         {
             elapsedTime += Time.deltaTime;
@@ -279,12 +323,14 @@ public class MovimientoPersonaje : MonoBehaviour
         //Reiniciar cooldown
         if (CooldownFill != null)
         {
-            CooldownFill.fillAmount = 0;
+            CooldownFill.fillAmount = 1;
         }
         if (CooldownText != null)
         {
             CooldownText.text = "";
         }
+
+        SetCooldownOpacity(1f);
         onCooldown = false;
     }
     void SetOpacity(float alpha)
@@ -296,7 +342,63 @@ public class MovimientoPersonaje : MonoBehaviour
             spriteRenderer.color = color;
         }
     }
-
+    void SetCooldownOpacity(float alpha)
+    {
+        if (CooldownFill != null)
+        {
+            Color color = CooldownFill.color;
+            color.a = alpha;
+            CooldownFill.color = color;
+        }
+    }
+    void FreezeEnemies()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, freezeRadius, Enemy);
+        foreach (Collider2D Enemy in enemies)
+        {
+            ControladorEnemigos ControladorEnemigos = Enemy.GetComponent<ControladorEnemigos>();
+            if (ControladorEnemigos != null)
+            {
+                ControladorEnemigos.Freeze(freezeDuration);
+            }
+        }
+        onFreezeCooldown = true;
+        if(CooldownFreezeFill != null)
+        {
+            CooldownFreezeFill.fillAmount = 1;
+        }
+        if (CooldownFreezeText != null)
+        {
+            CooldownFreezeText.text = Mathf.Ceil(cooldownFreezeTime).ToString();
+        }
+    }
+    IEnumerator FreezeCooldown()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < cooldownFreezeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float remainingTime = cooldownFreezeTime - elapsedTime;
+            if(CooldownFreezeFill != null)
+            {
+                CooldownFreezeFill.fillAmount = remainingTime / cooldownFreezeTime;
+            }
+            if (CooldownFreezeText != null)
+            {
+                CooldownFreezeText.text = Mathf.Ceil(remainingTime).ToString();
+            }
+            yield return null;
+        }
+        if (CooldownFreezeFill != null)
+        {
+            CooldownFreezeFill.fillAmount = 1;
+        }
+        if(CooldownFreezeText != null)
+        {
+            CooldownFreezeText.text = "";
+        }
+        onFreezeCooldown = false;
+    }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

@@ -8,6 +8,7 @@ public class ControladorEnemigos : MonoBehaviour
     public float detectionRadius;
     public float speed;
     public float fuerzaRebote;
+    public int vidas = 3;  // Vidas del enemigo
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -19,17 +20,23 @@ public class ControladorEnemigos : MonoBehaviour
 
     private bool canseePlayer = true;
 
+    private bool isFrozen = false;
+    private float originalSpeed;
+    private SpriteRenderer spriteRenderer;
+
     private Animator animator;
     void Start()
     {
         playervivo = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalSpeed = speed;
     }
 
     void Update()
     {
-        if (player != null && playervivo && !muerto)
+        if (player != null && playervivo && !muerto && !isFrozen)
         {
             MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
             if (playerScript != null && playerScript.isInvisible)
@@ -48,7 +55,7 @@ public class ControladorEnemigos : MonoBehaviour
             }
         }
     }
-        private void Movimiento()
+    private void Movimiento()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
@@ -75,13 +82,16 @@ public class ControladorEnemigos : MonoBehaviour
 
             EnMovimiento = false;
         }
+    }
 
+    void FixedUpdate()
+    {
         if (!recibiendoDanio)
         {
-            rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
-        
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && canseePlayer)
@@ -114,14 +124,34 @@ public class ControladorEnemigos : MonoBehaviour
 
             RecibeDanio(direcciondanio, 1);
         }
+        if (collision.CompareTag("Pegaso"))
+        {
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 1);
+        }
     }
     public void RecibeDanio(Vector2 direccion, int cantDanio)
     {
         if (!recibiendoDanio)
         {
             recibiendoDanio = true;
-            Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
-            rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+            // Reducir las vidas del enemigo
+            vidas -= cantDanio;
+
+            // Si las vidas son 0 o menos, destruir al enemigo
+            if (vidas <= 0)
+            {
+                Muerte();
+            }
+            else
+            {
+                // Si no ha muerto, aplicar el rebote
+                Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
+                rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+            }
+
+
             StartCoroutine(DesactivarDanio());
         }
     }
@@ -129,6 +159,45 @@ public class ControladorEnemigos : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         recibiendoDanio = false;
+    }
+
+    void Muerte()
+    {
+        muerto = true;
+
+        // Puedes agregar animaciones de muerte aquí si lo deseas
+        // Por ejemplo: animator.SetTrigger("Muerte");
+
+        // Destruir al enemigo
+        Destroy(gameObject);
+    }
+
+    public void Freeze(float duration)
+    {
+        if (!isFrozen)
+        {
+            isFrozen = true;
+            speed = 0;
+            rb.velocity = Vector2.zero;
+            spriteRenderer.color = Color.blue;
+            if (animator != null)
+            {
+                animator.enabled = false;
+            }
+            StartCoroutine(UnfreezeAfterTime(duration));
+        }
+    }
+
+    IEnumerator UnfreezeAfterTime(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isFrozen = false;
+        speed = originalSpeed;
+        spriteRenderer.color = Color.red;
+        if (animator != null)
+        {
+            animator.enabled = true;
+        }
     }
 
     private void OnDrawGizmosSelected()

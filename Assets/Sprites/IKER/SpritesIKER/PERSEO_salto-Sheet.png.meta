@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bd81a01e3e770b941ae06edd36cc1200
+guid: 6fdb6aecac560b04d9b430618bf081fb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 120
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PERSEO PIXEL-Sheet_0
+      name: PERSEO_salto-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 640
-        height: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d2ca511fdaf2ce4faef552d74296588
-      internalID: -2136782538
+      spriteID: c3115041ed441564ebd955c64bf70bd3
+      internalID: -1314774352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO PIXEL-Sheet_1
+      name: PERSEO_salto-Sheet_1
       rect:
         serializedVersion: 2
-        x: 640
+        x: 64
         y: 0
-        width: 640
-        height: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a75ec08c10fbc564f96da165c7e8fc1e
-      internalID: 252689044
+      spriteID: 1d3f89cb71dc56c48b2ca13f78861ce3
+      internalID: 944002165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO PIXEL-Sheet_2
+      name: PERSEO_salto-Sheet_2
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 128
         y: 0
-        width: 640
-        height: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ddea6b780c425f4996f13451c43c531
-      internalID: 1608880967
+      spriteID: 5a54a17876a2b054ebb0675cbd8cf91f
+      internalID: 614963051
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO PIXEL-Sheet_3
+      name: PERSEO_salto-Sheet_3
       rect:
         serializedVersion: 2
-        x: 1920
+        x: 192
         y: 0
-        width: 640
-        height: 640
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 992dfe45ceca8db40b8d2a5e89ce79b0
-      internalID: -716712839
+      spriteID: 175bc810b1bd3d7449a634abf328e4ff
+      internalID: -399051251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PERSEO_salto-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50049a66935f6f34d8171f9922927421
+      internalID: -860850509
       vertices: []
       indices: 
       edges: []
@@ -204,10 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PERSEO PIXEL-Sheet_0: -2136782538
-      PERSEO PIXEL-Sheet_1: 252689044
-      PERSEO PIXEL-Sheet_2: 1608880967
-      PERSEO PIXEL-Sheet_3: -716712839
+      PERSEO_salto-Sheet_0: -1314774352
+      PERSEO_salto-Sheet_1: 944002165
+      PERSEO_salto-Sheet_2: 614963051
+      PERSEO_salto-Sheet_3: -399051251
+      PERSEO_salto-Sheet_4: -860850509
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
