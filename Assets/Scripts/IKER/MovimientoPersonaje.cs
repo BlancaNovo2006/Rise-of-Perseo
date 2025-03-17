@@ -36,17 +36,24 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public PegasoHabilidad pegasoHabilidad;
     private Vector3 direccionCarga;
-    public float cooldownGPegasoTime = 4f;
+    public float cooldownPegasoTime = 4f;
     private bool onCooldownPegaso = false;
     public Image CooldownFillPegaso;
     public TextMeshProUGUI CooldownTextPegaso;
+
+    public float cooldownBloqueo = 3f;
+    private bool onCooldownBloqueo = false;
+    public float duracionBloqueo = 1f;
+    private bool bloqueando = false;
+    public Image CooldownFillBloqueo;
+    public TextMeshProUGUI CooldownTextBloqueo;
 
     private bool enSuelo;
     private bool recibiendoDanio;
     public bool muerto;
     private bool atacando;
     private bool caminar;
-    private bool Salto;
+    private bool salto;
 
     public float velocidadDeMovimientoBase;
     public float velocidadExtra;
@@ -95,6 +102,14 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             CooldownFreezeText.text = "";
         }
+        if(CooldownFillPegaso != null)
+        {
+            CooldownFillPegaso.fillAmount = 1;  
+        }
+        if(CooldownTextPegaso != null)
+        {
+            CooldownTextPegaso.text = "";
+        }
     }
 
     void Update()
@@ -103,11 +118,10 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             if (!recibiendoDanio)
             {
-                if (!rodando && !atacando)
+                if (!rodando && !atacando && !bloqueando)
                 {
                     ProcesarMovimiento();
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
-                    enSuelo = hit.collider != null;
 
                     if (Input.GetKeyDown(KeyCode.LeftShift) && enSuelo)
                     {
@@ -120,7 +134,6 @@ public class MovimientoPersonaje : MonoBehaviour
                     if (enSuelo && Input.GetKeyDown(KeyCode.Space))
                     {
                         rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
-                        animator.SetBool("Salto", true);
                     }
                     //Planear
                     if (!enSuelo && Input.GetKey(KeyCode.Space))
@@ -188,10 +201,15 @@ public class MovimientoPersonaje : MonoBehaviour
                 {
                     StartCoroutine(FreezeCooldown());
                 }
+
                 if (Input.GetKeyDown(KeyCode.V) && pegasoHabilidad != null && !onCooldownPegaso)
                 {
-                    Vector3 direccionCarga = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
-                    pegasoHabilidad.ActivarCarga(transform.position, direccionCarga);
+                    Pegaso();
+                }
+
+                if(Input.GetKeyDown(KeyCode.R)&& !onCooldownBloqueo)
+                {
+                    StartCoroutine(Bloquear());
                 }
             }
         }
@@ -200,7 +218,6 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("Atacando", atacando);
         animator.SetBool("Caminar", caminar);
         animator.SetBool("Rodando", rodando);
-        animator.SetBool("Salto", Salto);
     }
 
     IEnumerator Rodar()
@@ -225,6 +242,42 @@ public class MovimientoPersonaje : MonoBehaviour
         invencible = false;
         rodando = false;
     }
+    void Pegaso()
+    {
+        Vector3 direccionCarga = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
+        pegasoHabilidad.ActivarCarga(transform.position, direccionCarga);
+        onCooldownPegaso = true;
+        StartCoroutine(PegasoCooldown());
+    }
+
+    IEnumerator PegasoCooldown()
+    {
+        float elapsedTime = 0f;
+        while (elapsedTime < cooldownPegasoTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float remainingTime = cooldownPegasoTime - elapsedTime;
+            if (CooldownFillPegaso != null)
+            {
+                CooldownFillPegaso.fillAmount = remainingTime / cooldownPegasoTime;
+            }
+            if (CooldownTextPegaso != null)
+            {
+                CooldownTextPegaso.text = Mathf.Ceil(remainingTime).ToString();
+            }
+            yield return null;
+        }
+        if (CooldownFillPegaso != null)
+        {
+            CooldownFillPegaso.fillAmount = 1;
+        }
+        if(CooldownTextPegaso != null)
+        {
+            CooldownTextPegaso.text = "";
+        }
+        onCooldownPegaso = false;
+    }
+
     void ProcesarMovimiento()
     {
         //Logica de movimiento
@@ -398,6 +451,40 @@ public class MovimientoPersonaje : MonoBehaviour
             CooldownFreezeText.text = "";
         }
         onFreezeCooldown = false;
+    }
+
+    IEnumerator Bloquear()
+    {
+        bloqueando = true;
+        invencible = true;
+
+        yield return new WaitForSeconds(duracionBloqueo);
+
+        bloqueando = false;
+        invencible = false;
+        StartCoroutine(BloqueoCooldown());
+    }
+    IEnumerator BloqueoCooldown()
+    {
+        onCooldownBloqueo = true;
+        float elapsedTime = 0f;
+        while (elapsedTime < cooldownBloqueo)
+        {
+            elapsedTime += Time.deltaTime;
+            float remainingTime = cooldownBloqueo - elapsedTime;
+            if (CooldownFillBloqueo != null)
+            {
+                CooldownFillBloqueo.fillAmount = remainingTime / cooldownBloqueo;
+            }
+            if (CooldownTextBloqueo != null)
+            {
+                CooldownTextBloqueo.text = Mathf.Ceil(remainingTime).ToString();
+            }
+            yield return null;
+        }
+        if (CooldownFillBloqueo != null) CooldownFillBloqueo.fillAmount = 1;
+        if (CooldownTextBloqueo != null) CooldownTextBloqueo.text = "";
+        onCooldownBloqueo = false;
     }
     void OnDrawGizmos()
     {
