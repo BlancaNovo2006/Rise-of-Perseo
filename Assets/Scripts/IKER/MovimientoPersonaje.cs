@@ -57,6 +57,9 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool ataquemedusa;
     private bool block;
     private bool pegaso;
+    private bool atacandoFuerte;
+
+    public Collider2D hozCollider;
 
     public float resistenciaMax = 100f;
     public float resistenciaActual;
@@ -98,6 +101,7 @@ public class MovimientoPersonaje : MonoBehaviour
         animator = GetComponent<Animator>();
         tiempoActualSprint = tiempoSprint;
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
+        hozCollider.enabled = false;
 
         resistenciaActual = resistenciaMax;
         ActualizarBarraResistencia();
@@ -142,7 +146,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             if (!recibiendoDanio)
             {
-                if (!rodando && !atacando && !bloqueando)
+                if (!rodando && !atacando && !atacandoFuerte && !bloqueando)
                 {
                     ProcesarMovimiento();
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
@@ -216,7 +220,13 @@ public class MovimientoPersonaje : MonoBehaviour
                 //Atacar
                 if (Input.GetKeyDown(KeyCode.Z) && !atacando && enSuelo)
                 {
-                    Atacando();
+                    Atacando(false);
+                }
+
+                //Ataque Fuerte
+                if (Input.GetKeyDown(KeyCode.U) && !atacandoFuerte && enSuelo)
+                {
+                    Atacando(true);
                 }
 
                 if (Input.GetKeyDown(KeyCode.X) && !atacando && enSuelo && !isInvisible && !onCooldown)
@@ -263,8 +273,7 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("atacado", recibiendoDanio);
         animator.SetBool("muelto", muerto);
         animator.SetBool("pegaso", pegaso);
-
-
+        animator.SetBool("AtacandoFuerte", atacandoFuerte);
     }
 
     IEnumerator Rodar()
@@ -393,13 +402,33 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("recibiendoDanio", false);
 
     }
-    public void Atacando()
+    public void Atacando(bool ataqueFuerte)
     {
-        atacando = true;
+        if (ataqueFuerte)
+        {
+            atacandoFuerte = true;
+            hozCollider.enabled = true;
+            animator.SetTrigger("ataqueFuertePlayer");
+            StartCoroutine(EsperarFinAtaqueFuerte());
+        }
+        else
+        {
+            atacando = true;
+            animator.SetTrigger("ataqueplayer");
+        }
     }
     public void DesactivarAtaque()
     {
         atacando = false;
+        atacandoFuerte = false;
+    }
+    IEnumerator EsperarFinAtaqueFuerte()
+    {
+        // Espera un tiempo que dure la animación de ataque fuerte
+        yield return new WaitForSeconds(0.35f);  // Ajusta el tiempo según la duración de la animación
+        hozCollider.enabled = false;
+
+        atacandoFuerte = false;  // Detiene el estado de ataque fuerte
     }
     IEnumerator BecomeInvisible()
     {

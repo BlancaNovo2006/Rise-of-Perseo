@@ -127,6 +127,13 @@ public class ControladorEnemigos : MonoBehaviour
 
             RecibeDanio(direcciondanio, 1);
         }
+        if (collision.CompareTag("Hoz"))
+        {
+            Debug.Log("Golpe con Hoz (ataque fuerte)");
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 2);
+        }
         if (collision.CompareTag("Pegaso"))
         {
             Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
