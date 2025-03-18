@@ -54,6 +54,25 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool atacando;
     private bool caminar;
     private bool salto;
+    private bool ataquemedusa;
+    private bool block;
+    private bool pegaso;
+
+    public float resistenciaMax = 100f;
+    public float resistenciaActual;
+    public float consumoCorrer = 10f;
+    public float consumoRodar = 10f;
+    public float regeneracion = 5f;
+    public Image barraResistencia;
+
+    public int experienciaActual = 0;
+    public TextMeshProUGUI contadorExperiencia;
+    //Recuperar Experiencia
+    //public Vector2 ultimaPosicionMuerte;
+    //public int experienciaPerdida = 0;
+
+    public Transform puntoRespawn;
+    public float tiempoRespawn = 2f;
 
     public float velocidadDeMovimientoBase;
     public float velocidadExtra;
@@ -79,6 +98,11 @@ public class MovimientoPersonaje : MonoBehaviour
         animator = GetComponent<Animator>();
         tiempoActualSprint = tiempoSprint;
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
+
+        resistenciaActual = resistenciaMax;
+        ActualizarBarraResistencia();
+
+        ActualizarUIExperiencia();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyLayer = LayerMask.NameToLayer("Enemy");
@@ -149,12 +173,19 @@ public class MovimientoPersonaje : MonoBehaviour
                         rb.gravityScale = 1f;
                     }
                     //Correr
-                    if (Input.GetKeyDown(KeyCode.B) && puedeCorrer)
+                    if (Input.GetKeyDown(KeyCode.B) && puedeCorrer && resistenciaActual > 0)
                     {
                         velocidad = velocidadExtra;
                         estaCorriendo = true;
+                        resistenciaActual -= consumoCorrer * Time.deltaTime;
+                        if (resistenciaActual <= 0)
+                        {
+                            puedeCorrer = false;
+                            estaCorriendo = false;
+                            velocidad = velocidadDeMovimientoBase;
+                        }
                     }
-                    if (Input.GetKeyUp(KeyCode.B))
+                    if (Input.GetKeyUp(KeyCode.B) || resistenciaActual <= 0)
                     {
                         velocidad = velocidadDeMovimientoBase;
                         estaCorriendo = false;
@@ -211,6 +242,15 @@ public class MovimientoPersonaje : MonoBehaviour
                 {
                     StartCoroutine(Bloquear());
                 }
+                if (!estaCorriendo && !rodando && resistenciaActual < resistenciaMax)
+                {
+                    resistenciaActual += regeneracion * Time.deltaTime;
+                    if (resistenciaActual > resistenciaMax)
+                    {
+                        resistenciaActual = resistenciaMax;
+                    }
+                }
+                ActualizarBarraResistencia();
             }
         }
 
@@ -218,10 +258,20 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("Atacando", atacando);
         animator.SetBool("Caminar", caminar);
         animator.SetBool("Rodando", rodando);
+        animator.SetBool("AtaqueMedusa", ataquemedusa);
+        animator.SetBool("Block", block);
+        animator.SetBool("atacado", recibiendoDanio);
+        animator.SetBool("muelto", muerto);
+        animator.SetBool("pegaso", pegaso);
+
+
     }
 
     IEnumerator Rodar()
     {
+        if (resistenciaActual < consumoRodar) yield break;
+        resistenciaActual -= consumoRodar;
+
         rodando = true;
         invencible = true;
         animator.SetTrigger("Rodar");
@@ -246,10 +296,14 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         Vector3 direccionCarga = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
         pegasoHabilidad.ActivarCarga(transform.position, direccionCarga);
+        animator.SetBool("pegaso", true);
         onCooldownPegaso = true;
         StartCoroutine(PegasoCooldown());
     }
-
+    void DesactivarPegaso()
+    {
+        animator.SetBool("pegaso", false);
+    }
     IEnumerator PegasoCooldown()
     {
         float elapsedTime = 0f;
@@ -277,7 +331,6 @@ public class MovimientoPersonaje : MonoBehaviour
         }
         onCooldownPegaso = false;
     }
-
     void ProcesarMovimiento()
     {
         //Logica de movimiento
@@ -301,6 +354,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public void RecibeDanio(Vector2 direccion, int cantDanio)
     {
         if (invencible) return; // Si es invencible, no recibe daño
+        animator.SetBool("recibiendoDanio", true);
 
         if (!recibiendoDanio)
         {
@@ -309,6 +363,8 @@ public class MovimientoPersonaje : MonoBehaviour
             if (vida <= 0)
             {
                 muerto = true;
+                animator.SetBool("muelto", true);
+                StartCoroutine(Respawnear());
             }
             if (!muerto)
             {
@@ -318,11 +374,24 @@ public class MovimientoPersonaje : MonoBehaviour
             }
         }
     }
+    IEnumerator Respawnear()
+    {
+        yield return new WaitForSeconds(tiempoRespawn);
+        transform.position = puntoRespawn.position;
+        vida = 5;
+        muerto = false;
+        recibiendoDanio = false;
+        animator.SetBool("muelto", false);
+        animator.SetBool("recibiendoDanio", false);
+        rb.velocity = Vector2.zero;
+    }
     IEnumerator DesactivarDanio()
     {
         yield return new WaitForSeconds(0.4f);
         recibiendoDanio = false;
         rb.velocity = Vector2.zero;
+        animator.SetBool("recibiendoDanio", false);
+
     }
     public void Atacando()
     {
@@ -407,6 +476,7 @@ public class MovimientoPersonaje : MonoBehaviour
     void FreezeEnemies()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, freezeRadius, Enemy);
+        animator.SetBool("ataquemedusa", true);
         foreach (Collider2D Enemy in enemies)
         {
             ControladorEnemigos ControladorEnemigos = Enemy.GetComponent<ControladorEnemigos>();
@@ -452,11 +522,11 @@ public class MovimientoPersonaje : MonoBehaviour
         }
         onFreezeCooldown = false;
     }
-
     IEnumerator Bloquear()
     {
         bloqueando = true;
         invencible = true;
+        animator.SetBool("block", true);
 
         yield return new WaitForSeconds(duracionBloqueo);
 
@@ -485,6 +555,34 @@ public class MovimientoPersonaje : MonoBehaviour
         if (CooldownFillBloqueo != null) CooldownFillBloqueo.fillAmount = 1;
         if (CooldownTextBloqueo != null) CooldownTextBloqueo.text = "";
         onCooldownBloqueo = false;
+    }
+
+    void ActualizarBarraResistencia()
+    {
+        if (barraResistencia != null)
+        {
+            barraResistencia.fillAmount = resistenciaActual / resistenciaMax;
+        }
+    }
+    void DesactivarMedusa()
+    {
+        animator.SetBool("ataquemedusa", false);
+    }
+    void DesactivarBlock()
+    {
+        animator.SetBool("block", false);
+    }
+    public void AgregarExperiencia(int cantidad)
+    {
+        experienciaActual += cantidad;
+        ActualizarUIExperiencia();
+    }
+    void ActualizarUIExperiencia()
+    {
+        if(contadorExperiencia != null)
+        {
+            contadorExperiencia.text = "XP:" + experienciaActual;
+        }
     }
     void OnDrawGizmos()
     {

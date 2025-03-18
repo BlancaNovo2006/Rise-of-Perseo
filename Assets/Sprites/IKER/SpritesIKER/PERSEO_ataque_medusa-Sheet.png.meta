@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6288a4033f4cc5e46a1b027b23e7d262
+guid: b4a9d107534b21d42b305237677f81e8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_0
+      name: PERSEO_ataque_medusa-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,20 +118,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.48, y: 0.6}
+      pivot: {x: 0.5, y: 0.6}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 562319342d1dacb4db7b3b5295c21461
-      internalID: 1872937147
+      spriteID: 31b348571f3573140b67d78e26fc81cb
+      internalID: -552871932
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_1
+      name: PERSEO_ataque_medusa-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e0e011a3b7e82c4f9e716b33f45e205
-      internalID: -1223846947
+      spriteID: 826588a05e64fba4a9e3dfb5b3ead841
+      internalID: 262536780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_2
+      name: PERSEO_ataque_medusa-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 615d66456ff46c340a18338fdbe6db5a
-      internalID: 746554869
+      spriteID: bf13f1daf0e0dd549b208f4da1162b56
+      internalID: 1420569263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_3
+      name: PERSEO_ataque_medusa-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32a2fe362a2d60f4b80072918b973f25
-      internalID: 963170586
+      spriteID: dc25e5fca65fb4048b6cab1e00b818ed
+      internalID: -1472837997
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_4
+      name: PERSEO_ataque_medusa-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d9a700f2b107264ea96e2616c6bd02f
-      internalID: -1068767953
+      spriteID: 7feb8fb4f7659d6419748dc4982b61f5
+      internalID: 848211192
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PERSEO_aTAQUE-Sheet_0: 1872937147
-      PERSEO_aTAQUE-Sheet_1: -1223846947
-      PERSEO_aTAQUE-Sheet_2: 746554869
-      PERSEO_aTAQUE-Sheet_3: 963170586
-      PERSEO_aTAQUE-Sheet_4: -1068767953
+      PERSEO_ataque_medusa-Sheet_0: -552871932
+      PERSEO_ataque_medusa-Sheet_1: 262536780
+      PERSEO_ataque_medusa-Sheet_2: 1420569263
+      PERSEO_ataque_medusa-Sheet_3: -1472837997
+      PERSEO_ataque_medusa-Sheet_4: 848211192
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

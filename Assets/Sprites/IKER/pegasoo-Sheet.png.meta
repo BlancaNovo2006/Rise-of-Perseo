@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6288a4033f4cc5e46a1b027b23e7d262
+guid: 6299036be852c024f913967fca7d9a8b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 24
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,106 +110,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_0
+      name: pegasoo-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.48, y: 0.6}
+        width: 160
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 562319342d1dacb4db7b3b5295c21461
-      internalID: 1872937147
+      spriteID: 48c9c285a1a574341bceffbc0ffe8025
+      internalID: 1518166347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_1
+      name: pegasoo-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 160
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.6}
+        width: 160
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e0e011a3b7e82c4f9e716b33f45e205
-      internalID: -1223846947
+      spriteID: 29ca9ecc02fe6634480476e9d22738e9
+      internalID: 717651363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_2
+      name: pegasoo-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 320
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.6}
+        width: 160
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 615d66456ff46c340a18338fdbe6db5a
-      internalID: 746554869
+      spriteID: 9302db5514558d84887ee750165e62fb
+      internalID: -1775326003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_3
+      name: pegasoo-Sheet_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 480
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.6}
+        width: 160
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32a2fe362a2d60f4b80072918b973f25
-      internalID: 963170586
+      spriteID: 4a525ffca55882141b37734f90e85e01
+      internalID: 35504338
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_aTAQUE-Sheet_4
+      name: pegasoo-Sheet_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 640
         y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.6}
+        width: 160
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d9a700f2b107264ea96e2616c6bd02f
-      internalID: -1068767953
+      spriteID: d12a570835e92d94dac2dde8e428d8ce
+      internalID: 2034904077
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PERSEO_aTAQUE-Sheet_0: 1872937147
-      PERSEO_aTAQUE-Sheet_1: -1223846947
-      PERSEO_aTAQUE-Sheet_2: 746554869
-      PERSEO_aTAQUE-Sheet_3: 963170586
-      PERSEO_aTAQUE-Sheet_4: -1068767953
+      pegasoo-Sheet_0: 1518166347
+      pegasoo-Sheet_1: 717651363
+      pegasoo-Sheet_2: -1775326003
+      pegasoo-Sheet_3: 35504338
+      pegasoo-Sheet_4: 2034904077
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

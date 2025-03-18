@@ -10,6 +10,9 @@ public class ControladorEnemigos : MonoBehaviour
     public float fuerzaRebote;
     public int vidas = 3;  // Vidas del enemigo
 
+    public GameObject experienciaPrefab;
+    public int experienciaSoltar = 20;
+
     private Rigidbody2D rb;
     private Vector2 movement;
     private bool playervivo;
@@ -164,7 +167,12 @@ public class ControladorEnemigos : MonoBehaviour
     void Muerte()
     {
         muerto = true;
-
+        if (experienciaPrefab != null)
+        {
+            Vector3 posicion = transform.position;
+            GameObject orbe = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
+            orbe.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
+        }
         // Puedes agregar animaciones de muerte aquí si lo deseas
         // Por ejemplo: animator.SetTrigger("Muerte");
 
