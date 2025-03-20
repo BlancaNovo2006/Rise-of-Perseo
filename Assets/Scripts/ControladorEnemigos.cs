@@ -28,6 +28,7 @@ public class ControladorEnemigos : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private Animator animator;
+
     void Start()
     {
         playervivo = true;
@@ -57,6 +58,10 @@ public class ControladorEnemigos : MonoBehaviour
                 }
             }
         }
+        animator.SetBool("Atacando", Atacando);
+        animator.SetBool("caminando", EnMovimiento);
+
+
     }
     private void Movimiento()
     {
@@ -174,11 +179,11 @@ public class ControladorEnemigos : MonoBehaviour
     void Muerte()
     {
         muerto = true;
-        if (experienciaPrefab != null)
+        //if (experienciaPrefab != null)
         {
-            Vector3 posicion = transform.position;
-            GameObject orbe = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
-            orbe.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
+            //Vector3 posicion = transform.position;
+            //GameObject Experiencia = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
+            //Experiencia.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
         }
         // Puedes agregar animaciones de muerte aquí si lo deseas
         // Por ejemplo: animator.SetTrigger("Muerte");

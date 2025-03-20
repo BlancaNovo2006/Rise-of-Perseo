@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b64cac3f9f4b904cacd475f01527c2c
+guid: 37f3f0e97c5c72241beb899a4f7a6391
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -106,37 +106,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: golem-Sheet_0
+      name: golemidle-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6378f1df26931e14fb19e6869656dd92
-      internalID: -1926748770
+      spriteID: af80b41bc4fb04848b8fadbbc281bd66
+      internalID: -413607190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: golem-Sheet_1
+      name: golemidle-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -171,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa1edd6a53c9b964db8b42fd4b680010
-      internalID: -592797773
+      spriteID: b390ca1c357ddda469fc7ff1238032b7
+      internalID: -1993400432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: golem-Sheet_2
+      name: golemidle-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -192,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8625fadd8acd7b242885c9e467279bbe
-      internalID: -1739827700
+      spriteID: 4409d1b359541404e8df1ec1105b0443
+      internalID: -137994362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: golem-Sheet_3
+      name: golemidle-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -213,50 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2329144691a58504c9180bc41b3767d2
-      internalID: 2085182814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: golem-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1fe36a2dd21c5cf4fb58d87a35b64d80
-      internalID: 2071379440
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: golem-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3113e682466ce5d4cae05def0fc8726b
-      internalID: -1875582353
+      spriteID: 4bbf7405641de4e4fb6871917bb66857
+      internalID: 448603318
       vertices: []
       indices: 
       edges: []
@@ -272,12 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      golem-Sheet_0: -1926748770
-      golem-Sheet_1: -592797773
-      golem-Sheet_2: -1739827700
-      golem-Sheet_3: 2085182814
-      golem-Sheet_4: 2071379440
-      golem-Sheet_5: -1875582353
+      golemidle-Sheet_0: -413607190
+      golemidle-Sheet_1: -1993400432
+      golemidle-Sheet_2: -137994362
+      golemidle-Sheet_3: 448603318
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

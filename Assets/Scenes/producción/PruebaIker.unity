@@ -1029,7 +1029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 325, y: -211.3}
+  m_AnchoredPosition: {x: 325, y: -209.3}
   m_SizeDelta: {x: 200, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &768749691
@@ -2338,7 +2338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394216061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.72222, y: 1.2600001, z: -10}
+  m_LocalPosition: {x: 34.724266, y: 1.2600001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2995,6 +2995,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &1653098313
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653098307}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1725465237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3081,7 +3102,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725465237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.72222, y: 1.2600001, z: -10}
+  m_LocalPosition: {x: 34.724266, y: 1.2600001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3284,7 +3305,7 @@ PrefabInstance:
     - target: {fileID: 5218031993488365226, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1467458303, guid: 0975e85f8bed915458a7d421f9363d12, type: 3}
+      objectReference: {fileID: -1926748770, guid: 8b64cac3f9f4b904cacd475f01527c2c, type: 3}
     - target: {fileID: 5218031993488365226, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -3319,7 +3340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.49
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3355,19 +3376,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7487292366330745730, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_Size.x
-      value: 2.0723038
+      value: 2.1836433
       objectReference: {fileID: 0}
     - target: {fileID: 7487292366330745730, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_Size.y
-      value: 2.514142
+      value: 3.0832129
       objectReference: {fileID: 0}
     - target: {fileID: 7487292366330745730, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_Offset.x
-      value: -0.18909454
+      value: -0.18290901
       objectReference: {fileID: 0}
     - target: {fileID: 7487292366330745730, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_Offset.y
-      value: 0.04526472
+      value: -0.20215726
       objectReference: {fileID: 0}
     - target: {fileID: 7487292366330745730, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_IsTrigger
@@ -3375,11 +3396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7487292366330745730, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 2.6666667
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7487292366330745730, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 2.6666667
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3394,6 +3415,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1653098310}
+    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1653098313}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &1765940455
 GameObject:
