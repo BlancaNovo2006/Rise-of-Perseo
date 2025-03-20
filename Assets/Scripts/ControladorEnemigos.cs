@@ -58,6 +58,8 @@ public class ControladorEnemigos : MonoBehaviour
                 }
             }
         }
+
+
         animator.SetBool("Atacando", Atacando);
         animator.SetBool("caminando", EnMovimiento);
     }
@@ -97,7 +99,7 @@ public class ControladorEnemigos : MonoBehaviour
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
     }
-
+    //CAMBIAR LA LOGICA DE ATAQUE DEL ENEMIGO
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") && canseePlayer)
@@ -108,20 +110,31 @@ public class ControladorEnemigos : MonoBehaviour
             movimientoScript.RecibeDanio(direcciondanio, 1);
             playervivo = !movimientoScript.muerto;
 
-            //GameManager.Instance.PerderVida();
-
             if (!playervivo)
             {
                 EnMovimiento = false;
             }
-            Atacando = true;
+            Atacando = true; //Activa animacion de ataque
         }
         else
         {
+            StartCoroutine(DesactivarAtaque());
             Atacando = false;
         }
-
     }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(DesactivarAtaque());
+        }
+    }
+    IEnumerator DesactivarAtaque()
+    {
+        yield return new WaitForSeconds(0.783f); // Duración de la animación de ataque
+        Atacando = false;
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Espada"))
