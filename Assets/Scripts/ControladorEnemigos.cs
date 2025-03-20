@@ -60,8 +60,6 @@ public class ControladorEnemigos : MonoBehaviour
         }
         animator.SetBool("Atacando", Atacando);
         animator.SetBool("caminando", EnMovimiento);
-
-
     }
     private void Movimiento()
     {
@@ -73,11 +71,11 @@ public class ControladorEnemigos : MonoBehaviour
 
             if (direction.x < 0)
             {
-                transform.localScale = new Vector3(-1, 1, 0);
+                transform.localScale = new Vector3(1, 1, 0);
             }
             if (direction.x > 0)
             {
-                transform.localScale = new Vector3(1, 1, 0);
+                transform.localScale = new Vector3(-1, 1, 0);
             }
 
             movement = new Vector2(direction.x, 0);
