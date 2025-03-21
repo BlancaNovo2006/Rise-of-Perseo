@@ -6,6 +6,7 @@ public class ControladorEnemigos : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius;
+    public float attackRadius;
     public float speed;
     public float fuerzaRebote;
     public int vidas = 3;  // Vidas del enemigo
@@ -29,6 +30,8 @@ public class ControladorEnemigos : MonoBehaviour
 
     private Animator animator;
 
+    public Collider2D espadaPiedraCollider;
+
     void Start()
     {
         playervivo = true;
@@ -36,6 +39,7 @@ public class ControladorEnemigos : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalSpeed = speed;
+        DesactivarEspadaCollider();
     }
 
     void Update()
@@ -51,6 +55,7 @@ public class ControladorEnemigos : MonoBehaviour
             {
                 canseePlayer = true;
                 Movimiento();
+                AtaqueEnemigo();
 
                 if (transform.position == player.position)
                 {
@@ -62,6 +67,11 @@ public class ControladorEnemigos : MonoBehaviour
 
         animator.SetBool("Atacando", Atacando);
         animator.SetBool("caminando", EnMovimiento);
+
+        if (!playervivo)
+        {
+            EnMovimiento = false;
+        }
     }
     private void Movimiento()
     {
@@ -99,46 +109,39 @@ public class ControladorEnemigos : MonoBehaviour
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
     }
-    //CAMBIAR LA LOGICA DE ATAQUE DEL ENEMIGO
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    void AtaqueEnemigo()
     {
-        if (collision.gameObject.CompareTag("Player") && canseePlayer)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer < attackRadius)
         {
-            Vector2 direcciondanio = new Vector2(transform.position.x, 0);
-            MovimientoPersonaje movimientoScript = collision.gameObject.GetComponent<MovimientoPersonaje>();
-
-            movimientoScript.RecibeDanio(direcciondanio, 1);
-            playervivo = !movimientoScript.muerto;
-
-            if (!playervivo)
+            if (!Atacando)
             {
+                Atacando = true;
                 EnMovimiento = false;
+                movement = Vector2.zero;
             }
-            Atacando = true; //Activa animacion de ataque
         }
         else
         {
-            StartCoroutine(DesactivarAtaque());
             Atacando = false;
+            DesactivarEspadaCollider();
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    public void ActivarEspadaCollider()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            StartCoroutine(DesactivarAtaque());
-        }
+        espadaPiedraCollider.enabled = true;
     }
-    IEnumerator DesactivarAtaque()
+    public void DesactivarEspadaCollider()
     {
-        yield return new WaitForSeconds(0.783f); // Duración de la animación de ataque
-        Atacando = false;
+        espadaPiedraCollider.enabled = false;
     }
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Espada"))
         {
+            Debug.Log("golpe con espada");
             Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
 
             RecibeDanio(direcciondanio, 1);
@@ -164,6 +167,10 @@ public class ControladorEnemigos : MonoBehaviour
             recibiendoDanio = true;
             // Reducir las vidas del enemigo
             vidas -= cantDanio;
+
+            Atacando = false;
+            animator.SetBool("Atacando", false);
+            animator.Play("Idle", 0);
 
             // Si las vidas son 0 o menos, destruir al enemigo
             if (vidas <= 0)
@@ -235,5 +242,8 @@ public class ControladorEnemigos : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
+
 }

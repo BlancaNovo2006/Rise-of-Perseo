@@ -170,14 +170,13 @@ public class MovimientoPersonaje : MonoBehaviour
                         {
                             rb.gravityScale = 0.25f;
                         }
-
                     }
                     else
                     {
                         rb.gravityScale = 1f;
                     }
                     //Correr
-                    if (Input.GetKeyDown(KeyCode.B) && puedeCorrer && resistenciaActual > 0)
+                    if (Input.GetKeyDown(KeyCode.LeftControl) && puedeCorrer && resistenciaActual > 0)
                     {
                         velocidad = velocidadExtra;
                         estaCorriendo = true;
@@ -189,7 +188,7 @@ public class MovimientoPersonaje : MonoBehaviour
                             velocidad = velocidadDeMovimientoBase;
                         }
                     }
-                    if (Input.GetKeyUp(KeyCode.B) || resistenciaActual <= 0)
+                    if (Input.GetKeyUp(KeyCode.LeftControl) || resistenciaActual <= 0)
                     {
                         velocidad = velocidadDeMovimientoBase;
                         estaCorriendo = false;
@@ -218,23 +217,23 @@ public class MovimientoPersonaje : MonoBehaviour
                     }
                 }
                 //Atacar
-                if (Input.GetKeyDown(KeyCode.Z) && !atacando && enSuelo)
+                if (Input.GetKeyDown(KeyCode.F) && !atacando && enSuelo)
                 {
                     Atacando(false);
                 }
 
                 //Ataque Fuerte
-                if (Input.GetKeyDown(KeyCode.U) && !atacandoFuerte && enSuelo)
+                if (Input.GetKeyDown(KeyCode.G) && !atacandoFuerte && enSuelo)
                 {
                     Atacando(true);
                 }
 
-                if (Input.GetKeyDown(KeyCode.X) && !atacando && enSuelo && !isInvisible && !onCooldown)
+                if (Input.GetKeyDown(KeyCode.U) && !atacando && enSuelo && !isInvisible && !onCooldown)
                 {
                     StartCoroutine(BecomeInvisible());
                 }
 
-                if (Input.GetKeyDown(KeyCode.C) && !onFreezeCooldown)
+                if (Input.GetKeyDown(KeyCode.I) && !onFreezeCooldown)
                 {
                     FreezeEnemies();
                 }
@@ -243,12 +242,12 @@ public class MovimientoPersonaje : MonoBehaviour
                     StartCoroutine(FreezeCooldown());
                 }
 
-                if (Input.GetKeyDown(KeyCode.V) && pegasoHabilidad != null && !onCooldownPegaso)
+                if (Input.GetKeyDown(KeyCode.O) && pegasoHabilidad != null && !onCooldownPegaso)
                 {
                     Pegaso();
                 }
 
-                if(Input.GetKeyDown(KeyCode.R)&& !onCooldownBloqueo)
+                if(Input.GetKeyDown(KeyCode.H)&& !onCooldownBloqueo)
                 {
                     StartCoroutine(Bloquear());
                 }
@@ -369,6 +368,8 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             recibiendoDanio = true;
             vida -= cantDanio;
+            atacando = false;
+            animator.SetBool("Atacando", false);
             if (vida <= 0)
             {
                 muerto = true;
@@ -618,5 +619,14 @@ public class MovimientoPersonaje : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * longitudRaycast);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EspadaSoldado"))
+        {
+            Debug.Log("atacado por enemigo");
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
 
+            RecibeDanio(direcciondanio, 1);
+        }
+    }
 }
