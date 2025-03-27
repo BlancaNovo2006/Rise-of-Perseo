@@ -95,6 +95,9 @@ public class MovimientoPersonaje : MonoBehaviour
     private Rigidbody2D rb;
     public Animator animator;
 
+    [SerializeField] private float coyoteTimeDuration = 0.2f;
+    private float coyoteTimeCounter;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -150,7 +153,8 @@ public class MovimientoPersonaje : MonoBehaviour
                 {
                     ProcesarMovimiento();
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
-
+                    
+                    //Rodar
                     if (Input.GetKeyDown(KeyCode.LeftShift) && enSuelo)
                     {
                         StartCoroutine(Rodar());
@@ -158,8 +162,20 @@ public class MovimientoPersonaje : MonoBehaviour
 
                     enSuelo = hit.collider != null;
 
+                    //CoyoteTime
+                    if (enSuelo)
+                    {
+                        coyoteTimeCounter = coyoteTimeDuration;
+                    }
+                    else
+                    {
+                        // Si no está en el suelo, el contador disminuye hasta 0
+                        coyoteTimeCounter -= Time.deltaTime;
+                    }
+                    //Debug.Log("Coyote Time: " + coyoteTimeCounter);
+
                     //Salto
-                    if (enSuelo && Input.GetKeyDown(KeyCode.Space))
+                    if (enSuelo && Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
                     {
                         rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
                     }
@@ -618,6 +634,11 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * longitudRaycast);
+        if (coyoteTimeCounter > 0f)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(transform.position + Vector3.up * 1.5f, 0.2f);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
