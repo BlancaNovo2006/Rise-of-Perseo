@@ -13,7 +13,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public float velocidad;
     public float fuerzaSalto = 10f;
     public float fuerzaRebote = 6f;
-    public float longitudRaycast = 0.1f;
+    public float longitudRaycast = 0.2f;
     public LayerMask capaSuelo;
 
     public float invisibilityDuration = 5f;
@@ -129,15 +129,15 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             CooldownFreezeFill.fillAmount = 1;
         }
-        if(CooldownFreezeText != null)
+        if (CooldownFreezeText != null)
         {
             CooldownFreezeText.text = "";
         }
-        if(CooldownFillPegaso != null)
+        if (CooldownFillPegaso != null)
         {
-            CooldownFillPegaso.fillAmount = 1;  
+            CooldownFillPegaso.fillAmount = 1;
         }
-        if(CooldownTextPegaso != null)
+        if (CooldownTextPegaso != null)
         {
             CooldownTextPegaso.text = "";
         }
@@ -153,7 +153,8 @@ public class MovimientoPersonaje : MonoBehaviour
                 {
                     ProcesarMovimiento();
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
-                    
+                    enSuelo = hit.collider != null;
+
                     //Rodar
                     if (Input.GetKeyDown(KeyCode.LeftShift) && enSuelo)
                     {
@@ -175,9 +176,10 @@ public class MovimientoPersonaje : MonoBehaviour
                     //Debug.Log("Coyote Time: " + coyoteTimeCounter);
 
                     //Salto
-                    if (enSuelo && Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
+                    if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
                     {
                         rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
+                        coyoteTimeCounter = 0f;
                     }
                     //Planear
                     if (!enSuelo && Input.GetKey(KeyCode.Space))
@@ -263,7 +265,7 @@ public class MovimientoPersonaje : MonoBehaviour
                     Pegaso();
                 }
 
-                if(Input.GetKeyDown(KeyCode.H)&& !onCooldownBloqueo)
+                if (Input.GetKeyDown(KeyCode.H) && !onCooldownBloqueo)
                 {
                     StartCoroutine(Bloquear());
                 }
@@ -349,7 +351,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             CooldownFillPegaso.fillAmount = 1;
         }
-        if(CooldownTextPegaso != null)
+        if (CooldownTextPegaso != null)
         {
             CooldownTextPegaso.text = "";
         }
@@ -468,7 +470,7 @@ public class MovimientoPersonaje : MonoBehaviour
     IEnumerator StartCooldown()
     {
         float elapsedTime = 0f;
-        
+
         onCooldown = true;
         while (elapsedTime < cooldownTime)
         {
@@ -532,7 +534,7 @@ public class MovimientoPersonaje : MonoBehaviour
             }
         }
         onFreezeCooldown = true;
-        if(CooldownFreezeFill != null)
+        if (CooldownFreezeFill != null)
         {
             CooldownFreezeFill.fillAmount = 1;
         }
@@ -548,7 +550,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float remainingTime = cooldownFreezeTime - elapsedTime;
-            if(CooldownFreezeFill != null)
+            if (CooldownFreezeFill != null)
             {
                 CooldownFreezeFill.fillAmount = remainingTime / cooldownFreezeTime;
             }
@@ -562,7 +564,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             CooldownFreezeFill.fillAmount = 1;
         }
-        if(CooldownFreezeText != null)
+        if (CooldownFreezeText != null)
         {
             CooldownFreezeText.text = "";
         }
@@ -625,7 +627,7 @@ public class MovimientoPersonaje : MonoBehaviour
     }
     void ActualizarUIExperiencia()
     {
-        if(contadorExperiencia != null)
+        if (contadorExperiencia != null)
         {
             contadorExperiencia.text = "XP:" + experienciaActual;
         }

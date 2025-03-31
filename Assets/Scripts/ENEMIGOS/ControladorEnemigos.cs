@@ -9,28 +9,27 @@ public class ControladorEnemigos : MonoBehaviour
     public float attackRadius;
     public float speed;
     public float fuerzaRebote;
-    public int vidas = 3;  // Vidas del enemigo
+    public int vidas;  // Vidas del enemigo
 
     public GameObject experienciaPrefab;
     public int experienciaSoltar = 20;
 
-    private Rigidbody2D rb;
-    private Vector2 movement;
-    private bool playervivo;
-    private bool muerto;
-    private bool EnMovimiento;
-    private bool recibiendoDanio;
-    private bool Atacando;
+    protected Rigidbody2D rb;
+    protected Vector2 movement;
+    protected bool playervivo;
+    protected bool muerto;
+    protected bool EnMovimiento;
+    protected bool recibiendoDanio;
+    protected bool Atacando;
 
-    private bool canseePlayer = true;
+    protected bool canseePlayer = true;
 
-    private bool isFrozen = false;
-    private float originalSpeed;
-    private SpriteRenderer spriteRenderer;
+    protected bool isFrozen = false;
+    protected float originalSpeed;
+    protected SpriteRenderer spriteRenderer;
 
-    private Animator animator;
+    protected Animator animator;
 
-    public Collider2D espadaPiedraCollider;
 
     void Start()
     {
@@ -39,10 +38,9 @@ public class ControladorEnemigos : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalSpeed = speed;
-        DesactivarEspadaCollider();
     }
 
-    void Update()
+    protected void Update()
     {
         if (player != null && playervivo && !muerto && !isFrozen)
         {
@@ -55,8 +53,6 @@ public class ControladorEnemigos : MonoBehaviour
             {
                 canseePlayer = true;
                 Movimiento();
-                AtaqueEnemigo();
-
                 if (transform.position == player.position)
                 {
                     movement = new Vector2(0, 0);
@@ -65,7 +61,6 @@ public class ControladorEnemigos : MonoBehaviour
         }
 
 
-        animator.SetBool("Atacando", Atacando);
         animator.SetBool("caminando", EnMovimiento);
 
         if (!playervivo)
@@ -73,7 +68,7 @@ public class ControladorEnemigos : MonoBehaviour
             EnMovimiento = false;
         }
     }
-    private void Movimiento()
+    protected void Movimiento()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
@@ -110,34 +105,8 @@ public class ControladorEnemigos : MonoBehaviour
         }
     }
 
-    void AtaqueEnemigo()
-    {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-        if (distanceToPlayer < attackRadius)
-        {
-            if (!Atacando)
-            {
-                Atacando = true;
-                EnMovimiento = false;
-                movement = Vector2.zero;
-            }
-        }
-        else
-        {
-            Atacando = false;
-            DesactivarEspadaCollider();
-        }
-    }
-    public void ActivarEspadaCollider()
-    {
-        espadaPiedraCollider.enabled = true;
-    }
-    public void DesactivarEspadaCollider()
-    {
-        espadaPiedraCollider.enabled = false;
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Espada"))
         {
@@ -194,7 +163,7 @@ public class ControladorEnemigos : MonoBehaviour
         recibiendoDanio = false;
     }
 
-    void Muerte()
+    protected void Muerte()
     {
         muerto = true;
         //if (experienciaPrefab != null)
@@ -203,7 +172,7 @@ public class ControladorEnemigos : MonoBehaviour
             //GameObject Experiencia = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
             //Experiencia.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
         }
-        // Puedes agregar animaciones de muerte aquí si lo deseas
+        // Puedes agregar animaciones de muerte aquÃ­ si lo deseas
         // Por ejemplo: animator.SetTrigger("Muerte");
 
         // Destruir al enemigo
@@ -238,12 +207,11 @@ public class ControladorEnemigos : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
-
 }
