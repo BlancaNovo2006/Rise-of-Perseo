@@ -2566,7 +2566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394216061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.643559, y: 1.2600001, z: -10}
+  m_LocalPosition: {x: 30.642221, y: 1.2600001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3074,27 +3074,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 1739003729}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1571547629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571547623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee6c5c931540d58418be1540ad5f3f55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1293155696}
-  detectionRadius: 4
-  attackRadius: 2.5
-  speed: 1
-  fuerzaRebote: 4
-  vidas: 3
-  experienciaPrefab: {fileID: 0}
-  experienciaSoltar: 20
-  espadaPiedraCollider: {fileID: 2061799819}
 --- !u!95 &1571547634
 Animator:
   serializedVersion: 5
@@ -3121,6 +3100,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 1739003729}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1571547639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571547623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23e3a03844582d4bbed1a6840c1a468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1293155696}
+  detectionRadius: 4
+  attackRadius: 2.5
+  speed: 1
+  fuerzaRebote: 4
+  vidas: 3
+  experienciaPrefab: {fileID: 0}
+  experienciaSoltar: 20
+  espadaPiedraCollider: {fileID: 2061799819}
 --- !u!1 &1605310876
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,7 +3284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725465237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.643559, y: 1.2600001, z: -10}
+  m_LocalPosition: {x: 30.642221, y: 1.2600001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3602,10 +3602,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1571547629}
+      addedObject: {fileID: 1571547634}
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1571547634}
+      addedObject: {fileID: 1571547639}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &1765940455
 GameObject:
