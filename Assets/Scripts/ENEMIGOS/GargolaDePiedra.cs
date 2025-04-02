@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControladorEnemigos : MonoBehaviour
+public class GargolaDePiedra : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius;
@@ -61,8 +61,7 @@ public class ControladorEnemigos : MonoBehaviour
             }
         }
 
-
-        animator.SetBool("caminando", EnMovimiento);
+        animator.SetBool("Atacando", Atacando);
 
         if (!playervivo)
         {
@@ -171,7 +170,7 @@ public class ControladorEnemigos : MonoBehaviour
             //GameObject Experiencia = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
             //Experiencia.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
         }
-        // Puedes agregar animaciones de muerte aquÃ­ si lo deseas
+        // Puedes agregar animaciones de muerte aquí si lo deseas
         // Por ejemplo: animator.SetTrigger("Muerte");
 
         // Destruir al enemigo

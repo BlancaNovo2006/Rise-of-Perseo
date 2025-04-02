@@ -3,28 +3,111 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SoldadoDePiedra : ControladorEnemigos
+public class SoldadoDePiedra : MonoBehaviour
 {
+    public Transform player;
+    public float detectionRadius;
+    public float attackRadius;
+    public float speed;
+    public float fuerzaRebote;
+    public int vidas;  // Vidas del enemigo
+
+    public GameObject experienciaPrefab;
+    public int experienciaSoltar = 20;
+
+    protected Rigidbody2D rb;
+    protected Vector2 movement;
+    protected bool playervivo;
+    protected bool muerto;
+    protected bool EnMovimiento;
+    protected bool recibiendoDanio;
+    protected bool Atacando;
+
+    protected bool canseePlayer = true;
+
+    protected bool isFrozen = false;
+    protected float originalSpeed;
+    protected SpriteRenderer spriteRenderer;
+
+    protected Animator animator;
     public Collider2D espadaPiedraCollider;
 
     void Start()
     {
+        playervivo = true;
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        Atacando = GetComponent<ControladorEnemigos>();
-        EnMovimiento = GetComponent<ControladorEnemigos>();
-        movement = GetComponent<Vector2>();
-
-        DesactivarEspadaCollider();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalSpeed = speed; DesactivarEspadaCollider();
     }
 
     protected void Update()
     {
-        base.Update();
-        AtaqueEnemigo();
+        if (player != null && playervivo && !muerto && !isFrozen)
+        {
+            MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
+            if (playerScript != null && playerScript.isInvisible)
+            {
+                canseePlayer = false;
+            }
+            else
+            {
+                canseePlayer = true;
+                Movimiento();
+                AtaqueEnemigo();
+                if (transform.position == player.position)
+                {
+                    movement = new Vector2(0, 0);
+                }
+            }
+        }
+
+
+        animator.SetBool("caminando", EnMovimiento);
         animator.SetBool("Atacando", Atacando);
+
+        if (!playervivo)
+        {
+            EnMovimiento = false;
+        }
     }
-    
-    void AtaqueEnemigo()
+    protected void Movimiento()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer < detectionRadius)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+
+            if (direction.x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 0);
+            }
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 0);
+            }
+
+            movement = new Vector2(direction.x, 0);
+
+            EnMovimiento = true;
+        }
+        else
+        {
+            movement = Vector2.zero;
+
+            EnMovimiento = false;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!recibiendoDanio)
+        {
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        }
+    }
+    protected void AtaqueEnemigo()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
@@ -40,16 +123,124 @@ public class SoldadoDePiedra : ControladorEnemigos
         else
         {
             Atacando = false;
+            EnMovimiento = true;
+            Movimiento();
             DesactivarEspadaCollider();
         }
     }
     public void ActivarEspadaCollider()
     {
-        espadaPiedraCollider.enabled = true;
+        if (espadaPiedraCollider != null)
+        {
+            espadaPiedraCollider.enabled = true;
+        }
     }
     public void DesactivarEspadaCollider()
     {
-        espadaPiedraCollider.enabled = false;
+        if (espadaPiedraCollider != null)
+        {
+            espadaPiedraCollider.enabled = false;
+        }
+    }
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Espada"))
+        {
+            Debug.Log("golpe con espada");
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 1);
+        }
+        if (collision.CompareTag("Hoz"))
+        {
+            Debug.Log("Golpe con Hoz (ataque fuerte)");
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 2);
+        }
+        if (collision.CompareTag("Pegaso"))
+        {
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 1);
+        }
+    }
+    public void RecibeDanio(Vector2 direccion, int cantDanio)
+    {
+        if (!recibiendoDanio)
+        {
+            recibiendoDanio = true;
+            // Reducir las vidas del enemigo
+            vidas -= cantDanio;
+
+            Atacando = false;
+            animator.SetBool("Atacando", false);
+            animator.Play("Idle", 0);
+
+            // Si las vidas son 0 o menos, destruir al enemigo
+            if (vidas <= 0)
+            {
+                Muerte();
+            }
+            else
+            {
+                // Si no ha muerto, aplicar el rebote
+                Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
+                rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+            }
+
+
+            StartCoroutine(DesactivarDanio());
+        }
+    }
+    IEnumerator DesactivarDanio()
+    {
+        yield return new WaitForSeconds(0.2f);
+        recibiendoDanio = false;
+    }
+
+    protected void Muerte()
+    {
+        muerto = true;
+        //if (experienciaPrefab != null)
+        {
+            //Vector3 posicion = transform.position;
+            //GameObject Experiencia = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
+            //Experiencia.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
+        }
+        // Puedes agregar animaciones de muerte aquí si lo deseas
+        // Por ejemplo: animator.SetTrigger("Muerte");
+
+        // Destruir al enemigo
+        Destroy(gameObject);
+    }
+
+    public void Freeze(float duration)
+    {
+        if (!isFrozen)
+        {
+            isFrozen = true;
+            speed = 0;
+            rb.velocity = Vector2.zero;
+            spriteRenderer.color = Color.blue;
+            if (animator != null)
+            {
+                animator.enabled = false;
+            }
+            StartCoroutine(UnfreezeAfterTime(duration));
+        }
+    }
+
+    IEnumerator UnfreezeAfterTime(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isFrozen = false;
+        speed = originalSpeed;
+        spriteRenderer.color = Color.red;
+        if (animator != null)
+        {
+            animator.enabled = true;
+        }
     }
     protected void OnDrawGizmosSelected()
     {

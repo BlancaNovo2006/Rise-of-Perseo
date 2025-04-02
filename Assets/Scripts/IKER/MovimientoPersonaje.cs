@@ -59,7 +59,6 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool pegaso;
     private bool atacandoFuerte;
 
-    public Collider2D hozCollider;
 
     public float resistenciaMax = 100f;
     public float resistenciaActual;
@@ -104,7 +103,6 @@ public class MovimientoPersonaje : MonoBehaviour
         animator = GetComponent<Animator>();
         tiempoActualSprint = tiempoSprint;
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
-        hozCollider.enabled = false;
 
         resistenciaActual = resistenciaMax;
         ActualizarBarraResistencia();
@@ -426,7 +424,6 @@ public class MovimientoPersonaje : MonoBehaviour
         if (ataqueFuerte)
         {
             atacandoFuerte = true;
-            hozCollider.enabled = true;
             animator.SetTrigger("ataqueFuertePlayer");
             StartCoroutine(EsperarFinAtaqueFuerte());
         }
@@ -444,9 +441,7 @@ public class MovimientoPersonaje : MonoBehaviour
     IEnumerator EsperarFinAtaqueFuerte()
     {
         // Espera un tiempo que dure la animación de ataque fuerte
-        yield return new WaitForSeconds(0.35f);  // Ajusta el tiempo según la duración de la animación
-        hozCollider.enabled = false;
-
+        yield return new WaitForSeconds(0.433f);  // Ajusta el tiempo según la duración de la animación
         atacandoFuerte = false;  // Detiene el estado de ataque fuerte
     }
     IEnumerator BecomeInvisible()
