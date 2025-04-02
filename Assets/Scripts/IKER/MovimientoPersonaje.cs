@@ -13,7 +13,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public float velocidad;
     public float fuerzaSalto = 10f;
     public float fuerzaRebote = 6f;
-    public float longitudRaycast = 0.2f;
+    public float longitudRaycast = 0.1f;
     public LayerMask capaSuelo;
 
     public float invisibilityDuration = 5f;
@@ -94,9 +94,6 @@ public class MovimientoPersonaje : MonoBehaviour
     private Rigidbody2D rb;
     public Animator animator;
 
-    [SerializeField] private float coyoteTimeDuration = 0.2f;
-    private float coyoteTimeCounter;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -127,15 +124,15 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             CooldownFreezeFill.fillAmount = 1;
         }
-        if (CooldownFreezeText != null)
+        if(CooldownFreezeText != null)
         {
             CooldownFreezeText.text = "";
         }
-        if (CooldownFillPegaso != null)
+        if(CooldownFillPegaso != null)
         {
-            CooldownFillPegaso.fillAmount = 1;
+            CooldownFillPegaso.fillAmount = 1;  
         }
-        if (CooldownTextPegaso != null)
+        if(CooldownTextPegaso != null)
         {
             CooldownTextPegaso.text = "";
         }
@@ -151,9 +148,7 @@ public class MovimientoPersonaje : MonoBehaviour
                 {
                     ProcesarMovimiento();
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
-                    enSuelo = hit.collider != null;
 
-                    //Rodar
                     if (Input.GetKeyDown(KeyCode.LeftShift) && enSuelo)
                     {
                         StartCoroutine(Rodar());
@@ -161,23 +156,10 @@ public class MovimientoPersonaje : MonoBehaviour
 
                     enSuelo = hit.collider != null;
 
-                    //CoyoteTime
-                    if (enSuelo)
-                    {
-                        coyoteTimeCounter = coyoteTimeDuration;
-                    }
-                    else
-                    {
-                        // Si no está en el suelo, el contador disminuye hasta 0
-                        coyoteTimeCounter -= Time.deltaTime;
-                    }
-                    //Debug.Log("Coyote Time: " + coyoteTimeCounter);
-
                     //Salto
-                    if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
+                    if (enSuelo && Input.GetKeyDown(KeyCode.Space))
                     {
                         rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
-                        coyoteTimeCounter = 0f;
                     }
                     //Planear
                     if (!enSuelo && Input.GetKey(KeyCode.Space))
@@ -263,7 +245,7 @@ public class MovimientoPersonaje : MonoBehaviour
                     Pegaso();
                 }
 
-                if (Input.GetKeyDown(KeyCode.H) && !onCooldownBloqueo)
+                if(Input.GetKeyDown(KeyCode.H)&& !onCooldownBloqueo)
                 {
                     StartCoroutine(Bloquear());
                 }
@@ -349,7 +331,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             CooldownFillPegaso.fillAmount = 1;
         }
-        if (CooldownTextPegaso != null)
+        if(CooldownTextPegaso != null)
         {
             CooldownTextPegaso.text = "";
         }
@@ -465,7 +447,7 @@ public class MovimientoPersonaje : MonoBehaviour
     IEnumerator StartCooldown()
     {
         float elapsedTime = 0f;
-
+        
         onCooldown = true;
         while (elapsedTime < cooldownTime)
         {
@@ -529,7 +511,7 @@ public class MovimientoPersonaje : MonoBehaviour
             }
         }
         onFreezeCooldown = true;
-        if (CooldownFreezeFill != null)
+        if(CooldownFreezeFill != null)
         {
             CooldownFreezeFill.fillAmount = 1;
         }
@@ -545,7 +527,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float remainingTime = cooldownFreezeTime - elapsedTime;
-            if (CooldownFreezeFill != null)
+            if(CooldownFreezeFill != null)
             {
                 CooldownFreezeFill.fillAmount = remainingTime / cooldownFreezeTime;
             }
@@ -559,7 +541,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             CooldownFreezeFill.fillAmount = 1;
         }
-        if (CooldownFreezeText != null)
+        if(CooldownFreezeText != null)
         {
             CooldownFreezeText.text = "";
         }
@@ -622,7 +604,7 @@ public class MovimientoPersonaje : MonoBehaviour
     }
     void ActualizarUIExperiencia()
     {
-        if (contadorExperiencia != null)
+        if(contadorExperiencia != null)
         {
             contadorExperiencia.text = "XP:" + experienciaActual;
         }
@@ -631,11 +613,6 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * longitudRaycast);
-        if (coyoteTimeCounter > 0f)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(transform.position + Vector3.up * 1.5f, 0.2f);
-        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
