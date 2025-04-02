@@ -42,6 +42,7 @@ public class ControladorEnemigos : MonoBehaviour
 
     protected void Update()
     {
+        Debug.Log("update base");
         if (player != null && playervivo && !muerto && !isFrozen)
         {
             MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
@@ -104,8 +105,6 @@ public class ControladorEnemigos : MonoBehaviour
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
     }
-
-    
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Espada"))
