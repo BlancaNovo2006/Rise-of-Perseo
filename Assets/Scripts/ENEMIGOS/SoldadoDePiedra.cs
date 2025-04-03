@@ -57,7 +57,7 @@ public class SoldadoDePiedra : MonoBehaviour
                 AtaqueEnemigo();
                 if (transform.position == player.position)
                 {
-                    movement = new Vector2(0, 0);
+                    movement = Vector2.zero;
                 }
             }
         }
@@ -69,6 +69,8 @@ public class SoldadoDePiedra : MonoBehaviour
         if (!playervivo)
         {
             EnMovimiento = false;
+            Atacando = false;
+            movement = Vector2.zero;
         }
     }
     protected void Movimiento()

@@ -623,5 +623,13 @@ public class MovimientoPersonaje : MonoBehaviour
 
             RecibeDanio(direcciondanio, 1);
         }
+
+        if (collision.CompareTag("Proyectil"))
+        {
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 1);
+            
+        }
     }
 }

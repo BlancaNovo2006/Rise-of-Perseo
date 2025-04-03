@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,18 +257,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 194098847}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 194098849}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &194098845 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 194098844}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &194098846 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 194098844}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &194098847
@@ -306,38 +298,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &194098849
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194098846}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &225359865
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -550,18 +516,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 262146474}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 262146476}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &262146472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 262146471}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &262146473 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 262146471}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &262146474
@@ -599,38 +557,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &262146476
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262146473}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &364073104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -685,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -765,18 +697,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 364073107}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 364073109}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &364073105 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 364073104}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &364073106 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 364073104}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &364073107
@@ -814,38 +738,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &364073109
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364073106}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &450125311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,18 +1033,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 483608128}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 483608130}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &483608126 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 483608125}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &483608127 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 483608125}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &483608128
@@ -1184,38 +1074,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &483608130
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 483608127}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &485842711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,7 +1210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1426,18 +1290,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 522684450}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 522684452}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &522684448 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 522684447}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &522684449 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 522684447}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &522684450
@@ -1475,38 +1331,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &522684452
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522684449}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &537880332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1561,7 +1391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1641,18 +1471,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 537880335}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 537880337}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &537880333 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 537880332}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &537880334 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 537880332}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &537880335
@@ -1690,38 +1512,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &537880337
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537880334}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &625707044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,7 +1680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1964,18 +1760,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 648123719}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 648123721}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &648123717 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 648123716}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &648123718 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 648123716}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &648123719
@@ -2013,38 +1801,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &648123721
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648123718}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &689714525
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,7 +2142,7 @@ Transform:
   m_Children:
   - {fileID: 1291132625}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &760055257
 GameObject:
@@ -2705,7 +2467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2785,18 +2547,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 819148941}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 819148943}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &819148939 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 819148938}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &819148940 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 819148938}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &819148941
@@ -2834,38 +2588,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &819148943
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 819148940}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &856518002
 GameObject:
   m_ObjectHideFlags: 0
@@ -2948,7 +2676,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1002478474
 PrefabInstance:
@@ -3004,7 +2732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3084,18 +2812,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1002478477}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1002478479}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &1002478475 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 1002478474}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1002478476 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 1002478474}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1002478477
@@ -3133,38 +2853,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &1002478479
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002478476}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1071201791
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,7 +3233,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1229517309
 PrefabInstance:
@@ -3595,7 +3289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3675,18 +3369,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1229517312}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1229517314}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &1229517310 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 1229517309}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1229517311 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 1229517309}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1229517312
@@ -3724,38 +3410,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &1229517314
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!1001 &1271758003
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229517311}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_Name
+      value: Soldado de piedra (enemigo) (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 35.752205
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0897808
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813135125944246854, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1293155696}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &1275997829
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,7 +3871,6 @@ MonoBehaviour:
   CooldownFillBloqueo: {fileID: 225359867}
   CooldownTextBloqueo: {fileID: 689714527}
   muerto: 0
-  hozCollider: {fileID: 450125313}
   resistenciaMax: 100
   resistenciaActual: 0
   consumoCorrer: 50
@@ -52899,7 +52623,7 @@ Transform:
   m_Children:
   - {fileID: 760055258}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1413507609
 GameObject:
@@ -53229,7 +52953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53309,18 +53033,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1500232663}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1500232665}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &1500232661 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 1500232660}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1500232662 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 1500232660}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1500232663
@@ -53358,38 +53074,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &1500232665
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1500232662}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &1516813974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53444,7 +53134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53524,18 +53214,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1516813977}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1516813979}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &1516813975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 1516813974}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1516813976 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 1516813974}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1516813977
@@ -53573,38 +53255,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &1516813979
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1516813976}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1529951412
 GameObject:
   m_ObjectHideFlags: 0
@@ -53715,6 +53371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
@@ -53818,59 +53475,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605310876}
   m_CullTransparentMesh: 1
---- !u!1 &1653098307 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 1739003729}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1653098310
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653098307}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!95 &1653098311
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1653098307}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1725465237
 GameObject:
   m_ObjectHideFlags: 0
@@ -54267,12 +53871,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1571547634}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1653098310}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1653098311}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &1759544798
 GameObject:
@@ -54317,7 +53915,7 @@ Transform:
   m_Children:
   - {fileID: 1327294609}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1765940455
 GameObject:
@@ -54772,7 +54370,7 @@ Transform:
   m_Children:
   - {fileID: 625707045}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &1831302176
 Animator:
@@ -54941,7 +54539,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1889825809
 Rigidbody2D:
@@ -55235,7 +54833,7 @@ RectTransform:
   - {fileID: 768749690}
   - {fileID: 1765940456}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -55524,7 +55122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55604,18 +55202,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2077732671}
-    - targetCorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2077732673}
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
 --- !u!1 &2077732669 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3387391401434590027, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
-  m_PrefabInstance: {fileID: 2077732668}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2077732670 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3744261172591645900, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
   m_PrefabInstance: {fileID: 2077732668}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &2077732671
@@ -55653,38 +55243,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1293155696}
   detectionRadius: 5
+  attackRadius: 0
   speed: 1
   fuerzaRebote: 4
   vidas: 2
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
---- !u!50 &2077732673
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077732670}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1001 &361872701292174129
 PrefabInstance:
   m_ObjectHideFlags: 0

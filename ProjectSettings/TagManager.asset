@@ -8,6 +8,8 @@ TagManager:
   - Pegaso
   - Hoz
   - EspadaSoldado
+  - Proyectil
+  - Gargola
   layers:
   - Default
   - TransparentFX

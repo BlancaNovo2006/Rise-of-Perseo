@@ -12,13 +12,14 @@ public class GargolaDePiedra : MonoBehaviour
     public int vidas;  // Vidas del enemigo
 
     public GameObject experienciaPrefab;
+    public GameObject ProyectilPrefab;
+    public float velocidadProyectil;
     public int experienciaSoltar = 20;
 
     protected Rigidbody2D rb;
     protected Vector2 movement;
     protected bool playervivo;
     protected bool muerto;
-    protected bool EnMovimiento;
     protected bool recibiendoDanio;
     protected bool Atacando;
 
@@ -42,7 +43,6 @@ public class GargolaDePiedra : MonoBehaviour
 
     protected void Update()
     {
-        Debug.Log("update base");
         if (player != null && playervivo && !muerto && !isFrozen)
         {
             MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
@@ -54,18 +54,16 @@ public class GargolaDePiedra : MonoBehaviour
             {
                 canseePlayer = true;
                 Movimiento();
+                AtaqueEnemigo();
                 if (transform.position == player.position)
                 {
-                    movement = new Vector2(0, 0);
+                    movement = Vector2.zero;
                 }
             }
         }
-
-        animator.SetBool("Atacando", Atacando);
-
         if (!playervivo)
         {
-            EnMovimiento = false;
+            movement = Vector2.zero;
         }
     }
     protected void Movimiento()
@@ -75,33 +73,81 @@ public class GargolaDePiedra : MonoBehaviour
         if (distanceToPlayer < detectionRadius)
         {
             Vector2 direction = (player.position - transform.position).normalized;
-
-            if (direction.x < 0)
+            if (!Atacando)
             {
-                transform.localScale = new Vector3(1, 1, 0);
+                if (direction.x < 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 0);
+                }
+                if (direction.x > 0)
+                {
+                    transform.localScale = new Vector3(-1, 1, 0);
+                }
             }
-            if (direction.x > 0)
-            {
-                transform.localScale = new Vector3(-1, 1, 0);
-            }
-
-            movement = new Vector2(direction.x, 0);
-
-            EnMovimiento = true;
+            movement = new Vector2(direction.x, direction.y);
         }
         else
         {
             movement = Vector2.zero;
+        }
 
-            EnMovimiento = false;
+        if (distanceToPlayer <= attackRadius)
+        {
+            movement = Vector2.zero;
         }
     }
-
     void FixedUpdate()
     {
         if (!recibiendoDanio)
         {
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
+        }
+    }
+    protected void AtaqueEnemigo()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer < attackRadius)
+        {
+            if (!Atacando)
+            {
+                Atacando = true;
+                animator.SetBool("Atacando", Atacando);
+            }
+        }
+        else
+        {
+            Atacando = false;
+        }
+    }
+
+    protected void LanzarAtaque()
+    {
+        if (player ==  null) return;
+        if (ProyectilPrefab == null)
+        {
+            Debug.LogError("ProyectilPrefab no asignado.");
+            return;
+        }
+        Debug.Log("ataquelanzado");
+        Vector2 direccion = (player.position - transform.position).normalized;
+
+        Vector2 spawnPos = (Vector2)transform.position + direccion * 0.5f;
+        GameObject Proyectil = Instantiate(ProyectilPrefab, spawnPos, Quaternion.identity);
+        Proyectil.GetComponent<Rigidbody2D>().velocity = direccion * velocidadProyectil;
+
+
+        if (Proyectil != null)
+        {
+            Rigidbody2D rbProyectil = Proyectil.GetComponent<Rigidbody2D>();
+            if (rbProyectil != null)
+            {
+                rbProyectil.velocity = direccion * velocidadProyectil;
+            }
+
+            // Rotar el proyectil para que mire hacia el jugador
+            float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+            Proyectil.transform.rotation = Quaternion.Euler(0, 0, angulo);
         }
     }
     protected void OnTriggerEnter2D(Collider2D collision)
