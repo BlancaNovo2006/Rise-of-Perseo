@@ -9,7 +9,8 @@ TagManager:
   - Hoz
   - EspadaSoldado
   - Proyectil
-  - Gargola
+  - Enemy
+  - ColaMedusa
   layers:
   - Default
   - TransparentFX
