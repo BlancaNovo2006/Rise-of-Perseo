@@ -44,7 +44,6 @@ public class Medusa : MonoBehaviour
 
     protected void Update()
     {
-        Debug.Log("update base");
         if (player != null && playervivo && !muerto && !isFrozen)
         {
             MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();

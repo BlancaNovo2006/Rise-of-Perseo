@@ -97,6 +97,8 @@ public class MovimientoPersonaje : MonoBehaviour
     private float coyoteTimeCounter;
     public float coyoteTimeDuration = 0.2f;
 
+    private Vector2 ultimoPuntoRespawn;
+
 
     void Start()
     {
@@ -104,6 +106,7 @@ public class MovimientoPersonaje : MonoBehaviour
         animator = GetComponent<Animator>();
         tiempoActualSprint = tiempoSprint;
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
+        ultimoPuntoRespawn = puntoRespawn.position;
 
         resistenciaActual = resistenciaMax;
         ActualizarBarraResistencia();
@@ -234,8 +237,22 @@ public class MovimientoPersonaje : MonoBehaviour
                     {
                         if (vida < 5)
                         {
-                            vida += 1;
+                            StartCoroutine(RegenerarVidaConEfecto());
                         }
+                    }
+                    IEnumerator RegenerarVidaConEfecto()
+                    {
+                        // Cambiar el color a rojo
+                        spriteRenderer.color = Color.red;
+
+                        // Sumar 1 a la vida
+                        vida += 1;
+
+                        // Esperar 1 segundo
+                        yield return new WaitForSeconds(0.3f);
+
+                        // Restaurar el color a blanco
+                        spriteRenderer.color = Color.white;
                     }
                 }
                 //Atacar
@@ -413,7 +430,7 @@ public class MovimientoPersonaje : MonoBehaviour
     IEnumerator Respawnear()
     {
         yield return new WaitForSeconds(tiempoRespawn);
-        transform.position = puntoRespawn.position;
+        transform.position = ultimoPuntoRespawn;
         vida = 5;
         muerto = false;
         recibiendoDanio = false;
@@ -658,6 +675,11 @@ public class MovimientoPersonaje : MonoBehaviour
         if (collision.CompareTag("Respawn"))
         {
             StartCoroutine(Respawnear());
+        }
+        if (collision.CompareTag("PuntoRespawn"))
+        {
+            ultimoPuntoRespawn = collision.transform.position;
+            Debug.Log("Nuevo punto de respawn activado");
         }
     }
 }
