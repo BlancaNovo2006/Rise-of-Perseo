@@ -11,6 +11,7 @@ TagManager:
   - Proyectil
   - Enemy
   - ColaMedusa
+  - PuntoRespawn
   layers:
   - Default
   - TransparentFX
