@@ -8,6 +8,9 @@ TagManager:
   - Pegaso
   - Hoz
   - EspadaSoldado
+  - Proyectil
+  - Enemy
+  - ColaMedusa
   layers:
   - Default
   - TransparentFX

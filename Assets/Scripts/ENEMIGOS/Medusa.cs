@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
-public class GargolaDePiedra : MonoBehaviour
+public class Medusa : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius;
@@ -12,6 +13,7 @@ public class GargolaDePiedra : MonoBehaviour
     public int vidas;  // Vidas del enemigo
 
     public GameObject experienciaPrefab;
+    public Collider2D colaMedusaCollider;
     public int experienciaSoltar = 20;
 
     protected Rigidbody2D rb;
@@ -20,7 +22,7 @@ public class GargolaDePiedra : MonoBehaviour
     protected bool muerto;
     protected bool EnMovimiento;
     protected bool recibiendoDanio;
-    protected bool Atacando;
+    protected bool AtaqueCola;
 
     protected bool canseePlayer = true;
 
@@ -54,15 +56,15 @@ public class GargolaDePiedra : MonoBehaviour
             {
                 canseePlayer = true;
                 Movimiento();
+                AtaqueColaMedusa();
                 if (transform.position == player.position)
                 {
                     movement = new Vector2(0, 0);
                 }
             }
         }
-
-        animator.SetBool("Atacando", Atacando);
-
+        animator.SetBool("EnMovimiento", EnMovimiento);
+        animator.SetBool("AtaqueCola", AtaqueCola);
         if (!playervivo)
         {
             EnMovimiento = false;
@@ -78,11 +80,11 @@ public class GargolaDePiedra : MonoBehaviour
 
             if (direction.x < 0)
             {
-                transform.localScale = new Vector3(1, 1, 0);
+                transform.localScale = new Vector3(-1, 1, 0);
             }
             if (direction.x > 0)
             {
-                transform.localScale = new Vector3(-1, 1, 0);
+                transform.localScale = new Vector3(1, 1, 0);
             }
 
             movement = new Vector2(direction.x, 0);
@@ -97,6 +99,41 @@ public class GargolaDePiedra : MonoBehaviour
         }
     }
 
+    protected void AtaqueColaMedusa()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer < attackRadius)
+        {
+            if (!AtaqueCola)
+            {
+                AtaqueCola = true;
+                EnMovimiento = false;
+                movement = Vector2.zero;
+            }
+        }
+        else
+        {
+            AtaqueCola = false;
+            EnMovimiento = true;
+            Movimiento();
+            DesactivarColaCollider();
+        }
+    }
+    public void ActivarColaCollider()
+    {
+        if (colaMedusaCollider != null)
+        {
+            colaMedusaCollider.enabled = true;
+        }
+    }
+    public void DesactivarColaCollider()
+    {
+        if (colaMedusaCollider != null)
+        {
+            colaMedusaCollider.enabled = false;
+        }
+    }
     void FixedUpdate()
     {
         if (!recibiendoDanio)
@@ -135,8 +172,8 @@ public class GargolaDePiedra : MonoBehaviour
             // Reducir las vidas del enemigo
             vidas -= cantDanio;
 
-            Atacando = false;
-            animator.SetBool("Atacando", false);
+            AtaqueCola = false;
+            animator.SetBool("AtaqueCola", false);
             animator.Play("Idle", 0);
 
             // Si las vidas son 0 o menos, destruir al enemigo

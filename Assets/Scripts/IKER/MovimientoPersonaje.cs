@@ -94,6 +94,10 @@ public class MovimientoPersonaje : MonoBehaviour
     private Rigidbody2D rb;
     public Animator animator;
 
+    private float coyoteTimeCounter;
+    public float coyoteTimeDuration = 0.2f;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -156,10 +160,21 @@ public class MovimientoPersonaje : MonoBehaviour
 
                     enSuelo = hit.collider != null;
 
-                    //Salto
-                    if (enSuelo && Input.GetKeyDown(KeyCode.Space))
+                    //CoyoteTime
+                    if (enSuelo)
                     {
-                        rb.AddForce(new Vector2(0f, fuerzaSalto), ForceMode2D.Impulse);
+                        coyoteTimeCounter = coyoteTimeDuration;
+                    }
+                    else
+                    {
+                        coyoteTimeCounter -= Time.deltaTime;
+                    }
+
+                    //Salto
+                    if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
+                    {
+                        rb.velocity = new Vector2(rb.velocity.x, fuerzaSalto);
+                        coyoteTimeCounter = 0f; // Evita que se pueda saltar varias veces en el aire
                     }
                     //Planear
                     if (!enSuelo && Input.GetKey(KeyCode.Space))
@@ -213,6 +228,15 @@ public class MovimientoPersonaje : MonoBehaviour
                             puedeCorrer = true;
                         }
                     }
+
+                    //Regenerar Vida
+                    if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        if (vida < 5)
+                        {
+                            vida += 1;
+                        }
+                    }
                 }
                 //Atacar
                 if (Input.GetKeyDown(KeyCode.F) && !atacando && enSuelo)
@@ -226,11 +250,13 @@ public class MovimientoPersonaje : MonoBehaviour
                     Atacando(true);
                 }
 
+                //Invisible
                 if (Input.GetKeyDown(KeyCode.U) && !atacando && enSuelo && !isInvisible && !onCooldown)
                 {
                     StartCoroutine(BecomeInvisible());
                 }
 
+                //Cabeza Medusa
                 if (Input.GetKeyDown(KeyCode.I) && !onFreezeCooldown)
                 {
                     FreezeEnemies();
@@ -240,11 +266,13 @@ public class MovimientoPersonaje : MonoBehaviour
                     StartCoroutine(FreezeCooldown());
                 }
 
+                //Pegaso
                 if (Input.GetKeyDown(KeyCode.O) && pegasoHabilidad != null && !onCooldownPegaso)
                 {
                     Pegaso();
                 }
 
+                //Escudo
                 if(Input.GetKeyDown(KeyCode.H)&& !onCooldownBloqueo)
                 {
                     StartCoroutine(Bloquear());
@@ -622,6 +650,22 @@ public class MovimientoPersonaje : MonoBehaviour
             Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
 
             RecibeDanio(direcciondanio, 1);
+        }
+
+        if (collision.CompareTag("Proyectil"))
+        {
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 1);
+            
+        }
+
+        if (collision.CompareTag("ColaMedusa"))
+        {
+            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
+
+            RecibeDanio(direcciondanio, 1);
+
         }
     }
 }

@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class SoldadoDePiedra : MonoBehaviour
+public class GargolaDePiedra : MonoBehaviour
 {
     public Transform player;
     public float detectionRadius;
@@ -13,13 +12,14 @@ public class SoldadoDePiedra : MonoBehaviour
     public int vidas;  // Vidas del enemigo
 
     public GameObject experienciaPrefab;
+    public GameObject ProyectilPrefab;
+    public float velocidadProyectil;
     public int experienciaSoltar = 20;
 
     protected Rigidbody2D rb;
     protected Vector2 movement;
     protected bool playervivo;
     protected bool muerto;
-    protected bool EnMovimiento;
     protected bool recibiendoDanio;
     protected bool Atacando;
 
@@ -30,7 +30,7 @@ public class SoldadoDePiedra : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
 
     protected Animator animator;
-    public Collider2D espadaPiedraCollider;
+
 
     void Start()
     {
@@ -38,7 +38,7 @@ public class SoldadoDePiedra : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalSpeed = speed; DesactivarEspadaCollider();
+        originalSpeed = speed;
     }
 
     protected void Update()
@@ -61,15 +61,8 @@ public class SoldadoDePiedra : MonoBehaviour
                 }
             }
         }
-
-
-        animator.SetBool("caminando", EnMovimiento);
-        animator.SetBool("Atacando", Atacando);
-
         if (!playervivo)
         {
-            EnMovimiento = false;
-            Atacando = false;
             movement = Vector2.zero;
         }
     }
@@ -80,28 +73,29 @@ public class SoldadoDePiedra : MonoBehaviour
         if (distanceToPlayer < detectionRadius)
         {
             Vector2 direction = (player.position - transform.position).normalized;
-
-            if (direction.x < 0)
+            if (!Atacando)
             {
-                transform.localScale = new Vector3(1, 1, 0);
+                if (direction.x < 0)
+                {
+                    transform.localScale = new Vector3(1, 1, 0);
+                }
+                if (direction.x > 0)
+                {
+                    transform.localScale = new Vector3(-1, 1, 0);
+                }
             }
-            if (direction.x > 0)
-            {
-                transform.localScale = new Vector3(-1, 1, 0);
-            }
-
-            movement = new Vector2(direction.x, 0);
-
-            EnMovimiento = true;
+            movement = new Vector2(direction.x, direction.y);
         }
         else
         {
             movement = Vector2.zero;
+        }
 
-            EnMovimiento = false;
+        if (distanceToPlayer <= attackRadius)
+        {
+            movement = Vector2.zero;
         }
     }
-
     void FixedUpdate()
     {
         if (!recibiendoDanio)
@@ -118,30 +112,42 @@ public class SoldadoDePiedra : MonoBehaviour
             if (!Atacando)
             {
                 Atacando = true;
-                EnMovimiento = false;
-                movement = Vector2.zero;
+                animator.SetBool("Atacando", Atacando);
             }
         }
         else
         {
             Atacando = false;
-            EnMovimiento = true;
-            Movimiento();
-            DesactivarEspadaCollider();
         }
     }
-    public void ActivarEspadaCollider()
+
+    protected void LanzarAtaque()
     {
-        if (espadaPiedraCollider != null)
+        if (player ==  null) return;
+        if (ProyectilPrefab == null)
         {
-            espadaPiedraCollider.enabled = true;
+            Debug.LogError("ProyectilPrefab no asignado.");
+            return;
         }
-    }
-    public void DesactivarEspadaCollider()
-    {
-        if (espadaPiedraCollider != null)
+        Debug.Log("ataquelanzado");
+        Vector2 direccion = (player.position - transform.position).normalized;
+
+        Vector2 spawnPos = (Vector2)transform.position + direccion * 0.5f;
+        GameObject Proyectil = Instantiate(ProyectilPrefab, spawnPos, Quaternion.identity);
+        Proyectil.GetComponent<Rigidbody2D>().velocity = direccion * velocidadProyectil;
+
+
+        if (Proyectil != null)
         {
-            espadaPiedraCollider.enabled = false;
+            Rigidbody2D rbProyectil = Proyectil.GetComponent<Rigidbody2D>();
+            if (rbProyectil != null)
+            {
+                rbProyectil.velocity = direccion * velocidadProyectil;
+            }
+
+            // Rotar el proyectil para que mire hacia el jugador
+            float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+            Proyectil.transform.rotation = Quaternion.Euler(0, 0, angulo);
         }
     }
     protected void OnTriggerEnter2D(Collider2D collision)
@@ -244,6 +250,7 @@ public class SoldadoDePiedra : MonoBehaviour
             animator.enabled = true;
         }
     }
+
     protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
@@ -251,5 +258,4 @@ public class SoldadoDePiedra : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
-
 }
