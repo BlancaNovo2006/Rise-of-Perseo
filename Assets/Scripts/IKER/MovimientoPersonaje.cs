@@ -655,5 +655,9 @@ public class MovimientoPersonaje : MonoBehaviour
             RecibeDanio(direcciondanio, 1);
 
         }
+        if (collision.CompareTag("Respawn"))
+        {
+            StartCoroutine(Respawnear());
+        }
     }
 }

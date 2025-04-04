@@ -43,6 +43,16 @@ public class PegasoHabilidad : MonoBehaviour
             {
                 FinalizarCarga();
             }
+            Vector2 direction = (player.position - transform.position).normalized;
+
+            if (direction.x < 0)
+            {
+                transform.localScale = new Vector3(1, 1, 0);
+            }
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 0);
+            }
         }
     }
     public void ActivarCarga(Vector3 posicionInicial, Vector3 direccionCarga)
