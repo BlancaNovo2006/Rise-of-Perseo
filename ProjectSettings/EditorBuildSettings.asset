@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: "Assets/Scenes/producci\xF3n/Scene1.unity"
     guid: ca54cf70d89218e4f9504cb44846f4bf
   - enabled: 1
+    path: "Assets/Scenes/producci\xF3n/MenuOpciones.unity"
+    guid: e0f766564dae21c4caead63d78ffb352
+  - enabled: 1
     path: "Assets/Scenes/producci\xF3n/Scene2.unity"
     guid: eca69549c22260547a67261d9d2850e4
   - enabled: 0
