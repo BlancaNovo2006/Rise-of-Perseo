@@ -235,7 +235,7 @@ public class Medusa : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isFrozen = false;
         speed = originalSpeed;
-        spriteRenderer.color = Color.red;
+        spriteRenderer.color = Color.white;
         if (animator != null)
         {
             animator.enabled = true;

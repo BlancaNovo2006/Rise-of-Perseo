@@ -532,11 +532,22 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("ataquemedusa", true);
         foreach (Collider2D Enemy in enemies)
         {
-            ControladorEnemigos ControladorEnemigos = Enemy.GetComponent<ControladorEnemigos>();
-            if (ControladorEnemigos != null)
+            GargolaDePiedra GargolaDePiedra = Enemy.GetComponent<GargolaDePiedra>();
+            if (GargolaDePiedra != null)
             {
-                ControladorEnemigos.Freeze(freezeDuration);
+                GargolaDePiedra.Freeze(freezeDuration);
             }
+            SoldadoDePiedra SoldadoDePiedra = Enemy.GetComponent<SoldadoDePiedra>();
+            if (SoldadoDePiedra != null)
+            {
+                SoldadoDePiedra.Freeze(freezeDuration);
+            }
+            Medusa Medusa = Enemy.GetComponent<Medusa>();
+            if (Medusa != null)
+            {
+                Medusa.Freeze(freezeDuration);
+            }
+
         }
         onFreezeCooldown = true;
         if(CooldownFreezeFill != null)
@@ -585,29 +596,6 @@ public class MovimientoPersonaje : MonoBehaviour
 
         bloqueando = false;
         invencible = false;
-        StartCoroutine(BloqueoCooldown());
-    }
-    IEnumerator BloqueoCooldown()
-    {
-        onCooldownBloqueo = true;
-        float elapsedTime = 0f;
-        while (elapsedTime < cooldownBloqueo)
-        {
-            elapsedTime += Time.deltaTime;
-            float remainingTime = cooldownBloqueo - elapsedTime;
-            if (CooldownFillBloqueo != null)
-            {
-                CooldownFillBloqueo.fillAmount = remainingTime / cooldownBloqueo;
-            }
-            if (CooldownTextBloqueo != null)
-            {
-                CooldownTextBloqueo.text = Mathf.Ceil(remainingTime).ToString();
-            }
-            yield return null;
-        }
-        if (CooldownFillBloqueo != null) CooldownFillBloqueo.fillAmount = 1;
-        if (CooldownTextBloqueo != null) CooldownTextBloqueo.text = "";
-        onCooldownBloqueo = false;
     }
 
     void ActualizarBarraResistencia()

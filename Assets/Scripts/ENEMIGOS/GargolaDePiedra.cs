@@ -89,6 +89,7 @@ public class GargolaDePiedra : MonoBehaviour
         else
         {
             movement = Vector2.zero;
+            Atacando = false;
         }
 
         if (distanceToPlayer <= attackRadius)
@@ -115,9 +116,10 @@ public class GargolaDePiedra : MonoBehaviour
                 animator.SetBool("Atacando", Atacando);
             }
         }
-        else
+        else if (distanceToPlayer > attackRadius)
         {
             Atacando = false;
+            animator.SetBool("Atacando", false);
         }
     }
 
@@ -244,7 +246,7 @@ public class GargolaDePiedra : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isFrozen = false;
         speed = originalSpeed;
-        spriteRenderer.color = Color.red;
+        spriteRenderer.color = Color.white;
         if (animator != null)
         {
             animator.enabled = true;
