@@ -168,34 +168,34 @@ MonoBehaviour:
   invisibleAlpha: 0.3
   isInvisible: 0
   cooldownTime: 3
-  CooldownFill: {fileID: 0}
-  CooldownText: {fileID: 0}
+  CooldownFill: {fileID: 1113052022}
+  CooldownText: {fileID: 1413507611}
   freezeRadius: 5
   Enemy:
     serializedVersion: 2
     m_Bits: 128
   freezeDuration: 3
   cooldownFreezeTime: 5
-  CooldownFreezeFill: {fileID: 0}
-  CooldownFreezeText: {fileID: 0}
-  pegasoHabilidad: {fileID: 0}
+  CooldownFreezeFill: {fileID: 1071201793}
+  CooldownFreezeText: {fileID: 1463209136}
+  pegasoHabilidad: {fileID: 509434436}
   cooldownPegasoTime: 4
-  CooldownFillPegaso: {fileID: 0}
-  CooldownTextPegaso: {fileID: 0}
+  CooldownFillPegaso: {fileID: 458622537}
+  CooldownTextPegaso: {fileID: 1769262451}
   cooldownBloqueo: 3
   duracionBloqueo: 1
-  CooldownFillBloqueo: {fileID: 0}
-  CooldownTextBloqueo: {fileID: 0}
+  CooldownFillBloqueo: {fileID: 225359867}
+  CooldownTextBloqueo: {fileID: 689714527}
   muerto: 0
   resistenciaMax: 100
   resistenciaActual: 0
   consumoCorrer: 50
   consumoRodar: 50
   regeneracion: 5
-  barraResistencia: {fileID: 0}
+  barraResistencia: {fileID: 2070173627}
   experienciaActual: 0
-  contadorExperiencia: {fileID: 0}
-  puntoRespawn: {fileID: 0}
+  contadorExperiencia: {fileID: 1765940457}
+  puntoRespawn: {fileID: 1700808762}
   tiempoRespawn: 2
   velocidadDeMovimientoBase: 7
   velocidadExtra: 12
@@ -358,7 +358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8043820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 28.42, y: -1.33, z: 0}
+  m_LocalPosition: {x: 282.7, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -426,7 +426,7 @@ PrefabInstance:
     - target: {fileID: 7813135125944246854, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -491,7 +491,7 @@ PrefabInstance:
     - target: {fileID: 7813135125944246854, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1076783912, guid: 6e67b3715734b724085d2ae85a6aef2d, type: 3}
+  m_Sprite: {fileID: -1003227252, guid: 91f32ccab4225c84b86a2303c526b4c2, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -785,7 +785,7 @@ PrefabInstance:
     - target: {fileID: 7813135125944246854, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -846,6 +846,10 @@ PrefabInstance:
     - target: {fileID: 7459701313220057220, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7813135125944246854, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+      propertyPath: player
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1110,7 +1114,7 @@ PrefabInstance:
     - target: {fileID: 4608931461191004308, guid: 547b766ec8b8b3a40b1f9dee61fa1900, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     - target: {fileID: 5538593305419472038, guid: 547b766ec8b8b3a40b1f9dee61fa1900, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -1160,6 +1164,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 547b766ec8b8b3a40b1f9dee61fa1900, type: 3}
+--- !u!114 &509434436 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4608931461191004308, guid: 547b766ec8b8b3a40b1f9dee61fa1900, type: 3}
+  m_PrefabInstance: {fileID: 509434435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fbbe2ba9619d4e8eefdffc1ec1ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &625707044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,7 +1667,7 @@ PrefabInstance:
     - target: {fileID: 2197850526200369001, guid: b45708b99ceb92246acaa0458d550fbe, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     - target: {fileID: 8217761539902372872, guid: b45708b99ceb92246acaa0458d550fbe, type: 3}
       propertyPath: m_Name
       value: Gargola de piedra (enemigo) (1)
@@ -51016,7 +51031,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 8043826}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -51044,7 +51059,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394216061}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 225.02223, y: 0.71000016, z: -10}
+  m_LocalPosition: {x: 284.9231, y: 2.5100002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -51244,7 +51259,7 @@ PrefabInstance:
     - target: {fileID: 2197850526200369001, guid: b45708b99ceb92246acaa0458d550fbe, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     - target: {fileID: 8217761539902372872, guid: b45708b99ceb92246acaa0458d550fbe, type: 3}
       propertyPath: m_Name
       value: Gargola de piedra (enemigo)
@@ -51930,12 +51945,17 @@ PrefabInstance:
     - target: {fileID: 7813135125944246854, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
+--- !u!4 &1700808762 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3743162523478358526, guid: a7ca49fe22a0d024299f8b28ad2f3ede, type: 3}
+  m_PrefabInstance: {fileID: 1093334145}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1719865110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51991,7 +52011,7 @@ PrefabInstance:
     - target: {fileID: 2197850526200369001, guid: b45708b99ceb92246acaa0458d550fbe, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     - target: {fileID: 8217761539902372872, guid: b45708b99ceb92246acaa0458d550fbe, type: 3}
       propertyPath: m_Name
       value: Gargola de piedra (enemigo) (3)
@@ -52087,7 +52107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725465237}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 225.02223, y: 0.71000016, z: -10}
+  m_LocalPosition: {x: 284.9231, y: 2.5100002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53395,7 +53415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db943fc04ac56846a8c489502e4de77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 8043826}
   detectionRadius: 10
   attackRadius: 2
   speed: 2
@@ -53531,7 +53551,7 @@ PrefabInstance:
     - target: {fileID: 2197850526200369001, guid: b45708b99ceb92246acaa0458d550fbe, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     - target: {fileID: 8217761539902372872, guid: b45708b99ceb92246acaa0458d550fbe, type: 3}
       propertyPath: m_Name
       value: Gargola de piedra (enemigo) (2)
@@ -53676,7 +53696,7 @@ PrefabInstance:
     - target: {fileID: 7813135125944246854, guid: 8a0a054d8b8a85945aaf79f0d7425846, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8043826}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

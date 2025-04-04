@@ -109,7 +109,7 @@ public class PegasoHabilidad : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemigo"))
+        if (collision.CompareTag("Enemy"))
         {
             ControladorEnemigos enemigo = collision.GetComponent<ControladorEnemigos>();
             if (enemigo != null)
