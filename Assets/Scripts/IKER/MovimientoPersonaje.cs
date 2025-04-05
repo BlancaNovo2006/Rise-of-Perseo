@@ -16,6 +16,7 @@ public class MovimientoPersonaje : MonoBehaviour
     private Vector2 posicionTpSpawn;
 
     public int vida = 5;
+    public int vialRegenerativo = 5;
 
     public float velocidad;
     public float fuerzaSalto = 10f;
@@ -247,16 +248,24 @@ public class MovimientoPersonaje : MonoBehaviour
                     {
                         if (vida < 5)
                         {
-                            StartCoroutine(RegenerarVidaConEfecto());
+                            if (vialRegenerativo > 0)
+                            {
+                                StartCoroutine(RegenerarVida());
+                            }
                         }
                     }
-                    IEnumerator RegenerarVidaConEfecto()
+                    IEnumerator RegenerarVida()
                     {
                         // Cambiar el color a rojo
                         spriteRenderer.color = Color.red;
 
                         // Sumar 1 a la vida
                         vida += 1;
+                        vialRegenerativo -= 1;
+                        if (vialRegenerativo < 0)
+                        {
+                            vialRegenerativo = 0;
+                        }
 
                         // Esperar 1 segundo
                         yield return new WaitForSeconds(0.3f);
@@ -277,6 +286,10 @@ public class MovimientoPersonaje : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.F3))
                     {
                         transform.position = posicionTpSpawn;
+                    }
+                    if (Input.GetKeyDown(KeyCode.F4))
+                    {
+                        invencible = !invencible;
                     }
                 }
                 //Atacar
@@ -704,6 +717,8 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             ultimoPuntoRespawn = collision.transform.position;
             Debug.Log("Nuevo punto de respawn activado");
+            vida = 5;
+            vialRegenerativo = 5;
         }
     }
 }

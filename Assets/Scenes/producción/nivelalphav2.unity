@@ -160,6 +160,7 @@ MonoBehaviour:
   CheetTp2: {fileID: 1225404667}
   CheetTpSpawn: {fileID: 169622287}
   vida: 5
+  vialRegenerativo: 5
   velocidad: 7
   fuerzaSalto: 5
   fuerzaRebote: 5
@@ -1344,7 +1345,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
+  m_text: '
 
 '
   m_isRightToLeft: 0
@@ -53285,7 +53286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[0]
-      value: "Hermes: Tambi\xE9n puedes realizar un ataque r\xE1pido"
+      value: "Hermes: Tambi\xE9n puedes realizar un ataque fuerte"
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[1]
@@ -54697,7 +54698,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[2]
-      value: "Hermes: as\xED que cuando est\xE9s herido pulsa [R]."
+      value: "Hermes: as\xED que cuando est\xE9s herido pulsa [R]. Cuando se te acabaen
+        p\xE1sate por una de estas estatuas sagradas de Zeus."
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[3]
