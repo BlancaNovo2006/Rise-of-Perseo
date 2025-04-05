@@ -8,6 +8,13 @@ using TMPro;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
+    public Transform CheetTp1;
+    public Transform CheetTp2;
+    public Transform CheetTpSpawn;
+    private Vector2 posicionTp1;
+    private Vector2 posicionTp2;
+    private Vector2 posicionTpSpawn;
+
     public int vida = 5;
 
     public float velocidad;
@@ -107,6 +114,9 @@ public class MovimientoPersonaje : MonoBehaviour
         tiempoActualSprint = tiempoSprint;
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
         ultimoPuntoRespawn = puntoRespawn.position;
+        posicionTp1 = CheetTp1.position;
+        posicionTp2 = CheetTp2.position;
+        posicionTpSpawn = CheetTpSpawn.position;
 
         resistenciaActual = resistenciaMax;
         ActualizarBarraResistencia();
@@ -253,6 +263,20 @@ public class MovimientoPersonaje : MonoBehaviour
 
                         // Restaurar el color a blanco
                         spriteRenderer.color = Color.white;
+                    }
+
+                    //Chetos
+                    if (Input.GetKeyDown(KeyCode.F1))
+                    {
+                        transform.position = posicionTp1;
+                    }
+                    if (Input.GetKeyDown(KeyCode.F2))
+                    {
+                        transform.position = posicionTp2;
+                    }
+                    if (Input.GetKeyDown(KeyCode.F3))
+                    {
+                        transform.position = posicionTpSpawn;
                     }
                 }
                 //Atacar
