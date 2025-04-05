@@ -8,6 +8,7 @@ public class Medusa : MonoBehaviour
     public Transform player;
     public float detectionRadius;
     public float attackRadius;
+    public float shootRadius;
     public float speed;
     public float fuerzaRebote;
     public int vidas;  // Vidas del enemigo
@@ -15,6 +16,8 @@ public class Medusa : MonoBehaviour
     public GameObject experienciaPrefab;
     public Collider2D colaMedusaCollider;
     public int experienciaSoltar = 20;
+    public GameObject SerpientePrefab;
+    public float velocidadSerpiente;
 
     protected Rigidbody2D rb;
     protected Vector2 movement;
@@ -23,6 +26,8 @@ public class Medusa : MonoBehaviour
     protected bool EnMovimiento;
     protected bool recibiendoDanio;
     protected bool AtaqueCola;
+    protected bool AtaqueGrito;
+    
 
     protected bool canseePlayer = true;
 
@@ -56,6 +61,7 @@ public class Medusa : MonoBehaviour
                 canseePlayer = true;
                 Movimiento();
                 AtaqueColaMedusa();
+                AtaqueGritoMedusa();
                 if (transform.position == player.position)
                 {
                     movement = new Vector2(0, 0);
@@ -64,6 +70,7 @@ public class Medusa : MonoBehaviour
         }
         animator.SetBool("EnMovimiento", EnMovimiento);
         animator.SetBool("AtaqueCola", AtaqueCola);
+        animator.SetBool("AtaqueGrito", AtaqueGrito);
         if (!playervivo)
         {
             EnMovimiento = false;
@@ -97,7 +104,61 @@ public class Medusa : MonoBehaviour
             EnMovimiento = false;
         }
     }
+    protected void AtaqueGritoMedusa()
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
+        if (distanceToPlayer < shootRadius)
+        {
+            if (!AtaqueGrito)
+            {
+                AtaqueGrito = true;
+                animator.SetBool("AtaqueGrito", AtaqueGrito);
+                Invoke("DesactivarAtaqueGrito", 0.3f);
+            }
+        }
+        else if (distanceToPlayer > shootRadius)
+        {
+            AtaqueGrito = false;
+            animator.SetBool("AtaqueGrito", false);
+        }
+    }
+    void DesactivarAtaqueGrito()
+    {
+        AtaqueGrito = false;
+        animator.SetBool("AtaqueGrito", false);
+    }
+
+    public void LanzarSerpientes()
+    {
+        Debug.Log("LanzarSerpientes fue llamado");
+        if (player == null) return;
+        if (SerpientePrefab == null)
+        {
+            Debug.LogError("SerpientePrefab no asignado.");
+            return;
+        }
+        Debug.Log("ataquelanzado");
+        Vector2 direccion = (player.position - transform.position).normalized;
+
+        Vector2 spawnPos = (Vector2)transform.position + direccion * 0.5f;
+        GameObject Serpiente = Instantiate(SerpientePrefab, spawnPos, Quaternion.identity);
+        Serpiente.GetComponent<Rigidbody2D>().velocity = direccion * velocidadSerpiente;
+
+
+        if (Serpiente != null)
+        {
+            Rigidbody2D rbSerpiente = Serpiente.GetComponent<Rigidbody2D>();
+            if (rbSerpiente != null)
+            {
+                rbSerpiente.velocity = direccion * velocidadSerpiente;
+            }
+
+            // Rotar el Serpiente para que mire hacia el jugador
+            float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+            Serpiente.transform.rotation = Quaternion.Euler(0, 0, angulo);
+        }
+    }
     protected void AtaqueColaMedusa()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
@@ -168,12 +229,13 @@ public class Medusa : MonoBehaviour
         if (!recibiendoDanio)
         {
             recibiendoDanio = true;
+            animator.SetBool("recibiendoDanio", true);
+
             // Reducir las vidas del enemigo
             vidas -= cantDanio;
-
+            EnMovimiento = false;
             AtaqueCola = false;
-            animator.SetBool("AtaqueCola", false);
-            animator.Play("Idle", 0);
+            //animator.SetBool("AtaqueCola", false);
 
             // Si las vidas son 0 o menos, destruir al enemigo
             if (vidas <= 0)
@@ -183,8 +245,8 @@ public class Medusa : MonoBehaviour
             else
             {
                 // Si no ha muerto, aplicar el rebote
-                Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
-                rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+                //Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
+                //rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
             }
 
 
@@ -193,24 +255,35 @@ public class Medusa : MonoBehaviour
     }
     IEnumerator DesactivarDanio()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
         recibiendoDanio = false;
+        animator.SetBool("recibiendoDanio", false);
+
+        movement = Vector2.zero;
+        EnMovimiento = true;
+        AtaqueCola = true;
     }
 
     protected void Muerte()
     {
         muerto = true;
+        animator.SetBool("EstaMuerta", true );
         //if (experienciaPrefab != null)
-        {
-            //Vector3 posicion = transform.position;
-            //GameObject Experiencia = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
-            //Experiencia.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
-        }
+        //{
+        //Vector3 posicion = transform.position;
+        //GameObject Experiencia = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
+        //Experiencia.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
+        //}
         // Puedes agregar animaciones de muerte aquí si lo deseas
         // Por ejemplo: animator.SetTrigger("Muerte");
 
-        // Destruir al enemigo
-        Destroy(gameObject);
+        StartCoroutine(EsperarMuerte());
+    }
+    IEnumerator EsperarMuerte()
+    {
+        // Espera el tiempo de duración de la animación de muerte anticipada
+        yield return new WaitForSeconds(1f); // Ajusta este tiempo según la duración de la animación
+        Destroy(gameObject); // Destruir el enemigo después de que la animación haya terminado
     }
 
     public void Freeze(float duration)
@@ -247,5 +320,7 @@ public class Medusa : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, shootRadius);
     }
 }
