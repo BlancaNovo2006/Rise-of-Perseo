@@ -27,7 +27,9 @@ public class Medusa : MonoBehaviour
     protected bool recibiendoDanio;
     protected bool AtaqueCola;
     protected bool AtaqueGrito;
-    
+
+    public float tiempoEntreLanzamientos = 2f; // Tiempo en segundos entre lanzamientos de serpientes
+    private bool puedeLanzarSerpiente = true; // Flag para controlar el lanzamiento
 
     protected bool canseePlayer = true;
 
@@ -112,9 +114,10 @@ public class Medusa : MonoBehaviour
         {
             if (!AtaqueGrito)
             {
-                AtaqueGrito = true;
-                animator.SetBool("AtaqueGrito", AtaqueGrito);
-                Invoke("DesactivarAtaqueGrito", 0.3f);
+                //AtaqueGrito = true;
+                //animator.SetBool("AtaqueGrito", AtaqueGrito);
+                Invoke("DesactivarAtaqueGrito", 0.7f);
+                LanzarSerpientes();
             }
         }
         else if (distanceToPlayer > shootRadius)
@@ -129,35 +132,49 @@ public class Medusa : MonoBehaviour
         animator.SetBool("AtaqueGrito", false);
     }
 
-    public void LanzarSerpientes()
+    protected void LanzarSerpientes()
     {
-        Debug.Log("LanzarSerpientes fue llamado");
-        if (player == null) return;
+        if (player == null || !puedeLanzarSerpiente) return;
+
         if (SerpientePrefab == null)
         {
             Debug.LogError("SerpientePrefab no asignado.");
             return;
         }
+
         Debug.Log("ataquelanzado");
+
         Vector2 direccion = (player.position - transform.position).normalized;
-
         Vector2 spawnPos = (Vector2)transform.position + direccion * 0.5f;
+
         GameObject Serpiente = Instantiate(SerpientePrefab, spawnPos, Quaternion.identity);
-        Serpiente.GetComponent<Rigidbody2D>().velocity = direccion * velocidadSerpiente;
 
-
-        if (Serpiente != null)
+        Rigidbody2D rbSerpiente = Serpiente.GetComponent<Rigidbody2D>();
+        if (rbSerpiente != null)
         {
-            Rigidbody2D rbSerpiente = Serpiente.GetComponent<Rigidbody2D>();
-            if (rbSerpiente != null)
-            {
-                rbSerpiente.velocity = direccion * velocidadSerpiente;
-            }
-
-            // Rotar el Serpiente para que mire hacia el jugador
-            float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
-            Serpiente.transform.rotation = Quaternion.Euler(0, 0, angulo);
+            rbSerpiente.velocity = direccion * velocidadSerpiente;
         }
+
+        // Rotar la serpiente solo en Z
+        float angulo = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+        Serpiente.transform.rotation = Quaternion.Euler(0, 0, angulo);
+
+        // Voltear en X si va hacia la izquierda (usando escala)
+        float direccionX = direccion.x >= -1 ? 1f : -1f;
+        Vector3 escalaOriginal = Serpiente.transform.localScale;
+        Serpiente.transform.localScale = new Vector3(Mathf.Abs(escalaOriginal.x) * direccionX, escalaOriginal.y, escalaOriginal.z);
+        AtaqueGrito = true;
+        animator.SetBool("AtaqueGrito", true);
+
+        StartCoroutine(TiempoDeEspera());
+    }
+    private IEnumerator TiempoDeEspera()
+    {
+        puedeLanzarSerpiente = false; // Desactivar la capacidad de lanzar serpientes
+        yield return new WaitForSeconds(tiempoEntreLanzamientos); // Esperar el tiempo especificado
+        puedeLanzarSerpiente = true; // Permitir el lanzamiento nuevamente
+        AtaqueGrito = false;
+        animator.SetBool("AtaqueGrito", false);
     }
     protected void AtaqueColaMedusa()
     {
