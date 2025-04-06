@@ -122,6 +122,8 @@ public class MovimientoPersonaje : MonoBehaviour
         resistenciaActual = resistenciaMax;
         ActualizarBarraResistencia();
 
+        ActualizarUIVidas();
+
         ActualizarUIExperiencia();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -677,6 +679,22 @@ public class MovimientoPersonaje : MonoBehaviour
         if(contadorExperiencia != null)
         {
             contadorExperiencia.text = "XP:" + experienciaActual;
+        }
+    }
+
+    void ActualizarUIVidas()
+    {
+        if(CooldownTextBloqueo != null)
+        {
+            CooldownTextBloqueo.text = "" + vialRegenerativo.ToString();
+        }
+    }
+    public void UsarVial()
+    {
+        if (vialRegenerativo > 0)
+        {
+            vialRegenerativo -= 1;
+            ActualizarUIVidas();
         }
     }
     void OnDrawGizmos()
