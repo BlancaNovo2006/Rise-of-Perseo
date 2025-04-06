@@ -118,6 +118,7 @@ public class MovimientoPersonaje : MonoBehaviour
         posicionTp1 = CheetTp1.position;
         posicionTp2 = CheetTp2.position;
         posicionTpSpawn = CheetTpSpawn.position;
+        transform.position = posicionTpSpawn;
 
         resistenciaActual = resistenciaMax;
         ActualizarBarraResistencia();
@@ -276,6 +277,12 @@ public class MovimientoPersonaje : MonoBehaviour
 
                         // Restaurar el color a blanco
                         spriteRenderer.color = Color.white;
+                    }
+                    //PRUEBA
+                    if (Input.GetKeyDown(KeyCode.L))
+                    {
+                        vialRegenerativo = 5;
+                        Debug.Log("Restaurados manualmente a 5");
                     }
 
                     //Chetos
@@ -732,6 +739,8 @@ public class MovimientoPersonaje : MonoBehaviour
             Debug.Log("Nuevo punto de respawn activado");
             vida = 5;
             vialRegenerativo = 5;
+
+            CooldownTextBloqueo.text = vialRegenerativo.ToString();
         }
     }
 }

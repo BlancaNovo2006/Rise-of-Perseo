@@ -110,15 +110,14 @@ public class Medusa : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (distanceToPlayer < shootRadius)
+        if (distanceToPlayer < shootRadius && puedeLanzarSerpiente)
         {
             if (!AtaqueGrito)
             {
-                //AtaqueGrito = true;
-                //animator.SetBool("AtaqueGrito", AtaqueGrito);
-                Invoke("DesactivarAtaqueGrito", 0.7f);
+                Invoke("DesactivarAtaqueGrito", 0.567f);
                 LanzarSerpientes();
             }
+            
         }
         else if (distanceToPlayer > shootRadius)
         {
@@ -134,7 +133,9 @@ public class Medusa : MonoBehaviour
 
     protected void LanzarSerpientes()
     {
-        if (player == null || !puedeLanzarSerpiente) return;
+        if (player == null || !puedeLanzarSerpiente || recibiendoDanio || AtaqueCola) return;
+
+        puedeLanzarSerpiente = false;
 
         if (SerpientePrefab == null)
         {
