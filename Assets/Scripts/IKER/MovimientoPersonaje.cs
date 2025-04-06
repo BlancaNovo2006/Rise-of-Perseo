@@ -253,6 +253,8 @@ public class MovimientoPersonaje : MonoBehaviour
                             if (vialRegenerativo > 0)
                             {
                                 StartCoroutine(RegenerarVida());
+                                ActualizarUIVidas();
+
                             }
                         }
                     }
@@ -689,14 +691,7 @@ public class MovimientoPersonaje : MonoBehaviour
             CooldownTextBloqueo.text = "" + vialRegenerativo.ToString();
         }
     }
-    public void UsarVial()
-    {
-        if (vialRegenerativo > 0)
-        {
-            vialRegenerativo -= 1;
-            ActualizarUIVidas();
-        }
-    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
