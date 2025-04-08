@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5594510357887783917}
   - component: {fileID: 5103127142432533637}
-  - component: {fileID: 8271632835607427912}
   - component: {fileID: 8571598369469057985}
   m_Layer: 0
   m_Name: FinalNivel
@@ -86,18 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8271632835607427912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8248478211745212193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12b50596872ada4daf24336ea6bf811, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &8571598369469057985
 BoxCollider2D:
   m_ObjectHideFlags: 0

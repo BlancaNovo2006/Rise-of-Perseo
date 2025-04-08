@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: "Assets/Scenes/producci\xF3n/Menu.unity"
+    guid: 7adeef7a06ed04241b9acc2e48a1c015
+  - enabled: 0
     path: "Assets/Scenes/producci\xF3n/Scene1.unity"
     guid: ca54cf70d89218e4f9504cb44846f4bf
   - enabled: 1
@@ -17,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/producci\xF3n/nivelalphav2.unity"
     guid: 1755aa9a2add26e4480f29b96035cf92
-  - enabled: 1
+  - enabled: 0
     path: "Assets/Scenes/producci\xF3n/Scene2.unity"
     guid: eca69549c22260547a67261d9d2850e4
   - enabled: 0
@@ -29,7 +32,4 @@ EditorBuildSettings:
   - enabled: 0
     path: "Assets/Scenes/producci\xF3n/PruebaIker.unity"
     guid: 99b517fd02d4e1547b30d2524e40e3c1
-  - enabled: 1
-    path: "Assets/Scenes/producci\xF3n/Menu.unity"
-    guid: 7adeef7a06ed04241b9acc2e48a1c015
   m_configObjects: {}
