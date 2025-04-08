@@ -66,6 +66,8 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool block;
     private bool pegaso;
     private bool atacandoFuerte;
+    private bool planeando;
+    private bool enDash;
 
 
     public float resistenciaMax = 100f;
@@ -199,10 +201,12 @@ public class MovimientoPersonaje : MonoBehaviour
                         {
                             rb.gravityScale = 0.25f;
                         }
+                        planeando = true;
                     }
                     else
                     {
                         rb.gravityScale = 1f;
+                        planeando = false;
                     }
                     //Correr
                     if (Input.GetKeyDown(KeyCode.LeftControl) && puedeCorrer && resistenciaActual > 0)
@@ -357,6 +361,8 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("muelto", muerto);
         animator.SetBool("pegaso", pegaso);
         animator.SetBool("AtacandoFuerte", atacandoFuerte);
+        animator.SetBool("planeando", planeando);
+        animator.SetBool("endash", enDash);
     }
 
     IEnumerator Rodar()
@@ -365,6 +371,7 @@ public class MovimientoPersonaje : MonoBehaviour
         resistenciaActual -= consumoRodar;
 
         rodando = true;
+        enDash = true;
         invencible = true;
         animator.SetTrigger("Rodar");
 
@@ -383,6 +390,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
         invencible = false;
         rodando = false;
+        enDash = false;
     }
     void Pegaso()
     {

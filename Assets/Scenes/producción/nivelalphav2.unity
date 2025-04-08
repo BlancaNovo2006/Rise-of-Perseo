@@ -159,7 +159,7 @@ MonoBehaviour:
   CheetTp1: {fileID: 1515299835}
   CheetTp2: {fileID: 1225404667}
   CheetTpSpawn: {fileID: 169622287}
-  vida: 5
+  vida: 1
   vialRegenerativo: 5
   velocidad: 7
   fuerzaSalto: 5
@@ -194,7 +194,7 @@ MonoBehaviour:
   resistenciaMax: 100
   resistenciaActual: 0
   consumoCorrer: 50
-  consumoRodar: 50
+  consumoRodar: 1
   regeneracion: 5
   barraResistencia: {fileID: 2070173627}
   experienciaActual: 0
@@ -293,7 +293,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -362,7 +362,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8043820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.72, y: -1.55, z: 0}
+  m_LocalPosition: {x: 112.16, y: -0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1957,7 +1957,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1918175261}
         m_TargetAssemblyTypeName: MenuPausa, Assembly-CSharp
-        m_MethodName: Cerrar
+        m_MethodName: IrAlMenuInicial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -125311,7 +125311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000014305, y: -0.0000095367}
+  m_AnchoredPosition: {x: 0.000014305, y: -0}
   m_SizeDelta: {x: 691.885, y: 870.436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672803605
@@ -126256,7 +126256,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.625, y: 15.625}
+    oldSize: {x: 7.8125, y: 7.8125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

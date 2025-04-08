@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3a4a6e23c91235541a34107a8ada127c
+guid: 810fb488cb2df574fa3a0aed53e82903
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PERSEO_muerte-Sheet_0
+      name: PERSEO_planear-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,20 +118,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02422f68540d5b84d81390a5caf5b26e
-      internalID: -1102506992
+      spriteID: 884297445e63bed41803faee577d86dc
+      internalID: -1553620995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_muerte-Sheet_1
+      name: PERSEO_planear-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -139,140 +139,98 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a069441df9a1e1a489f35663a0863981
-      internalID: 1351997031
+      spriteID: a9770640b4c08ed45b7a58789a18f728
+      internalID: -822208359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_muerte-Sheet_2
+      name: PERSEO_planear-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.48820472, y: 0.6651334}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 128773d019d710b4ab0c749d73cc5cec
-      internalID: 1458785417
+      spriteID: 8d3db0fb2983509458f39cf0d79aa011
+      internalID: 1452517702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_muerte-Sheet_3
+      name: PERSEO_planear-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.48230696, y: 0.7359048}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 132f0d7d7c4d6644f9a2c833f3c72d1b
-      internalID: -32818890
+      spriteID: fef0c75a031bec44fa25043cc7c030ce
+      internalID: 885228804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_muerte-Sheet_4
+      name: PERSEO_planear-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.78308576}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d1add9b51596db44a376d53a67fae3f
-      internalID: 400674113
+      spriteID: c36ec3db579d9084a945f61c5ff42990
+      internalID: -1495592634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PERSEO_muerte-Sheet_5
+      name: PERSEO_planear-Sheet_5
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.494102, y: 0.81257385}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7ed7cd27cbdd9e4b8817060e569a188
-      internalID: 513060784
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PERSEO_muerte-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.48230743, y: 0.8479595}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9a43b0a981248f8438e34389cafd17b1
-      internalID: -478192114
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PERSEO_muerte-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.494102, y: 0.89514047}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c925e83077375294e8ddc3c30b5bec4c
-      internalID: -1752444755
+      spriteID: 6c9dea15add8b3449bfcbdbf6499d77e
+      internalID: -481073505
       vertices: []
       indices: 
       edges: []
@@ -288,14 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PERSEO_muerte-Sheet_0: -1102506992
-      PERSEO_muerte-Sheet_1: 1351997031
-      PERSEO_muerte-Sheet_2: 1458785417
-      PERSEO_muerte-Sheet_3: -32818890
-      PERSEO_muerte-Sheet_4: 400674113
-      PERSEO_muerte-Sheet_5: 513060784
-      PERSEO_muerte-Sheet_6: -478192114
-      PERSEO_muerte-Sheet_7: -1752444755
+      PERSEO_planear-Sheet_0: -1553620995
+      PERSEO_planear-Sheet_1: -822208359
+      PERSEO_planear-Sheet_2: 1452517702
+      PERSEO_planear-Sheet_3: 885228804
+      PERSEO_planear-Sheet_4: -1495592634
+      PERSEO_planear-Sheet_5: -481073505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
