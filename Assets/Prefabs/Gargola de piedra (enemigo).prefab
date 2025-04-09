@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8119000181333492651}
   - component: {fileID: 2676719896482268101}
   - component: {fileID: 2197850526200369001}
+  - component: {fileID: 4873926297423426684}
   m_Layer: 7
   m_Name: Gargola de piedra (enemigo)
   m_TagString: Enemy
@@ -28,12 +29,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8217761539902372872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.22, y: 7.39, z: 0}
+  m_LocalPosition: {x: 165.47, y: 1.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2464351672836200808
 SpriteRenderer:
@@ -157,3 +158,38 @@ MonoBehaviour:
   ProyectilPrefab: {fileID: 7566238690216525153, guid: 91a5f0bb037ecae48b985dc0273a7f72, type: 3}
   velocidadProyectil: 7
   experienciaSoltar: 20
+--- !u!70 &4873926297423426684
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8217761539902372872}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.20051575, y: -0.23228908}
+  m_Size: {x: 0.72598267, y: 1.4673774}
+  m_Direction: 0

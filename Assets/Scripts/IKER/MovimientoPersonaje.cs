@@ -21,7 +21,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public float velocidad;
     public float fuerzaSalto = 10f;
     public float fuerzaRebote = 6f;
-    public float longitudRaycast = 0.1f;
+    public float longitudRaycast = 0.3f;
     public LayerMask capaSuelo;
 
     public float invisibilityDuration = 5f;
