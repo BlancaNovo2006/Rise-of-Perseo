@@ -23,8 +23,6 @@ public class SoldadoDePiedra : MonoBehaviour
     protected bool recibiendoDanio;
     protected bool Atacando;
 
-    protected bool canseePlayer = true;
-
     protected bool isFrozen = false;
     protected float originalSpeed;
     protected SpriteRenderer spriteRenderer;
@@ -45,21 +43,12 @@ public class SoldadoDePiedra : MonoBehaviour
     {
         if (player != null && playervivo && !muerto && !isFrozen)
         {
-            MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
-            if (playerScript != null && playerScript.isInvisible)
-            {
-                canseePlayer = false;
-            }
-            else
-            {
-                canseePlayer = true;
                 Movimiento();
                 AtaqueEnemigo();
                 if (transform.position == player.position)
                 {
                     movement = Vector2.zero;
                 }
-            }
         }
 
 

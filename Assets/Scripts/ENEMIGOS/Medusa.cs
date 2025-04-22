@@ -53,14 +53,7 @@ public class Medusa : MonoBehaviour
     {
         if (player != null && playervivo && !muerto && !isFrozen)
         {
-            MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
-            if (playerScript != null && playerScript.isInvisible)
-            {
-                canseePlayer = false;
-            }
-            else
-            {
-                canseePlayer = true;
+            
                 Movimiento();
                 AtaqueColaMedusa();
                 AtaqueGritoMedusa();
@@ -68,7 +61,7 @@ public class Medusa : MonoBehaviour
                 {
                     movement = new Vector2(0, 0);
                 }
-            }
+            
         }
         animator.SetBool("EnMovimiento", EnMovimiento);
         animator.SetBool("AtaqueCola", AtaqueCola);

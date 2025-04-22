@@ -24,9 +24,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public float longitudRaycast = 0.3f;
     public LayerMask capaSuelo;
 
-    public float invisibilityDuration = 5f;
-    public float invisibleAlpha = 0.3f;
-    public bool isInvisible = false;
+   
     private SpriteRenderer spriteRenderer;
     private int enemyLayer;
     public float cooldownTime = 3f;
@@ -49,10 +47,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public Image CooldownFillPegaso;
     public TextMeshProUGUI CooldownTextPegaso;
 
-    public float cooldownBloqueo = 3f;
-    private bool onCooldownBloqueo = false;
-    public float duracionBloqueo = 1f;
-    private bool bloqueando = false;
+    
     public Image CooldownFillBloqueo;
     public TextMeshProUGUI CooldownTextBloqueo;
 
@@ -63,19 +58,12 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool caminar;
     private bool salto;
     private bool ataquemedusa;
-    private bool block;
     private bool pegaso;
-    private bool atacandoFuerte;
     private bool planeando;
     private bool enDash;
 
 
-    public float resistenciaMax = 100f;
-    public float resistenciaActual;
-    public float consumoCorrer = 10f;
-    public float consumoRodar = 10f;
-    public float regeneracion = 5f;
-    public Image barraResistencia;
+    
 
     public int experienciaActual = 0;
     public TextMeshProUGUI contadorExperiencia;
@@ -85,16 +73,6 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public Transform puntoRespawn;
     public float tiempoRespawn = 2f;
-
-    public float velocidadDeMovimientoBase;
-    public float velocidadExtra;
-    public float tiempoSprint;
-    private float tiempoActualSprint;
-    private float tiempoSiguienteSprint;
-
-    public float tiempoEntreSprints;
-    private bool puedeCorrer = true;
-    private bool estaCorriendo = false;
 
     public float tiempoRodar = 0.5f;
     public float velocidadRodar = 10f;
@@ -114,15 +92,12 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        tiempoActualSprint = tiempoSprint;
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
         ultimoPuntoRespawn = puntoRespawn.position;
         posicionTp1 = CheetTp1.position;
         posicionTp2 = CheetTp2.position;
         posicionTpSpawn = CheetTpSpawn.position;
 
-        resistenciaActual = resistenciaMax;
-        ActualizarBarraResistencia();
 
         ActualizarUIVidas();
 
@@ -166,7 +141,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             if (!recibiendoDanio)
             {
-                if (!rodando && !atacando && !atacandoFuerte && !bloqueando)
+                if (!rodando && !atacando)
                 {
                     ProcesarMovimiento();
                     RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, longitudRaycast, capaSuelo);
@@ -208,46 +183,7 @@ public class MovimientoPersonaje : MonoBehaviour
                         rb.gravityScale = 1f;
                         planeando = false;
                     }
-                    //Correr
-                    if (Input.GetKeyDown(KeyCode.LeftControl) && puedeCorrer && resistenciaActual > 0)
-                    {
-                        velocidad = velocidadExtra;
-                        estaCorriendo = true;
-                        resistenciaActual -= consumoCorrer * Time.deltaTime;
-                        if (resistenciaActual <= 0)
-                        {
-                            puedeCorrer = false;
-                            estaCorriendo = false;
-                            velocidad = velocidadDeMovimientoBase;
-                        }
-                    }
-                    if (Input.GetKeyUp(KeyCode.LeftControl) || resistenciaActual <= 0)
-                    {
-                        velocidad = velocidadDeMovimientoBase;
-                        estaCorriendo = false;
-                    }
-                    if (Mathf.Abs(rb.velocity.x) >= 0.1f && estaCorriendo)
-                    {
-                        if (tiempoActualSprint > 0)
-                        {
-                            tiempoActualSprint -= Time.deltaTime;
-                        }
-                        else
-                        {
-                            velocidad = velocidadDeMovimientoBase;
-                            estaCorriendo = false;
-                            puedeCorrer = false;
-                            tiempoSiguienteSprint = Time.time + tiempoEntreSprints;
-                        }
-                    }
-                    if (!estaCorriendo && tiempoActualSprint <= tiempoSprint && Time.time >= tiempoSiguienteSprint)
-                    {
-                        tiempoActualSprint += Time.deltaTime;
-                        if (tiempoActualSprint >= tiempoSprint)
-                        {
-                            puedeCorrer = true;
-                        }
-                    }
+                    
 
                     //Regenerar Vida
                     if (Input.GetKeyDown(KeyCode.R))
@@ -303,20 +239,12 @@ public class MovimientoPersonaje : MonoBehaviour
                 //Atacar
                 if (Input.GetKeyDown(KeyCode.F) && !atacando && enSuelo)
                 {
-                    Atacando(false);
+                    Atacando();
                 }
 
-                //Ataque Fuerte
-                if (Input.GetKeyDown(KeyCode.G) && !atacandoFuerte && enSuelo)
-                {
-                    Atacando(true);
-                }
+                
 
-                //Invisible
-                if (Input.GetKeyDown(KeyCode.U) && !atacando && enSuelo && !isInvisible && !onCooldown)
-                {
-                    StartCoroutine(BecomeInvisible());
-                }
+               
 
                 //Cabeza Medusa
                 if (Input.GetKeyDown(KeyCode.I) && !onFreezeCooldown)
@@ -334,20 +262,8 @@ public class MovimientoPersonaje : MonoBehaviour
                     Pegaso();
                 }
 
-                //Escudo
-                if(Input.GetKeyDown(KeyCode.H)&& !onCooldownBloqueo)
-                {
-                    StartCoroutine(Bloquear());
-                }
-                if (!estaCorriendo && !rodando && resistenciaActual < resistenciaMax)
-                {
-                    resistenciaActual += regeneracion * Time.deltaTime;
-                    if (resistenciaActual > resistenciaMax)
-                    {
-                        resistenciaActual = resistenciaMax;
-                    }
-                }
-                ActualizarBarraResistencia();
+                
+               
             }
         }
 
@@ -356,19 +272,16 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("Caminar", caminar);
         animator.SetBool("Rodando", rodando);
         animator.SetBool("AtaqueMedusa", ataquemedusa);
-        animator.SetBool("Block", block);
         animator.SetBool("atacado", recibiendoDanio);
         animator.SetBool("muelto", muerto);
         animator.SetBool("pegaso", pegaso);
-        animator.SetBool("AtacandoFuerte", atacandoFuerte);
         animator.SetBool("planeando", planeando);
         animator.SetBool("endash", enDash);
     }
 
     IEnumerator Rodar()
     {
-        if (resistenciaActual < consumoRodar) yield break;
-        resistenciaActual -= consumoRodar;
+        
 
         rodando = true;
         enDash = true;
@@ -495,49 +408,16 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("recibiendoDanio", false);
 
     }
-    public void Atacando(bool ataqueFuerte)
+    public void Atacando()
     {
-        if (ataqueFuerte)
-        {
-            atacandoFuerte = true;
-            animator.SetTrigger("ataqueFuertePlayer");
-            StartCoroutine(EsperarFinAtaqueFuerte());
-        }
-        else
-        {
-            atacando = true;
-            animator.SetTrigger("ataqueplayer");
-        }
+        atacando = true;
+        animator.SetTrigger("ataqueplayer");
     }
     public void DesactivarAtaque()
     {
         atacando = false;
-        atacandoFuerte = false;
     }
-    IEnumerator EsperarFinAtaqueFuerte()
-    {
-        // Espera un tiempo que dure la animación de ataque fuerte
-        yield return new WaitForSeconds(0.433f);  // Ajusta el tiempo según la duración de la animación
-        atacandoFuerte = false;  // Detiene el estado de ataque fuerte
-    }
-    IEnumerator BecomeInvisible()
-    {
-        SetCooldownOpacity(0.3f);
-        if (CooldownFill != null)
-        {
-            CooldownFill.fillAmount = 1;
-        }
-
-        isInvisible = true;
-        onCooldown = true;
-        SetOpacity(invisibleAlpha);
-        Physics2D.IgnoreLayerCollision(gameObject.layer, enemyLayer, true);
-        yield return new WaitForSeconds(invisibilityDuration);
-        SetOpacity(1f);
-        Physics2D.IgnoreLayerCollision(gameObject.layer, enemyLayer, false);
-        isInvisible = false;
-        StartCoroutine(StartCooldown());
-    }
+    
     IEnumerator StartCooldown()
     {
         float elapsedTime = 0f;
@@ -652,25 +532,7 @@ public class MovimientoPersonaje : MonoBehaviour
         }
         onFreezeCooldown = false;
     }
-    IEnumerator Bloquear()
-    {
-        bloqueando = true;
-        invencible = true;
-        animator.SetBool("block", true);
 
-        yield return new WaitForSeconds(duracionBloqueo);
-
-        bloqueando = false;
-        invencible = false;
-    }
-
-    void ActualizarBarraResistencia()
-    {
-        if (barraResistencia != null)
-        {
-            barraResistencia.fillAmount = resistenciaActual / resistenciaMax;
-        }
-    }
     void DesactivarMedusa()
     {
         animator.SetBool("ataquemedusa", false);

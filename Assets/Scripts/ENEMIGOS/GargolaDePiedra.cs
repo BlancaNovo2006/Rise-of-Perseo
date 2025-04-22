@@ -45,21 +45,13 @@ public class GargolaDePiedra : MonoBehaviour
     {
         if (player != null && playervivo && !muerto && !isFrozen)
         {
-            MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
-            if (playerScript != null && playerScript.isInvisible)
-            {
-                canseePlayer = false;
-            }
-            else
-            {
-                canseePlayer = true;
                 Movimiento();
                 AtaqueEnemigo();
                 if (transform.position == player.position)
                 {
                     movement = Vector2.zero;
                 }
-            }
+            
         }
         if (!playervivo)
         {

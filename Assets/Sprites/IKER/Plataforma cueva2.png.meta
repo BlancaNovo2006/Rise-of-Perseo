@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a529db8551a4d58448bdc09dc10dcbe5
+guid: 91be5eb72ad2ef248adeb9330bf99187
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -134,28 +134,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: perseo_u2i-export-export_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3710
-        height: 1510
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ecaf1cb88f79884492f7ed6eab3f5c1
-      internalID: 1012138472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -166,8 +145,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      perseo_u2i-export-export_0: 1012138472
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -46,20 +46,13 @@ public class ControladorEnemigos : MonoBehaviour
         Debug.Log("update base");
         if (player != null && playervivo && !muerto && !isFrozen)
         {
-            MovimientoPersonaje playerScript = player.GetComponent<MovimientoPersonaje>();
-            if (playerScript != null && playerScript.isInvisible)
-            {
-                canseePlayer = false;
-            }
-            else
-            {
-                canseePlayer = true;
+            
                 Movimiento();
                 if (transform.position == player.position)
                 {
                     movement = new Vector2(0, 0);
                 }
-            }
+            
         }
 
 
