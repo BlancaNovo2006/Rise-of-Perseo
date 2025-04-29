@@ -622,7 +622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[0]
-      value: "Hermes: Tambi\xE9n puedes correr si pulsas [Ctrl]."
+      value: 'Hermes: Puedes correr si pulsas [Ctrl].'
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[1]
@@ -630,8 +630,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[2]
-      value: "Hermes: Y si mantienes el espacio podr\xE1s planear gracias a las sandalias
-        con alas que te he otorgado."
+      value: 'Hermes: Y si mantienes el espacio planearas gracias a las sandalias
+        con alas que te he otorgado.'
       objectReference: {fileID: 0}
     - target: {fileID: 4173835469092687463, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: m_IsTrigger
@@ -679,7 +679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -260.1, y: 1.800003}
+  m_AnchoredPosition: {x: -72.62, y: -0.069999695}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &225359867
@@ -944,7 +944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 63.88, y: 0.13}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &458622537
@@ -1293,7 +1293,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 16, y: 16}
+  m_SizeDelta: {x: 12, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689714527
 MonoBehaviour:
@@ -1315,12 +1315,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc9bf58509e11cf47bbcd89f0897ae6e, type: 2}
+  m_sharedMaterial: {fileID: -5441637686837228219, guid: dc9bf58509e11cf47bbcd89f0897ae6e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1914,8 +1912,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93, y: -125}
-  m_SizeDelta: {x: 344.1631, y: 123.8988}
+  m_AnchoredPosition: {x: 11.9, y: -18.4}
+  m_SizeDelta: {x: 36, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &967568354
 MonoBehaviour:
@@ -1993,7 +1991,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1964112974, guid: c0255b3cd420a914ba2a9f9a516318c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 164a647967b653743a02851fa394b358, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2265,7 +2263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 35.4, y: 167.8}
+  m_AnchoredPosition: {x: 37.68, y: 2.08}
   m_SizeDelta: {x: 16, y: 16}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1071201793
@@ -2710,8 +2708,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 35.3, y: -17.2}
-  m_SizeDelta: {x: 350, y: 350}
+  m_AnchoredPosition: {x: 20, y: 139.5}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1275997831
 MonoBehaviour:
@@ -124093,8 +124091,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc9bf58509e11cf47bbcd89f0897ae6e, type: 2}
+  m_sharedMaterial: {fileID: -5441637686837228219, guid: dc9bf58509e11cf47bbcd89f0897ae6e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -124509,8 +124507,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 272, y: 20}
-  m_SizeDelta: {x: 446.64, y: 198.71}
+  m_AnchoredPosition: {x: 26.9, y: -9.7}
+  m_SizeDelta: {x: 46, y: 9}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1529951414
 MonoBehaviour:
@@ -124532,7 +124530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a529db8551a4d58448bdc09dc10dcbe5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6a98c929818d9a4fa4ef82946cf52ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -124599,8 +124597,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.9, y: 94}
-  m_SizeDelta: {x: 344.1631, y: 123.8988}
+  m_AnchoredPosition: {x: 9.5, y: 8}
+  m_SizeDelta: {x: 71, y: 17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1591763213
 MonoBehaviour:
@@ -124678,7 +124676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -220937090, guid: c0255b3cd420a914ba2a9f9a516318c1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b95e5b4b289ed9419100bfabd821128, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -124733,7 +124731,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -148.6, y: 300}
+  m_SizeDelta: {x: -60, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1605310878
 MonoBehaviour:
@@ -124843,7 +124841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[0]
-      value: "Hermes: A veces tendr\xE1s que esquivar enemigos."
+      value: 'Hermes: A veces tendras que esquivar enemigos.'
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[1]
@@ -125114,8 +125112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000014305, y: 0}
-  m_SizeDelta: {x: 691.885, y: 870.436}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 108, y: 112}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672803605
 MonoBehaviour:
@@ -125137,7 +125135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 73df52a1ba576b1439895bfc8bd2ef0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8f1a8ea3fcb888d4c83bcfb84e0cd2f1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -125473,7 +125471,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -200, y: -100}
+  m_SizeDelta: {x: -20, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1731574671
 MonoBehaviour:
@@ -125497,8 +125495,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8af80e89fff3473489687241a29da9ae, type: 2}
-  m_sharedMaterial: {fileID: -9188783249757683474, guid: 8af80e89fff3473489687241a29da9ae, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc9bf58509e11cf47bbcd89f0897ae6e, type: 2}
+  m_sharedMaterial: {fileID: -5441637686837228219, guid: dc9bf58509e11cf47bbcd89f0897ae6e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -125522,8 +125520,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -125814,8 +125812,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: dc9bf58509e11cf47bbcd89f0897ae6e, type: 2}
+  m_sharedMaterial: {fileID: -5441637686837228219, guid: dc9bf58509e11cf47bbcd89f0897ae6e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -125959,7 +125957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[0]
-      value: "Hermes: Tambi\xE9n puedes realizar un ataque fuerte"
+      value: 'Hermes: Tambien puedes realizar un ataque fuerte'
       objectReference: {fileID: 0}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[1]
@@ -126402,8 +126400,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -404, y: -0.5999985}
-  m_SizeDelta: {x: 62, y: 13}
+  m_AnchoredPosition: {x: 3.71, y: -0.28}
+  m_SizeDelta: {x: 37, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2007809577
 MonoBehaviour:
@@ -126425,7 +126423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1647977635, guid: c14122a10ce8d044d93c735e4decfd53, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b4738509041fd8347a6364b09f3f1ca7, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -127056,6 +127054,24 @@ PrefabInstance:
       propertyPath: TextoDialogo
       value: 
       objectReference: {fileID: 1731574671}
+    - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
+      propertyPath: LineasDialogo.Array.data[0]
+      value: '???: Hola, mi nombre es Hermes, dios mensajero, y me proclamo como
+        tu maestro.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
+      propertyPath: LineasDialogo.Array.data[1]
+      value: 'Hermes: Te otorgo estos viales curativos que te ayudaran a encontrarte
+        mejor, '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
+      propertyPath: LineasDialogo.Array.data[2]
+      value: 'Hermes: por lo tanto, cuando te hieran pulsa [R].'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
+      propertyPath: LineasDialogo.Array.data[3]
+      value: 'Hermes: Si se te acaban toca una de estas estatuas sagradas de Zeus.'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
