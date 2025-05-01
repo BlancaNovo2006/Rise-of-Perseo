@@ -493,6 +493,11 @@ public class MovimientoPersonaje : MonoBehaviour
             {
                 Medusa.Freeze(freezeDuration);
             }
+            CangrejoColosal CangrejoColosal = Enemy.GetComponent<CangrejoColosal>();
+            if (CangrejoColosal != null)
+            {
+                CangrejoColosal.Freeze(freezeDuration);
+            }
 
         }
         onFreezeCooldown = true;
