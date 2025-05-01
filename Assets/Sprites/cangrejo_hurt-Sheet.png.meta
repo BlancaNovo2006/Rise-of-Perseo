@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d3f470b90e6027b4fba35199c126097f
+guid: 79cc27e69463ff541824eda351c18d0d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MarcaDialogo_0
+      name: cangrejo_hurt-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eeeee339991b9224ebab1e8d1c785e84
-      internalID: -1639552744
+      spriteID: bf7772f634d9a2f42b77d620e457b639
+      internalID: -1153664344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cangrejo_hurt-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0a6b3ba00368b547ba93ed510861f20
+      internalID: 1940889275
       vertices: []
       indices: 
       edges: []
@@ -141,7 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MarcaDialogo_0: -1639552744
+      cangrejo_hurt-Sheet_0: -1153664344
+      cangrejo_hurt-Sheet_1: 1940889275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
