@@ -22,7 +22,7 @@ public class Medusa : MonoBehaviour
     protected Rigidbody2D rb;
     protected Vector2 movement;
     protected bool playervivo;
-    protected bool muerto;
+    public bool muerto;
     protected bool EnMovimiento;
     protected bool recibiendoDanio;
     protected bool AtaqueCola;
