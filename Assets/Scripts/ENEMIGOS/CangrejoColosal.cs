@@ -12,6 +12,8 @@ public class CangrejoColosal : MonoBehaviour
 
     protected bool AtaquePinzas;
     protected bool AtaquePinchos;
+    public Collider2D ZonaVertical;
+    public Collider2D ZonaHorizontal;
 
     public float fuerzaRebote;
     public int vidas;  // Vidas del enemigo
@@ -51,12 +53,17 @@ public class CangrejoColosal : MonoBehaviour
         {
             rb.velocity = Vector2.zero; // Asegura que no siga con velocidad anterior
         }
+
     }
 
     protected void Girar()
     {
         moviendoDerecha = !moviendoDerecha;
-        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
+
+        Vector3 escala = transform.localScale;
+        escala.x *= -1;
+        transform.localScale = escala;
+
         speed *= -1;
     }
 
@@ -110,7 +117,6 @@ public class CangrejoColosal : MonoBehaviour
         animator.SetBool("recibiendoDanio", false);
 
     }
-
     protected void Muerte()
     {
         rb.velocity = Vector2.zero;
@@ -148,7 +154,6 @@ public class CangrejoColosal : MonoBehaviour
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
-
     IEnumerator UnfreezeAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);
@@ -160,9 +165,25 @@ public class CangrejoColosal : MonoBehaviour
             animator.enabled = true;
         }
     }
+    public void ActivarZonaVertical()
+    {
+        Debug.Log("ZonaVertical activada - el jugador está dentro.");
+        // Aquí puedes poner lo que quieras que pase (por ejemplo, activar un ataque especial)
+        AtaquePinchos = true;
+        animator.SetBool("AtacandoVertical", true);
+    }
+
+    public void DesactivarZonaVertical()
+    {
+        Debug.Log("ZonaVertical desactivada - el jugador salió.");
+        AtaquePinchos = false;
+        animator.SetBool("AtacandoVertical", false);
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(controladorSuelo.transform.position, controladorSuelo.transform.position + Vector3.down * distancia);
     }
+
+    
 }
