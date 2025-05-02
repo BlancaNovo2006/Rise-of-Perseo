@@ -14,6 +14,9 @@ public class CangrejoColosal : MonoBehaviour
     protected bool AtaquePinchos;
     public Collider2D ZonaVertical;
     public Collider2D ZonaHorizontal;
+    public Collider2D Pinchos;
+    public Collider2D Pinzas;
+    protected bool estaAtacando;
 
     public float fuerzaRebote;
     public int vidas;  // Vidas del enemigo
@@ -38,7 +41,7 @@ public class CangrejoColosal : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        if (!muerto && !isFrozen)
+        if (!muerto && !isFrozen && !estaAtacando)
         {
             RaycastHit2D informacionSuelo = Physics2D.Raycast(controladorSuelo.position, Vector2.down, distancia);
 
@@ -58,6 +61,7 @@ public class CangrejoColosal : MonoBehaviour
 
     protected void Girar()
     {
+        Debug.Log("girar");
         moviendoDerecha = !moviendoDerecha;
 
         Vector3 escala = transform.localScale;
@@ -165,19 +169,63 @@ public class CangrejoColosal : MonoBehaviour
             animator.enabled = true;
         }
     }
+    protected void ActivarAtaquePinchos()
+    {
+        if (!isFrozen)
+        {
+            Pinchos.enabled = true;
+        }
+    }
+    protected void DesactivarAtaquePinchos()
+    {
+        if (!isFrozen)
+        {
+            Pinchos.enabled = false;
+        }
+    }
     public void ActivarZonaVertical()
     {
         Debug.Log("ZonaVertical activada - el jugador está dentro.");
-        // Aquí puedes poner lo que quieras que pase (por ejemplo, activar un ataque especial)
+        estaAtacando = true;
         AtaquePinchos = true;
-        animator.SetBool("AtacandoVertical", true);
+        animator.SetBool("AtaquePinchos", true);
     }
 
     public void DesactivarZonaVertical()
     {
         Debug.Log("ZonaVertical desactivada - el jugador salió.");
+        estaAtacando = false;
         AtaquePinchos = false;
-        animator.SetBool("AtacandoVertical", false);
+        animator.SetBool("AtaquePinchos", false);
+    }
+    protected void ActivarAtaquePinzas()
+    {
+        if (!isFrozen)
+        {
+            Pinzas.enabled = true;
+        }
+    }
+    protected void DesactivarAtaquePinzas()
+    {
+        if (!isFrozen)
+        {
+            Pinzas.enabled = false;
+        }
+    }
+    public void ActivarZonaHorizontal()
+    {
+        Debug.Log("ZonaHorizontal activada - el jugador está dentro.");
+        estaAtacando = true;
+        AtaquePinzas = true;
+        animator.SetBool("AtaquePinzas", true);
+    }
+
+    public void DesactivarZonaHorizontal()
+    {
+        Debug.Log("ZonaHorizontal desactivada - el jugador salió.");
+        estaAtacando = false;
+        AtaquePinzas = false;
+        animator.SetBool("AtaquePinzas", false);
     }
     private void OnDrawGizmos()
     {
