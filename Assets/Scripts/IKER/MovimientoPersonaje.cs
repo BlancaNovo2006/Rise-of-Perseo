@@ -251,10 +251,7 @@ public class MovimientoPersonaje : MonoBehaviour
                 {
                     FreezeEnemies();
                 }
-                if (onFreezeCooldown)
-                {
-                    StartCoroutine(FreezeCooldown());
-                }
+                
 
                 //Pegaso
                 if (Input.GetKeyDown(KeyCode.O) && pegasoHabilidad != null && !onCooldownPegaso)
@@ -509,6 +506,7 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             CooldownFreezeText.text = Mathf.Ceil(cooldownFreezeTime).ToString();
         }
+        StartCoroutine(FreezeCooldown());
     }
     IEnumerator FreezeCooldown()
     {
