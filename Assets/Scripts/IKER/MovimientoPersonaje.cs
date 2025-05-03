@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
@@ -87,6 +88,9 @@ public class MovimientoPersonaje : MonoBehaviour
 
     private Vector2 ultimoPuntoRespawn;
 
+    private int habilidadActual = 0;
+    private List<Habilidad> habilidades;
+
 
     void Start()
     {
@@ -98,6 +102,12 @@ public class MovimientoPersonaje : MonoBehaviour
         posicionTp2 = CheetTp2.position;
         posicionTpSpawn = CheetTpSpawn.position;
 
+
+        habilidades = new List<Habilidad>
+        {
+            new Habilidad(FreezeEnemies, PuedeUsarFreezeEnemies),
+            new Habilidad(Pegaso, PuedeUsarPegaso)
+        };
 
         ActualizarUIVidas();
 
@@ -242,12 +252,13 @@ public class MovimientoPersonaje : MonoBehaviour
                     Atacando();
                 }
 
-                
 
-               
+
+                CambiarHabilidad();
+                UsarHabilidad();
 
                 //Cabeza Medusa
-                if (Input.GetKeyDown(KeyCode.I) && !onFreezeCooldown)
+                /*if (Input.GetKeyDown(KeyCode.I) && !onFreezeCooldown)
                 {
                     FreezeEnemies();
                 }
@@ -257,7 +268,7 @@ public class MovimientoPersonaje : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.O) && pegasoHabilidad != null && !onCooldownPegaso)
                 {
                     Pegaso();
-                }
+                }*/
 
                 
                
@@ -275,7 +286,53 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("planeando", planeando);
         animator.SetBool("endash", enDash);
     }
+    protected void CambiarHabilidad()
+    {
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
 
+        if (scroll > 0f)
+        {
+            habilidadActual = (habilidadActual + 1) % habilidades.Count;
+        }
+        else if (scroll < 0f)
+        {
+            habilidadActual = (habilidadActual - 1 + habilidades.Count) % habilidades.Count;
+        }
+    }
+    
+    protected void UsarHabilidad()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            if (habilidades[habilidadActual].PuedeUsar())
+            {
+                habilidades[habilidadActual].Ejecutar();
+            }
+            else
+            {
+                Debug.Log("No puedes usar esta habilidad ahora.");
+            }
+        }
+    }
+
+    // ==== CONDICIONES DE USO ====
+
+    bool PuedeUsarFreezeEnemies() => !onFreezeCooldown;
+    bool PuedeUsarPegaso() => pegasoHabilidad != null && !onCooldownPegaso;
+
+    // ==== ESTRUCTURA DE HABILIDAD ====
+
+    private class Habilidad
+    {
+        public Action Ejecutar;
+        public Func<bool> PuedeUsar;
+
+        public Habilidad(Action ejecutar, Func<bool> puedeUsar)
+        {
+            Ejecutar = ejecutar;
+            PuedeUsar = puedeUsar;
+        }
+    }
     IEnumerator Rodar()
     {
         
@@ -494,6 +551,11 @@ public class MovimientoPersonaje : MonoBehaviour
             if (CangrejoColosal != null)
             {
                 CangrejoColosal.Freeze(freezeDuration);
+            }
+            Sirena Sirena = Enemy.GetComponent<Sirena>();
+            if (Sirena != null)
+            {
+                Sirena.Freeze(freezeDuration);
             }
 
         }

@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRadius: 6
-  attackRadius: 4
+  detectionRadius: 4
+  attackRadius: 2
   speed: 3
-  fuerzaRebote: 4
+  fuerzaRebote: 0
   vidas: 2
   experienciaPrefab: {fileID: 0}
   ProyectilPrefab: {fileID: 7566238690216525153, guid: 91a5f0bb037ecae48b985dc0273a7f72, type: 3}

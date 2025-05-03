@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b5c8680e2fa46de47a77267370c4a90c
+guid: 909672e531b8c5542921d3eb6197ec7c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,136 +106,131 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: golemattack-Sheet_0
+      name: sirena_muerte-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eae262adc2f59fd4185c274eb2d2eda4
-      internalID: -1271645124
+      spriteID: 37c7bbd0cdc6bfc40acee630f6328ea8
+      internalID: 1838789260
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: golemattack-Sheet_1
+      name: sirena_muerte-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b950d22a87adaa84eb4399530e931a53
-      internalID: 207388001
+      spriteID: b9f5ec823767d264a85d1b6d773c3bdf
+      internalID: 1761016137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: golemattack-Sheet_2
+      name: sirena_muerte-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54264e0cece3e584ea0f56e9596065ef
-      internalID: -164668708
+      spriteID: 7ada73218ad79fc4faf1afb521386742
+      internalID: 1241829674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: golemattack-Sheet_3
+      name: sirena_muerte-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a13183db6091e5847bad4fa674fe1e39
-      internalID: -1274571376
+      spriteID: 697cece9dd801754fbb30b113b923dac
+      internalID: -1718593333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: golemattack-Sheet_4
+      name: sirena_muerte-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34b1dda5b5ce2eb4097eef55f663b535
-      internalID: -1049046269
+      spriteID: a872cde4d01d9dc42bc0cabf65b1f736
+      internalID: -1220751381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sirena_muerte-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 579e9d35096ef284bacbd13835f3181c
+      internalID: -680706083
       vertices: []
       indices: 
       edges: []
@@ -251,11 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      golemattack-Sheet_0: -1271645124
-      golemattack-Sheet_1: 207388001
-      golemattack-Sheet_2: -164668708
-      golemattack-Sheet_3: -1274571376
-      golemattack-Sheet_4: -1049046269
+      sirena_muerte-Sheet_0: 1838789260
+      sirena_muerte-Sheet_1: 1761016137
+      sirena_muerte-Sheet_2: 1241829674
+      sirena_muerte-Sheet_3: -1718593333
+      sirena_muerte-Sheet_4: -1220751381
+      sirena_muerte-Sheet_5: -680706083
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

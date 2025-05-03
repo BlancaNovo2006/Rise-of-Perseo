@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b5c8680e2fa46de47a77267370c4a90c
+guid: 569c608870fae7d488b96b7576bad762
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,136 +106,47 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: golemattack-Sheet_0
+      name: sirena_hurt-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eae262adc2f59fd4185c274eb2d2eda4
-      internalID: -1271645124
+      spriteID: 2d8de34bae49a63419f02a86d7487959
+      internalID: -119649440
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: golemattack-Sheet_1
+      name: sirena_hurt-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b950d22a87adaa84eb4399530e931a53
-      internalID: 207388001
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: golemattack-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54264e0cece3e584ea0f56e9596065ef
-      internalID: -164668708
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: golemattack-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a13183db6091e5847bad4fa674fe1e39
-      internalID: -1274571376
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: golemattack-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0.7, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34b1dda5b5ce2eb4097eef55f663b535
-      internalID: -1049046269
+      spriteID: ad1a9907f8200d145b729095215bf131
+      internalID: -753426866
       vertices: []
       indices: 
       edges: []
@@ -251,11 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      golemattack-Sheet_0: -1271645124
-      golemattack-Sheet_1: 207388001
-      golemattack-Sheet_2: -164668708
-      golemattack-Sheet_3: -1274571376
-      golemattack-Sheet_4: -1049046269
+      sirena_hurt-Sheet_0: -119649440
+      sirena_hurt-Sheet_1: -753426866
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
