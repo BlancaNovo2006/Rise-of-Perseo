@@ -16,7 +16,7 @@ public class MovimientoPersonaje : MonoBehaviour
     private Vector2 posicionTp2;
     private Vector2 posicionTpSpawn;
 
-    public int vida = 5;
+    public int vida = 10;
     public int vialRegenerativo = 5;
 
     public float velocidad;
@@ -33,7 +33,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public Image CooldownFill;
     public TextMeshProUGUI CooldownText;
 
-    public float freezeRadius = 5f;
+    public float freezeRadius;
     public LayerMask Enemy;
     public float freezeDuration = 3f;
     public float cooldownFreezeTime = 5f;
@@ -90,6 +90,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     private int habilidadActual = 0;
     private List<Habilidad> habilidades;
+    public List<Image> habilidadIcons;
 
 
     void Start()
@@ -105,6 +106,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
         habilidades = new List<Habilidad>
         {
+            new Habilidad(() => StartCoroutine(RegenerarVida()), PuedeUsarRegenerarVida),
             new Habilidad(FreezeEnemies, PuedeUsarFreezeEnemies),
             new Habilidad(Pegaso, PuedeUsarPegaso)
         };
@@ -193,40 +195,6 @@ public class MovimientoPersonaje : MonoBehaviour
                         rb.gravityScale = 1f;
                         planeando = false;
                     }
-                    
-
-                    //Regenerar Vida
-                    if (Input.GetKeyDown(KeyCode.R))
-                    {
-                        if (vida < 5)
-                        {
-                            if (vialRegenerativo > 0)
-                            {
-                                StartCoroutine(RegenerarVida());
-                                ActualizarUIVidas();
-
-                            }
-                        }
-                    }
-                    IEnumerator RegenerarVida()
-                    {
-                        // Cambiar el color a rojo
-                        spriteRenderer.color = Color.red;
-
-                        // Sumar 1 a la vida
-                        vida += 1;
-                        vialRegenerativo -= 1;
-                        if (vialRegenerativo < 0)
-                        {
-                            vialRegenerativo = 0;
-                        }
-
-                        // Esperar 1 segundo
-                        yield return new WaitForSeconds(0.3f);
-
-                        // Restaurar el color a blanco
-                        spriteRenderer.color = Color.white;
-                    }
 
                     //Chetos
                     if (Input.GetKeyDown(KeyCode.F1))
@@ -247,31 +215,14 @@ public class MovimientoPersonaje : MonoBehaviour
                     }
                 }
                 //Atacar
-                if (Input.GetKeyDown(KeyCode.F) && !atacando && enSuelo)
+                if (Input.GetKeyDown(KeyCode.Mouse0) && !atacando && enSuelo)
                 {
                     Atacando();
                 }
 
-
-
                 CambiarHabilidad();
                 UsarHabilidad();
-
-                //Cabeza Medusa
-                /*if (Input.GetKeyDown(KeyCode.I) && !onFreezeCooldown)
-                {
-                    FreezeEnemies();
-                }
-                
-
-                //Pegaso
-                if (Input.GetKeyDown(KeyCode.O) && pegasoHabilidad != null && !onCooldownPegaso)
-                {
-                    Pegaso();
-                }*/
-
-                
-               
+                ActualizarUIHabilidad();
             }
         }
 
@@ -290,11 +241,11 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        if (scroll > 0f)
+        if (scroll < 0f)
         {
             habilidadActual = (habilidadActual + 1) % habilidades.Count;
         }
-        else if (scroll < 0f)
+        else if (scroll > 0f)
         {
             habilidadActual = (habilidadActual - 1 + habilidades.Count) % habilidades.Count;
         }
@@ -315,10 +266,28 @@ public class MovimientoPersonaje : MonoBehaviour
         }
     }
 
+    protected void ActualizarUIHabilidad()
+    {
+        for (int i = 0; i < habilidadIcons.Count; i++)
+        {
+            if (i == habilidadActual)
+            {
+                habilidadIcons[i].color = Color.white; // Habilidad seleccionada
+                habilidadIcons[i].transform.localScale = Vector3.one * 2f; // Más grande
+            }
+            else
+            {
+                habilidadIcons[i].color = new Color(1f, 1f, 1f, 0.5f); // Más opaca
+                habilidadIcons[i].transform.localScale = Vector3.one; // Tamaño normal
+            }
+        }
+    }
+
     // ==== CONDICIONES DE USO ====
 
     bool PuedeUsarFreezeEnemies() => !onFreezeCooldown;
     bool PuedeUsarPegaso() => pegasoHabilidad != null && !onCooldownPegaso;
+    bool PuedeUsarRegenerarVida() => true;
 
     // ==== ESTRUCTURA DE HABILIDAD ====
 
@@ -447,7 +416,7 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         yield return new WaitForSeconds(tiempoRespawn);
         transform.position = ultimoPuntoRespawn;
-        vida = 5;
+        vida = 10;
         muerto = false;
         recibiendoDanio = false;
         animator.SetBool("muelto", false);
@@ -528,8 +497,20 @@ public class MovimientoPersonaje : MonoBehaviour
     }
     void FreezeEnemies()
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, freezeRadius, Enemy);
+        //Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto según la distancia que quieras delante del personaje
+        //bool mirandoDerecha = transform.localScale.x > 0;
+        //Vector2 freezePosition = (Vector2)transform.position + (mirandoDerecha ? offset : -offset);
+        //Collider2D[] enemies = Physics2D.OverlapCircleAll(freezePosition, freezeRadius, Enemy);
+        //animator.SetBool("ataquemedusa", true);
+
         animator.SetBool("ataquemedusa", true);
+
+        Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto según la distancia que quieras delante del personaje
+        bool mirandoDerecha = transform.localScale.x > 0;
+        Vector2 freezePosition = (Vector2)transform.position + (mirandoDerecha ? offset : -offset);
+
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(freezePosition, freezeRadius, Enemy);
+
         foreach (Collider2D Enemy in enemies)
         {
             GargolaDePiedra GargolaDePiedra = Enemy.GetComponent<GargolaDePiedra>();
@@ -618,7 +599,33 @@ public class MovimientoPersonaje : MonoBehaviour
             contadorExperiencia.text = "XP:" + experienciaActual;
         }
     }
+    IEnumerator RegenerarVida()
+    {
+        if (vida < 10)
+        {
+            if (vialRegenerativo > 0)
+            {
+                // Cambiar el color a rojo
+                spriteRenderer.color = Color.red;
 
+                // Sumar 1 a la vida
+                vida += 1;
+                vialRegenerativo -= 1;
+                if (vialRegenerativo < 0)
+                {
+                    vialRegenerativo = 0;
+                }
+
+                // Esperar 1 segundo
+                yield return new WaitForSeconds(0.3f);
+
+                // Restaurar el color a blanco
+                spriteRenderer.color = Color.white;
+                ActualizarUIVidas();
+            }
+        }
+
+    }
     void ActualizarUIVidas()
     {
         if(CooldownTextBloqueo != null)
@@ -631,6 +638,13 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * longitudRaycast);
+
+
+        Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto según la distancia que quieras delante del personaje
+        bool mirandoDerecha = transform.localScale.x > 0;
+        Vector2 freezePosition = (Vector2)transform.position + (mirandoDerecha ? offset : -offset);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(freezePosition, freezeRadius);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -665,8 +679,9 @@ public class MovimientoPersonaje : MonoBehaviour
         {
             ultimoPuntoRespawn = collision.transform.position;
             Debug.Log("Nuevo punto de respawn activado");
-            vida = 5;
+            vida = 10;
             vialRegenerativo = 5;
+            ActualizarUIVidas();
         }
     }
 }
