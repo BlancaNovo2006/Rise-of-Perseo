@@ -545,6 +545,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2775648421643511979, guid: 5096276bf945dda48823a1c6b19f6b1b, type: 3}
+      propertyPath: vidas
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775648421643511979, guid: 5096276bf945dda48823a1c6b19f6b1b, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2029169416}
@@ -564,6 +568,7 @@ GameObject:
   - component: {fileID: 209070358}
   - component: {fileID: 209070357}
   - component: {fileID: 209070356}
+  - component: {fileID: 209070359}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -621,6 +626,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &209070359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209070355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d0ef9d7f016f74eb5d8c1b03c33558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &276017531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -699,11 +716,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.01
+      value: 144.82
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.z

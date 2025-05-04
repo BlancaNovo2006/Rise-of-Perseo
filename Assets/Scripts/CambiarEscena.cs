@@ -10,7 +10,7 @@ public class CambiarEscena : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // Cambiar a la escena con el nombre especificado
-            SceneManager.LoadScene("Creditos");
+            SceneManager.LoadScene("NivelMaritimo");
         }
     }
 }
