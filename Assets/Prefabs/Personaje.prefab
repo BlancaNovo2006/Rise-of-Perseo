@@ -29,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72674776495957112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.44, y: -2.16, z: 0}
+  m_LocalPosition: {x: 34.811, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4485216592676188293}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1505551858231243068
 SpriteRenderer:
@@ -154,7 +154,7 @@ MonoBehaviour:
   CheetTpSpawn: {fileID: 0}
   vida: 10
   vialRegenerativo: 5
-  velocidad: 7
+  velocidad: 6
   fuerzaSalto: 5
   fuerzaRebote: 5
   longitudRaycast: 0.8
@@ -223,8 +223,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.037921906, y: -0.18625093}
-  m_Size: {x: 0.5936203, y: 1.024045}
+  m_Offset: {x: 0.017745972, y: -0.21192536}
+  m_Size: {x: 0.38477325, y: 0.9726961}
   m_Direction: 0
 --- !u!1 &8420862206652500912
 GameObject:

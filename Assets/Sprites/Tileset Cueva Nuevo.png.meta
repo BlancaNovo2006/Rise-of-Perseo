@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f775def202b9093428bad9578e0e502a
+guid: 464901aef4f78204783a995db2f14879
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,37 +106,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tileset nuevo_0
+      name: Tileset Cueva Nuevo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bef49f9e82307fc48b37886a660a9e2b
-      internalID: -1548918367
+      spriteID: 59cd7dc8188169a46bca1a87bc0f59c2
+      internalID: 2050313829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_1
+      name: Tileset Cueva Nuevo_1
       rect:
         serializedVersion: 2
         x: 32
@@ -171,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7d39d631121e37438e2dc6fb30cca76
-      internalID: -548079340
+      spriteID: 6d887b575efd1474c84005326e873a80
+      internalID: -1296738511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_2
+      name: Tileset Cueva Nuevo_2
       rect:
         serializedVersion: 2
         x: 64
@@ -192,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9d57349a8f287940b2f68d2473e0b18
-      internalID: 1279498757
+      spriteID: c8b9c2a1f083b9c4ca6b7da139bc45b3
+      internalID: 168511756
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_3
+      name: Tileset Cueva Nuevo_3
       rect:
         serializedVersion: 2
         x: 96
@@ -213,14 +187,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5822cb02d1ef5d042a46cc193a44e54d
-      internalID: -257124075
+      spriteID: c57826c6f4bae004ea19d953389a20f3
+      internalID: -894034794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_4
+      name: Tileset Cueva Nuevo_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 318bc7ec9c97b4e4c8569a599edb14cd
+      internalID: -1537834549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Cueva Nuevo_5
       rect:
         serializedVersion: 2
         x: 160
@@ -234,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7b03b1d7c363924595f1bb6f74020ff
-      internalID: -408191018
+      spriteID: 7c6553f027a056245ae79d82483c3cc8
+      internalID: 843646132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_5
+      name: Tileset Cueva Nuevo_6
       rect:
         serializedVersion: 2
         x: 0
@@ -255,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1096d7303c9e7c6438e799dde1212ed4
-      internalID: 367891567
+      spriteID: c45feb43de818bf46ac29a79f679304f
+      internalID: -1627156112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_6
+      name: Tileset Cueva Nuevo_7
       rect:
         serializedVersion: 2
         x: 32
@@ -276,14 +271,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0389e6997faf2204bbbcfd2312c89442
-      internalID: 1194006849
+      spriteID: a32764b214300ea478ada40540cc9949
+      internalID: -675874860
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_7
+      name: Tileset Cueva Nuevo_8
       rect:
         serializedVersion: 2
         x: 64
@@ -297,14 +292,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab10787da388cde418cd99be8d2ed821
-      internalID: -328713907
+      spriteID: a3fb3400d03d0434db4af201cca612ad
+      internalID: -625534022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_8
+      name: Tileset Cueva Nuevo_9
       rect:
         serializedVersion: 2
         x: 128
@@ -318,14 +313,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e54b59a2f24d425469c5b7c32940f297
-      internalID: 1800418549
+      spriteID: 126c63e6f2a80e942a05d8dd04bc49e0
+      internalID: -762807272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_9
+      name: Tileset Cueva Nuevo_10
       rect:
         serializedVersion: 2
         x: 0
@@ -339,14 +334,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f0ed690e3cef1640963a501648e06be
-      internalID: -1684196952
+      spriteID: 2d468b465f071e44aa43fbb04e91324a
+      internalID: -656279615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_10
+      name: Tileset Cueva Nuevo_11
       rect:
         serializedVersion: 2
         x: 32
@@ -360,14 +355,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba6c373816bdd3b4eaaecb20dc61556a
-      internalID: 1127987381
+      spriteID: fe2d01d2236750c47bb3821f0d666983
+      internalID: 18952114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_11
+      name: Tileset Cueva Nuevo_12
       rect:
         serializedVersion: 2
         x: 64
@@ -381,14 +376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca7be6adc00323240864a88e91c8c9a3
-      internalID: 1876145321
+      spriteID: b19e0895a61b65d4cb71bb7cc1e5ad14
+      internalID: -1118638539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_12
+      name: Tileset Cueva Nuevo_13
       rect:
         serializedVersion: 2
         x: 96
@@ -402,14 +397,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a02b61ee7d825243be01f381714fa90
-      internalID: -1561108564
+      spriteID: 81fc71ba26d7c694ebf6dfbadaa772cf
+      internalID: 1884496273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tileset nuevo_13
+      name: Tileset Cueva Nuevo_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ddd3fe0520c8644a800ecf15f62d8f4
+      internalID: -52751083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tileset Cueva Nuevo_15
       rect:
         serializedVersion: 2
         x: 160
@@ -423,8 +439,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7f3dce64cd703344ab355254708d13f
-      internalID: 64220887
+      spriteID: e90473e27120aad4eac43ab3fd51a3f5
+      internalID: -1631053816
       vertices: []
       indices: 
       edges: []
@@ -440,20 +456,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tileset nuevo_0: -1548918367
-      Tileset nuevo_1: -548079340
-      Tileset nuevo_10: 1127987381
-      Tileset nuevo_11: 1876145321
-      Tileset nuevo_12: -1561108564
-      Tileset nuevo_13: 64220887
-      Tileset nuevo_2: 1279498757
-      Tileset nuevo_3: -257124075
-      Tileset nuevo_4: -408191018
-      Tileset nuevo_5: 367891567
-      Tileset nuevo_6: 1194006849
-      Tileset nuevo_7: -328713907
-      Tileset nuevo_8: 1800418549
-      Tileset nuevo_9: -1684196952
+      Tileset Cueva Nuevo_0: 2050313829
+      Tileset Cueva Nuevo_1: -1296738511
+      Tileset Cueva Nuevo_10: -656279615
+      Tileset Cueva Nuevo_11: 18952114
+      Tileset Cueva Nuevo_12: -1118638539
+      Tileset Cueva Nuevo_13: 1884496273
+      Tileset Cueva Nuevo_14: -52751083
+      Tileset Cueva Nuevo_15: -1631053816
+      Tileset Cueva Nuevo_2: 168511756
+      Tileset Cueva Nuevo_3: -894034794
+      Tileset Cueva Nuevo_4: -1537834549
+      Tileset Cueva Nuevo_5: 843646132
+      Tileset Cueva Nuevo_6: -1627156112
+      Tileset Cueva Nuevo_7: -675874860
+      Tileset Cueva Nuevo_8: -625534022
+      Tileset Cueva Nuevo_9: -762807272
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
