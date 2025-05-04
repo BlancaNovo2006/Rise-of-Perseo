@@ -53,12 +53,15 @@ public class ParallaxScrolling : MonoBehaviour
     }
     private void LateUpdate()
     {
-        distance = cam.position.x - camStartPos.x;
+        Vector2 distance = new Vector2( 
+            cam.position.x - camStartPos.x,
+            cam.position.y - camStartPos.y
+        );
         transform.position = new Vector3(cam.position.x - 1, transform.position.y, 5);
         for (int i = 0; i < backgrounds.Length; i++)
         {
             float speed = backSpeed[i] * parallaxSpeed;
-            mat[i].SetTextureOffset("_MainTex", new Vector2(distance, 0) * speed);
+            mat[i].SetTextureOffset("_MainTex", distance * speed);
         }
     }
 }

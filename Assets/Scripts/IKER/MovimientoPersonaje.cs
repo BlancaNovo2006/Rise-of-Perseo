@@ -540,6 +540,16 @@ public class MovimientoPersonaje : MonoBehaviour
             }
 
         }
+        Collider2D[] plataformas = Physics2D.OverlapCircleAll(freezePosition, freezeRadius, capaSuelo);
+
+        foreach (Collider2D suelo in plataformas)
+        {
+            PlataformaMovil plataforma = suelo.GetComponent<PlataformaMovil>();
+            if (plataforma != null)
+            {
+                plataforma.Freeze(freezeDuration);
+            }
+        }
         onFreezeCooldown = true;
         if(CooldownFreezeFill != null)
         {
