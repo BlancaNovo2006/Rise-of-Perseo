@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1385897094570000086
+--- !u!1 &72674776495957112
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1594195761921380163}
-  - component: {fileID: 1621011183870051988}
-  - component: {fileID: 7065257395612527771}
-  - component: {fileID: 1331517295841163673}
-  - component: {fileID: 5354344232291645034}
-  - component: {fileID: 2775648421643511979}
-  m_Layer: 7
-  m_Name: Medusa (Boss)
-  m_TagString: Enemy
+  - component: {fileID: 9034855241150292450}
+  - component: {fileID: 1505551858231243068}
+  - component: {fileID: 6673883391572317446}
+  - component: {fileID: 7214833674661798206}
+  - component: {fileID: 6993854450524018602}
+  - component: {fileID: 3840065463512822066}
+  m_Layer: 6
+  m_Name: Personaje
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1594195761921380163
+--- !u!4 &9034855241150292450
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385897094570000086}
+  m_GameObject: {fileID: 72674776495957112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.023132, y: -0.7315748, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalPosition: {x: 10.44, y: -2.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7088985152570776816}
+  - {fileID: 4485216592676188293}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &1621011183870051988
+--- !u!212 &1505551858231243068
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385897094570000086}
+  m_GameObject: {fileID: 72674776495957112}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,46 +78,25 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 430686352, guid: 8bcd0f2b1d9b6f544ab56a7fa69ba14e, type: 3}
+  m_Sprite: {fileID: -10088596, guid: 6e38342af8d6ecf42bddb01683a2c126, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &7065257395612527771
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385897094570000086}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dd8a593c93431c14cbd066699abb4eb5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!50 &1331517295841163673
+--- !u!50 &6673883391572317446
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385897094570000086}
+  m_GameObject: {fileID: 72674776495957112}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -137,13 +116,88 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5354344232291645034
-BoxCollider2D:
+--- !u!95 &7214833674661798206
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385897094570000086}
+  m_GameObject: {fileID: 72674776495957112}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47e393c0867fffc4ea713dc82265815e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6993854450524018602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72674776495957112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837e1fe73452529489ce48c68ced9a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CheetTp1: {fileID: 0}
+  CheetTp2: {fileID: 0}
+  CheetTpSpawn: {fileID: 0}
+  vida: 10
+  vialRegenerativo: 5
+  velocidad: 7
+  fuerzaSalto: 5
+  fuerzaRebote: 5
+  longitudRaycast: 0.8
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 8
+  cooldownTime: 3
+  CooldownFill: {fileID: 0}
+  CooldownText: {fileID: 0}
+  freezeRadius: 1.5
+  Enemy:
+    serializedVersion: 2
+    m_Bits: 128
+  freezeDuration: 3
+  cooldownFreezeTime: 5
+  CooldownFreezeFill: {fileID: 0}
+  CooldownFreezeText: {fileID: 0}
+  pegasoHabilidad: {fileID: 0}
+  cooldownPegasoTime: 4
+  CooldownFillPegaso: {fileID: 0}
+  CooldownTextPegaso: {fileID: 0}
+  CooldownFillBloqueo: {fileID: 0}
+  CooldownTextBloqueo: {fileID: 0}
+  muerto: 0
+  experienciaActual: 0
+  contadorExperiencia: {fileID: 0}
+  puntoRespawn: {fileID: 0}
+  tiempoRespawn: 2
+  tiempoRodar: 0.5
+  velocidadRodar: 10
+  animator: {fileID: 7214833674661798206}
+  coyoteTimeDuration: 0.2
+  habilidadIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!70 &3840065463512822066
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72674776495957112}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -169,46 +223,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.029358864, y: -0.2437787}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.875, y: 2.875}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.7302265, y: 2.3790236}
-  m_EdgeRadius: 0
---- !u!114 &2775648421643511979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1385897094570000086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6db943fc04ac56846a8c489502e4de77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  detectionRadius: 10
-  attackRadius: 2
-  shootRadius: 7.5
-  speed: 2
-  fuerzaRebote: 4
-  vidas: 10
-  experienciaPrefab: {fileID: 0}
-  colaMedusaCollider: {fileID: 8381459049413820575}
-  experienciaSoltar: 20
-  SerpientePrefab: {fileID: 9063482354680505683, guid: ac3fe6c715aaf0e4285a49cbe692c244, type: 3}
-  velocidadSerpiente: 12
-  muerto: 0
-  tiempoEntreLanzamientos: 2
---- !u!1 &3581981111745183040
+  m_Offset: {x: 0.037921906, y: -0.18625093}
+  m_Size: {x: 0.5936203, y: 1.024045}
+  m_Direction: 0
+--- !u!1 &8420862206652500912
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,37 +234,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7088985152570776816}
-  - component: {fileID: 8381459049413820575}
-  m_Layer: 7
-  m_Name: ColaMedusa
-  m_TagString: ColaMedusa
+  - component: {fileID: 4485216592676188293}
+  - component: {fileID: 2816140496292739566}
+  m_Layer: 6
+  m_Name: Espada
+  m_TagString: Espada
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7088985152570776816
+--- !u!4 &4485216592676188293
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3581981111745183040}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 8420862206652500912}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.78, y: -0.3735819, z: 0.024871992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1594195761921380163}
+  m_Father: {fileID: 9034855241150292450}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &8381459049413820575
+--- !u!61 &2816140496292739566
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3581981111745183040}
+  m_GameObject: {fileID: 8420862206652500912}
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
@@ -272,7 +290,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.62615967, y: -0.95856905}
+  m_Offset: {x: -2.1044884, y: 0.2204876}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -283,5 +301,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2523193, y: 2.0204115}
+  m_Size: {x: 0.70641327, y: 0.95739174}
   m_EdgeRadius: 0
