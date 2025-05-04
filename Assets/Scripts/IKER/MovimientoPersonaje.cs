@@ -304,15 +304,13 @@ public class MovimientoPersonaje : MonoBehaviour
     }
     IEnumerator Rodar()
     {
-        
-
         rodando = true;
         enDash = true;
         invencible = true;
         animator.SetTrigger("Rodar");
 
         // Ignorar colisión entre Jugador y Enemigos
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
 
         float direccion = transform.localScale.x; // 1 si mira derecha, -1 si mira izquierda
         rb.velocity = new Vector2(velocidadRodar * direccion, rb.velocity.y);
