@@ -230,7 +230,7 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("Atacando", atacando);
         animator.SetBool("Caminar", caminar);
         //animator.SetBool("Rodando", rodando);
-        animator.SetBool("ataquemedusa", ataquemedusa);
+        animator.SetBool("AtaqueMedusa", ataquemedusa);
         animator.SetBool("recibiendoDanio", recibiendoDanio);
         animator.SetBool("muelto", muerto);
         //animator.SetBool("pegaso", pegaso);
@@ -404,6 +404,7 @@ public class MovimientoPersonaje : MonoBehaviour
             }
             if (!muerto)
             {
+                spriteRenderer.color = Color.red;
                 Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
                 rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
                 StartCoroutine(DesactivarDanio());
@@ -424,6 +425,7 @@ public class MovimientoPersonaje : MonoBehaviour
     IEnumerator DesactivarDanio()
     {
         yield return new WaitForSeconds(0.4f);
+        spriteRenderer.color = Color.white;
         recibiendoDanio = false;
         rb.velocity = Vector2.zero;
         animator.SetBool("recibiendoDanio", false);
@@ -614,7 +616,7 @@ public class MovimientoPersonaje : MonoBehaviour
             if (vialRegenerativo > 0)
             {
                 // Cambiar el color a rojo
-                spriteRenderer.color = Color.red;
+                spriteRenderer.color = Color.green;
 
                 // Sumar 1 a la vida
                 vida += 1;
