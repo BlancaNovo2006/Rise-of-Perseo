@@ -16,7 +16,6 @@ public class PegasoHabilidad : MonoBehaviour
 
     void Start()
     {
-        // 👇 Esto se ejecutará solo si el objeto está ACTIVADO en la jerarquía.
         camara = Camera.main;
         pegasoCollider = GetComponent<Collider2D>();
 
@@ -31,7 +30,6 @@ public class PegasoHabilidad : MonoBehaviour
                 perseoCollider = playerObj.GetComponent<Collider2D>();
         }
 
-        // 🔥 Aquí se desactiva automáticamente una vez se inicializa
         gameObject.SetActive(false);
     }
 
