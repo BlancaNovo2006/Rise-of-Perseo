@@ -229,7 +229,6 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("Atacando", atacando);
         animator.SetBool("Caminar", caminar);
         //animator.SetBool("Rodando", rodando);
-        animator.SetBool("AtaqueMedusa", AtaqueMedusa);
         animator.SetBool("recibiendoDanio", recibiendoDanio);
         animator.SetBool("muelto", muerto);
         //animator.SetBool("pegaso", pegaso);
