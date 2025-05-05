@@ -34,7 +34,7 @@ public class BossHealthBarUI : MonoBehaviour
         if (!medusaScript.muerto && distanciaAlJugador <= mostrarBarraDistancia)
         {
             canvasGroup.alpha = 1f;
-            float fillAmount = Mathf.Clamp01((float)medusaScript.vidas / 10f);
+            float fillAmount = Mathf.Clamp01((float)medusaScript.vidas / 5f);
             fillImage.fillAmount = fillAmount;
         }
         else

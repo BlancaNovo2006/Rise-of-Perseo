@@ -6,6 +6,7 @@ using UnityEngine;
 public class Medusa : MonoBehaviour
 {
     public Transform player;
+    public Transform posicionInicial;
     public float detectionRadius;
     public float attackRadius;
     public float shootRadius;
@@ -18,6 +19,7 @@ public class Medusa : MonoBehaviour
     public int experienciaSoltar = 20;
     public GameObject SerpientePrefab;
     public float velocidadSerpiente;
+    private MovimientoPersonaje movimientopersonaje;
 
     protected Rigidbody2D rb;
     protected Vector2 movement;
@@ -38,15 +40,22 @@ public class Medusa : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
 
     protected Animator animator;
+    private bool esperandoMuertePlayer = false;
 
 
     void Start()
     {
+        transform.position = posicionInicial.position;
         playervivo = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalSpeed = speed;
+
+        if (player != null)
+        {
+            movimientopersonaje = player.GetComponent<MovimientoPersonaje>();
+        }
     }
 
     protected void Update()
@@ -66,10 +75,28 @@ public class Medusa : MonoBehaviour
         animator.SetBool("EnMovimiento", EnMovimiento);
         animator.SetBool("AtaqueCola", AtaqueCola);
         animator.SetBool("AtaqueGrito", AtaqueGrito);
-        if (!playervivo)
+        if (movimientopersonaje != null &&  movimientopersonaje.vida <= 0)
         {
-            EnMovimiento = false;
+            playervivo = false;
+            if (!esperandoMuertePlayer)
+            {
+                esperandoMuertePlayer = true;
+                StartCoroutine(VolverAPosicionInicial());
+            }
         }
+        else
+        {
+            playervivo = true;
+            esperandoMuertePlayer = false;
+        }
+        
+    }
+    IEnumerator VolverAPosicionInicial()
+    {
+        yield return new WaitForSeconds(2f);
+        transform.position = posicionInicial.position;
+        vidas = 5;
+        EnMovimiento = false;
     }
     protected void Movimiento()
     {

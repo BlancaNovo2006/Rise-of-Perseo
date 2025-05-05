@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  detectionRadius: 10
+  detectionRadius: 8
   attackRadius: 2
   shootRadius: 7.5
   speed: 2
