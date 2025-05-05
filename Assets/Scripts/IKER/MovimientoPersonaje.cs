@@ -229,11 +229,11 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("ensuelo", enSuelo);
         animator.SetBool("Atacando", atacando);
         animator.SetBool("Caminar", caminar);
-        animator.SetBool("Rodando", rodando);
-        animator.SetBool("AtaqueMedusa", ataquemedusa);
-        animator.SetBool("atacado", recibiendoDanio);
+        //animator.SetBool("Rodando", rodando);
+        animator.SetBool("ataquemedusa", ataquemedusa);
+        animator.SetBool("recibiendoDanio", recibiendoDanio);
         animator.SetBool("muelto", muerto);
-        animator.SetBool("pegaso", pegaso);
+        //animator.SetBool("pegaso", pegaso);
         animator.SetBool("planeando", planeando);
         animator.SetBool("endash", enDash);
     }
@@ -330,7 +330,7 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         Vector3 direccionCarga = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
         pegasoHabilidad.ActivarCarga(transform.position, direccionCarga);
-        animator.SetBool("pegaso", true);
+        //animator.SetBool("pegaso", true);
         onCooldownPegaso = true;
         StartCoroutine(PegasoCooldown());
     }
