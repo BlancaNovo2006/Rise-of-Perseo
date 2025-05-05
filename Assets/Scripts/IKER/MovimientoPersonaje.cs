@@ -326,6 +326,7 @@ public class MovimientoPersonaje : MonoBehaviour
     }
     void Pegaso()
     {
+        Debug.LogError("Función Pegaso ejecutada");
         Vector3 direccionCarga = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
         pegasoHabilidad.ActivarCarga(transform.position, direccionCarga);
         //animator.SetBool("pegaso", true);
