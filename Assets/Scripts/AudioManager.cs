@@ -5,19 +5,29 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance {  get; private set; }
+    public static AudioManager instance {  get; private set; }
     private AudioSource AudioSource;
 
-    private void Awake()
+    /*private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
             Debug.Log("¡Más de 1 AudioManager en escena!");
         }
+    }*/
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     void Start()
     {

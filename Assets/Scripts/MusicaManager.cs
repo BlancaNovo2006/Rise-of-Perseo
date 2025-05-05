@@ -6,7 +6,18 @@ public class MusicaManager : MonoBehaviour
 {
     public AudioSource musicaNivelCueva;
     public AudioSource musicaBoss;
+    public static MusicaManager instance;
 
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     public void ActivarMusicaBoss()
     {
         if (musicaNivelCueva.isPlaying) musicaNivelCueva.Stop();
