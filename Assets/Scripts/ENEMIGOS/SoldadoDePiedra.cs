@@ -22,6 +22,7 @@ public class SoldadoDePiedra : MonoBehaviour
     protected bool EnMovimiento;
     protected bool recibiendoDanio;
     protected bool Atacando;
+    protected bool Hurt;
 
     protected bool isFrozen = false;
     protected float originalSpeed;
@@ -180,6 +181,7 @@ public class SoldadoDePiedra : MonoBehaviour
                 // Si no ha muerto, aplicar el rebote
                 Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
                 rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+                animator.SetBool("hurt", true);
             }
 
 
@@ -190,6 +192,7 @@ public class SoldadoDePiedra : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         recibiendoDanio = false;
+        animator.SetBool("hurt", false);
     }
 
     protected void Muerte()

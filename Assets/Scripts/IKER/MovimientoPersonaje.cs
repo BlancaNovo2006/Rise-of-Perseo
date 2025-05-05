@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class MovimientoPersonaje : MonoBehaviour
 {
@@ -24,8 +25,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public float fuerzaRebote = 6f;
     public float longitudRaycast = 0.3f;
     public LayerMask capaSuelo;
-
-   
+    
     private SpriteRenderer spriteRenderer;
     private int enemyLayer;
     public float cooldownTime = 3f;
@@ -102,7 +102,6 @@ public class MovimientoPersonaje : MonoBehaviour
         posicionTp1 = CheetTp1.position;
         posicionTp2 = CheetTp2.position;
         posicionTpSpawn = CheetTpSpawn.position;
-
 
         habilidades = new List<Habilidad>
         {
