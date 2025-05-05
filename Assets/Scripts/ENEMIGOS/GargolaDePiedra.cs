@@ -22,6 +22,7 @@ public class GargolaDePiedra : MonoBehaviour
     protected bool muerto;
     protected bool recibiendoDanio;
     protected bool Atacando;
+    protected bool hurt;
 
     protected bool canseePlayer = true;
 
@@ -189,6 +190,7 @@ public class GargolaDePiedra : MonoBehaviour
                 // Si no ha muerto, aplicar el rebote
                 Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
                 rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+                animator.SetBool("hurt", true);
             }
 
 
@@ -199,6 +201,7 @@ public class GargolaDePiedra : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         recibiendoDanio = false;
+        animator.SetBool("hurt", false);
     }
 
     protected void Muerte()
