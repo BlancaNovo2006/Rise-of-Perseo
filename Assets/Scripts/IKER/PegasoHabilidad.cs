@@ -8,8 +8,8 @@ public class PegasoHabilidad : MonoBehaviour
     public float velocidad = 15f;
     public float duracion = 3f;
 
-    private float tiempoRestante;
-    private bool enCarga = false;
+    //private float tiempoRestante;
+    //private bool enCarga = false;
 
     private Vector3 direccion;
 
@@ -58,6 +58,7 @@ public class PegasoHabilidad : MonoBehaviour
     public void ActivarCarga(Vector3 posicionInicial, Vector3 direccionCarga)
     {
         Debug.Log("Pegaso Activado" + posicionInicial);
+        posicionInicial.z -= 5;
         transform.position = posicionInicial;
         direccion = new Vector3(direccionCarga.x, 0, 0).normalized;
         if (pegasoCollider != null && perseoCollider != null)

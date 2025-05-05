@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,4 +40,4 @@ public class Boss_CorrerBehaviour : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
-}
+}*/

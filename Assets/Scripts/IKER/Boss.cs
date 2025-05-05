@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class Boss : MonoBehaviour
     private bool mirandoDerecha = true;
     public int vida = 3;
     private bool daniorecibido;
-    private bool muerto;
+    //private bool muerto;
     public float fuerzarebote = 10;
 
     [Header("Vida")]
@@ -24,7 +24,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private float radioAtaque;
     [SerializeField] private int cantdanio;
 
-    private bool canseePlayer = true;
+    //private bool canseePlayer = true;
 
 
     // Start is called before the first frame update
@@ -153,5 +153,5 @@ public class Boss : MonoBehaviour
         //Gizmos.DrawWireSphere(Ataque2.position, radioAtaque);
     }
 
-}
+}*/
 

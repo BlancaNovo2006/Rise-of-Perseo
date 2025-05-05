@@ -29,7 +29,7 @@ public class MovimientoPersonaje : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private int enemyLayer;
     public float cooldownTime = 3f;
-    private bool onCooldown = false;
+    //private bool onCooldown = false;
     public Image CooldownFill;
     public TextMeshProUGUI CooldownText;
 
@@ -58,7 +58,7 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool atacando;
     private bool caminar;
     private bool salto;
-    private bool ataquemedusa;
+    private bool AtaqueMedusa;
     private bool pegaso;
     private bool planeando;
     private bool enDash;
@@ -230,7 +230,7 @@ public class MovimientoPersonaje : MonoBehaviour
         animator.SetBool("Atacando", atacando);
         animator.SetBool("Caminar", caminar);
         //animator.SetBool("Rodando", rodando);
-        animator.SetBool("AtaqueMedusa", ataquemedusa);
+        animator.SetBool("AtaqueMedusa", AtaqueMedusa);
         animator.SetBool("recibiendoDanio", recibiendoDanio);
         animator.SetBool("muelto", muerto);
         //animator.SetBool("pegaso", pegaso);
@@ -445,7 +445,7 @@ public class MovimientoPersonaje : MonoBehaviour
     {
         float elapsedTime = 0f;
         
-        onCooldown = true;
+        //onCooldown = true;
         while (elapsedTime < cooldownTime)
         {
             elapsedTime += Time.deltaTime;
@@ -475,7 +475,7 @@ public class MovimientoPersonaje : MonoBehaviour
         }
 
         SetCooldownOpacity(1f);
-        onCooldown = false;
+        //onCooldown = false;
     }
     void SetOpacity(float alpha)
     {
@@ -503,7 +503,7 @@ public class MovimientoPersonaje : MonoBehaviour
         //Collider2D[] enemies = Physics2D.OverlapCircleAll(freezePosition, freezeRadius, Enemy);
         //animator.SetBool("ataquemedusa", true);
 
-        animator.SetBool("ataquemedusa", true);
+        animator.SetBool("AtaqueMedusa", true);
 
         Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto según la distancia que quieras delante del personaje
         bool mirandoDerecha = transform.localScale.x > 0;
@@ -591,7 +591,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     void DesactivarMedusa()
     {
-        animator.SetBool("ataquemedusa", false);
+        animator.SetBool("AtaqueMedusa", false);
     }
     void DesactivarBlock()
     {
