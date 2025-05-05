@@ -12,7 +12,7 @@ public class MenuPausa : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        juegoPausado = false;
+        Reanudar();
     }
 
     // Update is called once per frame
