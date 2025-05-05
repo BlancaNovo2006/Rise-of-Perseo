@@ -29,6 +29,7 @@ public class Medusa : MonoBehaviour
     protected bool recibiendoDanio;
     protected bool AtaqueCola;
     protected bool AtaqueGrito;
+   
 
     public float tiempoEntreLanzamientos = 2f; // Tiempo en segundos entre lanzamientos de serpientes
     private bool puedeLanzarSerpiente = true; // Flag para controlar el lanzamiento
@@ -42,6 +43,9 @@ public class Medusa : MonoBehaviour
     protected Animator animator;
     private bool esperandoMuertePlayer = false;
 
+    //protected bool muerto = false;
+    public static bool EstaMuerto = false;
+    //public bool EstaMuerto => muerto;
 
     void Start()
     {
@@ -277,6 +281,7 @@ public class Medusa : MonoBehaviour
             // Si las vidas son 0 o menos, destruir al enemigo
             if (vidas <= 0)
             {
+               
                 Muerte();
             }
             else
@@ -300,11 +305,15 @@ public class Medusa : MonoBehaviour
         EnMovimiento = true;
         AtaqueCola = true;
     }
-
-    protected void Muerte()
+    private void Awake()
     {
-        muerto = true;
+        animator = GetComponent<Animator>();
+    }
+    public void Muerte()
+    {
+        EstaMuerto = true;
         animator.SetBool("EstaMuerta", true );
+        Debug.Log("Medusa ha muerto.");
         //if (experienciaPrefab != null)
         //{
         //Vector3 posicion = transform.position;
@@ -316,7 +325,7 @@ public class Medusa : MonoBehaviour
 
         StartCoroutine(EsperarMuerte());
     }
-    IEnumerator EsperarMuerte()
+    private IEnumerator EsperarMuerte()
     {
         // Espera el tiempo de duración de la animación de muerte anticipada
         yield return new WaitForSeconds(1f); // Ajusta este tiempo según la duración de la animación

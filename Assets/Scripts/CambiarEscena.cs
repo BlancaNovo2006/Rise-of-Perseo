@@ -1,16 +1,36 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;  // Necesario para cargar escenas
+using UnityEngine.SceneManagement;
 
 public class CambiarEscena : MonoBehaviour
 {
-    // Este método se llama cuando otro collider entra en el trigger
+    public GameObject enemigoObjetivo;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Aquí puedes comprobar si el objeto que entra al trigger es el correcto, por ejemplo si es el jugador
         if (other.CompareTag("Player"))
         {
-            // Cambiar a la escena con el nombre especificado
-            SceneManager.LoadScene("NivelMaritimo");
-        }
+            Debug.Log("Estado actual de Medusa (static): " + Medusa.EstaMuerto);
+            //Medusa scriptMedusa = enemigoObjetivo.GetComponent<Medusa>();
+
+            //if (scriptMedusa.muerto == true)
+            //if (scriptMedusa != null)
+            //{
+            //Debug.Log("Estado actual de Medusa: " + scriptMedusa.EstaMuerto);
+
+            //scriptMedusa.EstaMuerto = true;
+            //if (scriptMedusa.EstaMuerto)
+            if (Medusa.EstaMuerto)
+            //Debug.Log("Medusa está muerta: " + scriptMedusa.EstaMuerto);
+            {
+                //Debug.Log("Cambiando a escena NivelMaritimo...");
+                Debug.Log("Medusa está muerta. Cambiando a escena NivelMaritimo...");
+                SceneManager.LoadScene("NivelMaritimo");
+            }
+            else
+            {
+                    Debug.Log("Medusa aún no ha muerto");
+            }
+        }   
+        
     }
 }
