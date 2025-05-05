@@ -33,6 +33,8 @@ public class Ceto : MonoBehaviour
     private bool esperandoMuertePlayer = false;
     public Transform posicionInicial;
     private MovimientoPersonaje movimientopersonaje;
+    public static bool EstaMuerto = false;
+
 
 
 
@@ -85,7 +87,7 @@ public class Ceto : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         transform.position = posicionInicial.position;
-        vidas = 5;
+        vidas = 10;
     }
     protected void Movimiento()
     {
@@ -219,10 +221,11 @@ public class Ceto : MonoBehaviour
         Atacando = true;
     }
 
-    protected void Muerte()
+    public void Muerte()
     {
-        muerto = true;
+        EstaMuerto = true;
         animator.SetBool("EstaMuerto", true);
+        Debug.Log("Ceto ha muerto.");
         //if (experienciaPrefab != null)
         //{
         //Vector3 posicion = transform.position;
@@ -234,10 +237,10 @@ public class Ceto : MonoBehaviour
 
         StartCoroutine(EsperarMuerte());
     }
-    IEnumerator EsperarMuerte()
+    private IEnumerator EsperarMuerte()
     {
         // Espera el tiempo de duración de la animación de muerte anticipada
-        yield return new WaitForSeconds(0.483f); // Ajusta este tiempo según la duración de la animación
+        yield return new WaitForSeconds(1f); // Ajusta este tiempo según la duración de la animación
         Destroy(gameObject); // Destruir el enemigo después de que la animación haya terminado
     }
 

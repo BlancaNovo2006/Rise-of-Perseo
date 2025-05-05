@@ -536,6 +536,11 @@ public class MovimientoPersonaje : MonoBehaviour
             {
                 Sirena.Freeze(freezeDuration);
             }
+            Ceto Ceto = Enemy.GetComponent<Ceto>();
+            if (Ceto != null)
+            {
+                Ceto.Freeze(freezeDuration);
+            }
 
         }
         Collider2D[] plataformas = Physics2D.OverlapCircleAll(freezePosition, freezeRadius, capaSuelo);

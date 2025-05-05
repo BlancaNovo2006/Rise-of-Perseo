@@ -34,7 +34,7 @@ public class BarraBossCeto : MonoBehaviour
         if (!CetoScript.muerto && distanciaAlJugador <= mostrarBarraDistancia)
         {
             canvasGroup.alpha = 1f;
-            float fillAmount = Mathf.Clamp01((float)CetoScript.vidas / 5f);
+            float fillAmount = Mathf.Clamp01((float)CetoScript.vidas / 10f);
             fillImage.fillAmount = fillAmount;
         }
         else
