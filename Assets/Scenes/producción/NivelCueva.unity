@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5929661936201040227, guid: 6dce695c40f21594295aeb3544d22c4f, type: 3}
+      propertyPath: enemigoObjetivo
+      value: 
+      objectReference: {fileID: 1385897094570000086, guid: 5096276bf945dda48823a1c6b19f6b1b, type: 3}
     - target: {fileID: 8248478211745212193, guid: 6dce695c40f21594295aeb3544d22c4f, type: 3}
       propertyPath: m_Name
       value: FinalNivel
@@ -553,9 +557,17 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2775648421643511979, guid: 5096276bf945dda48823a1c6b19f6b1b, type: 3}
+      propertyPath: muerto
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2775648421643511979, guid: 5096276bf945dda48823a1c6b19f6b1b, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2029169416}
+    - target: {fileID: 2775648421643511979, guid: 5096276bf945dda48823a1c6b19f6b1b, type: 3}
+      propertyPath: EstaMuerto
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2775648421643511979, guid: 5096276bf945dda48823a1c6b19f6b1b, type: 3}
       propertyPath: posicionInicial
       value: 
@@ -724,11 +736,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 165.71
+      value: -1.14
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.49
+      value: 0.74
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.z
