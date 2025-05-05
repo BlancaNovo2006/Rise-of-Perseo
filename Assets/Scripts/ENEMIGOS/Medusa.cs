@@ -11,7 +11,7 @@ public class Medusa : MonoBehaviour
     public float shootRadius;
     public float speed;
     public float fuerzaRebote;
-    public int vidas;  // Vidas del enemigo
+    public int vidas = 5;  // Vidas del enemigo
 
     public GameObject experienciaPrefab;
     public Collider2D colaMedusaCollider;

@@ -19,7 +19,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public int vida = 10;
     public int vialRegenerativo = 5;
 
-    public float velocidad;
+    public float velocidad = 6f;
     public float fuerzaSalto = 10f;
     public float fuerzaRebote = 6f;
     public float longitudRaycast = 0.3f;
@@ -33,7 +33,7 @@ public class MovimientoPersonaje : MonoBehaviour
     public Image CooldownFill;
     public TextMeshProUGUI CooldownText;
 
-    public float freezeRadius;
+    public float freezeRadius = 1.5f;
     public LayerMask Enemy;
     public float freezeDuration = 3f;
     public float cooldownFreezeTime = 5f;
@@ -52,16 +52,16 @@ public class MovimientoPersonaje : MonoBehaviour
     public Image CooldownFillBloqueo;
     public TextMeshProUGUI CooldownTextBloqueo;
 
-    private bool enSuelo;
-    private bool recibiendoDanio;
-    public bool muerto;
-    private bool atacando;
-    private bool caminar;
-    private bool salto;
-    private bool AtaqueMedusa;
-    private bool pegaso;
-    private bool planeando;
-    private bool enDash;
+    private bool enSuelo = true;
+    private bool recibiendoDanio = false;
+    public bool muerto = false;
+    private bool atacando = false;
+    private bool caminar =false;
+    private bool salto = false;
+    private bool AtaqueMedusa = false;
+    private bool pegaso = false;
+    private bool planeando = false;
+    private bool enDash = false;
 
 
     

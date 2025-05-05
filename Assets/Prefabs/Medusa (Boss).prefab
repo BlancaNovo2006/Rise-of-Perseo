@@ -200,7 +200,7 @@ MonoBehaviour:
   shootRadius: 7.5
   speed: 2
   fuerzaRebote: 4
-  vidas: 10
+  vidas: 5
   experienciaPrefab: {fileID: 0}
   colaMedusaCollider: {fileID: 8381459049413820575}
   experienciaSoltar: 20
