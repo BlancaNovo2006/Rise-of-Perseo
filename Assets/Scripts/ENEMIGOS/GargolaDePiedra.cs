@@ -33,6 +33,8 @@ public class GargolaDePiedra : MonoBehaviour
 
     public Material grayscaleMaterial;
     private Material originalMaterial;
+    
+    protected bool Petrificado = false;
 
     void Start()
     {
@@ -226,18 +228,20 @@ public class GargolaDePiedra : MonoBehaviour
     {
         if (!isFrozen)
         {
+            Petrificado = true;
+            animator.SetBool("Petrificado", true);
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            if (spriteRenderer != null)
+            /*if (spriteRenderer != null)
             {
                 originalMaterial = spriteRenderer.material;
                 spriteRenderer.material = grayscaleMaterial;
-            }
-            if (animator != null)
+            }*/
+            /*if (animator != null)
             {
                 animator.enabled = false;
-            }
+            }*/
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
@@ -245,15 +249,17 @@ public class GargolaDePiedra : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         isFrozen = false;
+        Petrificado = false;
+        animator.SetBool("Petrificado", false);
         speed = originalSpeed;
-        if (spriteRenderer != null)
+        /*if (spriteRenderer != null)
         {
             spriteRenderer.material = originalMaterial;
-        }
-        if (animator != null)
+        }*/
+        /*if (animator != null)
         {
             animator.enabled = true;
-        }
+        }*/
     }
 
     protected void OnDrawGizmosSelected()
