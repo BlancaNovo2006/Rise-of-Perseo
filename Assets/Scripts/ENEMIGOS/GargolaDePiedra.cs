@@ -22,7 +22,6 @@ public class GargolaDePiedra : MonoBehaviour
     protected bool muerto;
     protected bool recibiendoDanio;
     protected bool Atacando;
-    protected bool hurt;
 
     protected bool canseePlayer = true;
 
@@ -32,6 +31,8 @@ public class GargolaDePiedra : MonoBehaviour
 
     protected Animator animator;
 
+    public Material grayscaleMaterial;
+    private Material originalMaterial;
 
     void Start()
     {
@@ -173,6 +174,8 @@ public class GargolaDePiedra : MonoBehaviour
         if (!recibiendoDanio)
         {
             recibiendoDanio = true;
+            animator.SetBool("recibiendoDanio", true);
+
             // Reducir las vidas del enemigo
             vidas -= cantDanio;
 
@@ -190,7 +193,6 @@ public class GargolaDePiedra : MonoBehaviour
                 // Si no ha muerto, aplicar el rebote
                 Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
                 rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
-                animator.SetBool("hurt", true);
             }
 
 
@@ -199,9 +201,9 @@ public class GargolaDePiedra : MonoBehaviour
     }
     IEnumerator DesactivarDanio()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.25f);
         recibiendoDanio = false;
-        animator.SetBool("hurt", false);
+        animator.SetBool("recibiendoDanio", false);
     }
 
     protected void Muerte()
@@ -227,7 +229,11 @@ public class GargolaDePiedra : MonoBehaviour
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            spriteRenderer.color = Color.blue;
+            if (spriteRenderer != null)
+            {
+                originalMaterial = spriteRenderer.material;
+                spriteRenderer.material = grayscaleMaterial;
+            }
             if (animator != null)
             {
                 animator.enabled = false;
@@ -235,13 +241,15 @@ public class GargolaDePiedra : MonoBehaviour
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
-
     IEnumerator UnfreezeAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);
         isFrozen = false;
         speed = originalSpeed;
-        spriteRenderer.color = Color.white;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.material = originalMaterial;
+        }
         if (animator != null)
         {
             animator.enabled = true;

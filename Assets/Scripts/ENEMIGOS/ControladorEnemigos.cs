@@ -31,6 +31,8 @@ public class ControladorEnemigos : MonoBehaviour
 
     protected Animator animator;
 
+    public Material grayscaleMaterial;
+    private Material originalMaterial;
 
     void Start()
     {
@@ -179,7 +181,11 @@ public class ControladorEnemigos : MonoBehaviour
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            spriteRenderer.color = Color.blue;
+            if (spriteRenderer != null)
+            {
+                originalMaterial = spriteRenderer.material;
+                spriteRenderer.material = grayscaleMaterial;
+            }
             if (animator != null)
             {
                 animator.enabled = false;
@@ -187,13 +193,15 @@ public class ControladorEnemigos : MonoBehaviour
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
-
     IEnumerator UnfreezeAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);
         isFrozen = false;
         speed = originalSpeed;
-        spriteRenderer.color = Color.red;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.material = originalMaterial;
+        }
         if (animator != null)
         {
             animator.enabled = true;

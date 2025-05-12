@@ -35,7 +35,8 @@ public class Ceto : MonoBehaviour
     private MovimientoPersonaje movimientopersonaje;
     public static bool EstaMuerto = false;
 
-
+    public Material grayscaleMaterial;
+    private Material originalMaterial;
 
 
     void Start()
@@ -169,13 +170,6 @@ public class Ceto : MonoBehaviour
 
             RecibeDanio(direcciondanio, 1);
         }
-        if (collision.CompareTag("Hoz"))
-        {
-            Debug.Log("Golpe con Hoz (ataque fuerte)");
-            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
-
-            RecibeDanio(direcciondanio, 2);
-        }
         if (collision.CompareTag("Pegaso"))
         {
             Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
@@ -213,7 +207,7 @@ public class Ceto : MonoBehaviour
     }
     IEnumerator DesactivarDanio()
     {
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.217f);
         recibiendoDanio = false;
         animator.SetBool("recibiendoDanio", false);
 
@@ -240,7 +234,7 @@ public class Ceto : MonoBehaviour
     private IEnumerator EsperarMuerte()
     {
         // Espera el tiempo de duración de la animación de muerte anticipada
-        yield return new WaitForSeconds(1f); // Ajusta este tiempo según la duración de la animación
+        yield return new WaitForSeconds(0.683f); // Ajusta este tiempo según la duración de la animación
         Destroy(gameObject); // Destruir el enemigo después de que la animación haya terminado
     }
 
@@ -251,7 +245,11 @@ public class Ceto : MonoBehaviour
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            spriteRenderer.color = Color.blue;
+            if (spriteRenderer != null)
+            {
+                originalMaterial = spriteRenderer.material;
+                spriteRenderer.material = grayscaleMaterial;
+            }
             if (animator != null)
             {
                 animator.enabled = false;
@@ -259,13 +257,15 @@ public class Ceto : MonoBehaviour
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
-
     IEnumerator UnfreezeAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);
         isFrozen = false;
         speed = originalSpeed;
-        spriteRenderer.color = Color.white;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.material = originalMaterial;
+        }
         if (animator != null)
         {
             animator.enabled = true;

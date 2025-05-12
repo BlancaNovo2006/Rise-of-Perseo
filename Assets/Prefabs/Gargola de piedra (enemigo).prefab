@@ -158,6 +158,7 @@ MonoBehaviour:
   ProyectilPrefab: {fileID: 7566238690216525153, guid: 91a5f0bb037ecae48b985dc0273a7f72, type: 3}
   velocidadProyectil: 7
   experienciaSoltar: 20
+  grayscaleMaterial: {fileID: 2100000, guid: ba014ca18d0a9b641b06c5f93e3da1e7, type: 2}
 --- !u!70 &4873926297423426684
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

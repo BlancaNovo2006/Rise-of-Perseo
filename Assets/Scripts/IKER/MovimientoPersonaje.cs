@@ -19,8 +19,7 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public int vida = 10;
     public int vialRegenerativo = 5;
-
-    public float velocidad = 6f;
+    public float velocidad = 3f;
     public float fuerzaSalto = 10f;
     public float fuerzaRebote = 6f;
     public float longitudRaycast = 0.3f;
@@ -36,14 +35,14 @@ public class MovimientoPersonaje : MonoBehaviour
     public float freezeRadius = 1.5f;
     public LayerMask Enemy;
     public float freezeDuration = 3f;
-    public float cooldownFreezeTime = 5f;
+    public float cooldownFreezeTime = 10f;
     private bool onFreezeCooldown = false;
     public Image CooldownFreezeFill;
     public TextMeshProUGUI CooldownFreezeText;
 
     public PegasoHabilidad pegasoHabilidad;
     private Vector3 direccionCarga;
-    public float cooldownPegasoTime = 4f;
+    public float cooldownPegasoTime = 6f;
     private bool onCooldownPegaso = false;
     public Image CooldownFillPegaso;
     public TextMeshProUGUI CooldownTextPegaso;
@@ -73,7 +72,7 @@ public class MovimientoPersonaje : MonoBehaviour
     //public int experienciaPerdida = 0;
 
     public Transform puntoRespawn;
-    public float tiempoRespawn = 2f;
+    public float tiempoRespawn = 0.6f;
 
     public float tiempoRodar = 0.5f;
     public float velocidadRodar = 10f;

@@ -182,6 +182,7 @@ MonoBehaviour:
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
   EspadaSirena: {fileID: 8183361310448922280}
+  grayscaleMaterial: {fileID: 2100000, guid: ba014ca18d0a9b641b06c5f93e3da1e7, type: 2}
 --- !u!95 &6798775636999200166
 Animator:
   serializedVersion: 5

@@ -235,6 +235,7 @@ MonoBehaviour:
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20
   espadaPiedraCollider: {fileID: 6796801267987543080}
+  grayscaleMaterial: {fileID: 2100000, guid: ba014ca18d0a9b641b06c5f93e3da1e7, type: 2}
 --- !u!70 &8279342086822763364
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

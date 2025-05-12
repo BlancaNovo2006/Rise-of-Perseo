@@ -9,6 +9,9 @@ public class CangrejoColosal : MonoBehaviour
     public float distancia;
     private bool moviendoDerecha;
     private Rigidbody2D rb;
+    public Transform controladorPared;
+    public float distanciaPared = 0.5f;
+
 
     protected bool AtaquePinzas;
     protected bool AtaquePinchos;
@@ -30,6 +33,9 @@ public class CangrejoColosal : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     protected Animator animator;
 
+    public Material grayscaleMaterial;
+    private Material originalMaterial;
+
     protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,20 +50,22 @@ public class CangrejoColosal : MonoBehaviour
         if (!muerto && !isFrozen && !estaAtacando)
         {
             RaycastHit2D informacionSuelo = Physics2D.Raycast(controladorSuelo.position, Vector2.down, distancia);
+            Vector2 direccion = moviendoDerecha ? Vector2.right : Vector2.left;
+            RaycastHit2D informacionPared = Physics2D.Raycast(controladorPared.position, direccion, distanciaPared);
 
             rb.velocity = new Vector2(speed, rb.velocity.y);
 
-            if (informacionSuelo == false)
+            if (!informacionSuelo || informacionPared)
             {
                 Girar();
             }
         }
         else if (isFrozen)
         {
-            rb.velocity = Vector2.zero; // Asegura que no siga con velocidad anterior
+            rb.velocity = Vector2.zero;
         }
-
     }
+
 
     protected void Girar()
     {
@@ -150,7 +158,11 @@ public class CangrejoColosal : MonoBehaviour
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            spriteRenderer.color = Color.blue;
+            if (spriteRenderer != null)
+            {
+                originalMaterial = spriteRenderer.material;
+                spriteRenderer.material = grayscaleMaterial;
+            }
             if (animator != null)
             {
                 animator.enabled = false;
@@ -163,7 +175,10 @@ public class CangrejoColosal : MonoBehaviour
         yield return new WaitForSeconds(duration);
         isFrozen = false;
         speed = originalSpeed;
-        spriteRenderer.color = Color.white;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.material = originalMaterial;
+        }
         if (animator != null)
         {
             animator.enabled = true;
@@ -231,6 +246,9 @@ public class CangrejoColosal : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(controladorSuelo.transform.position, controladorSuelo.transform.position + Vector3.down * distancia);
+        Gizmos.color = Color.blue;
+        Vector3 direccion = moviendoDerecha ? Vector3.right : Vector3.left;
+        Gizmos.DrawLine(controladorPared.position, controladorPared.position + direccion * distanciaPared);
     }
 
     

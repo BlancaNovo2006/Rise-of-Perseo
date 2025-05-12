@@ -22,7 +22,6 @@ public class SoldadoDePiedra : MonoBehaviour
     protected bool EnMovimiento;
     protected bool recibiendoDanio;
     protected bool Atacando;
-    protected bool Hurt;
 
     protected bool isFrozen = false;
     protected float originalSpeed;
@@ -30,6 +29,9 @@ public class SoldadoDePiedra : MonoBehaviour
 
     protected Animator animator;
     public Collider2D espadaPiedraCollider;
+
+    public Material grayscaleMaterial;
+    private Material originalMaterial;
 
     void Start()
     {
@@ -164,12 +166,15 @@ public class SoldadoDePiedra : MonoBehaviour
         if (!recibiendoDanio)
         {
             recibiendoDanio = true;
+            animator.SetBool("recibiendoDanio", true);
+
             // Reducir las vidas del enemigo
             vidas -= cantDanio;
 
             Atacando = false;
             animator.SetBool("Atacando", false);
             animator.Play("Idle", 0);
+            
 
             // Si las vidas son 0 o menos, destruir al enemigo
             if (vidas <= 0)
@@ -181,7 +186,6 @@ public class SoldadoDePiedra : MonoBehaviour
                 // Si no ha muerto, aplicar el rebote
                 Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
                 rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
-                animator.SetBool("hurt", true);
             }
 
 
@@ -190,9 +194,9 @@ public class SoldadoDePiedra : MonoBehaviour
     }
     IEnumerator DesactivarDanio()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.25f);
         recibiendoDanio = false;
-        animator.SetBool("hurt", false);
+        animator.SetBool("recibiendoDanio", false);
     }
 
     protected void Muerte()
@@ -218,7 +222,11 @@ public class SoldadoDePiedra : MonoBehaviour
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            spriteRenderer.color = Color.blue;
+            if (spriteRenderer != null)
+            {
+                originalMaterial = spriteRenderer.material;
+                spriteRenderer.material = grayscaleMaterial;
+            }
             if (animator != null)
             {
                 animator.enabled = false;
@@ -226,13 +234,15 @@ public class SoldadoDePiedra : MonoBehaviour
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
-
     IEnumerator UnfreezeAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);
         isFrozen = false;
         speed = originalSpeed;
-        spriteRenderer.color = Color.white;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.material = originalMaterial;
+        }
         if (animator != null)
         {
             animator.enabled = true;

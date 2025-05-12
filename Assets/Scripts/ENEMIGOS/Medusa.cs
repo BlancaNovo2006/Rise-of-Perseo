@@ -47,6 +47,9 @@ public class Medusa : MonoBehaviour
     public static bool EstaMuerto = false;
     //public bool EstaMuerto => muerto;
 
+    public Material grayscaleMaterial;
+    private Material originalMaterial;
+
     void Start()
     {
         transform.position = posicionInicial.position;
@@ -339,7 +342,11 @@ public class Medusa : MonoBehaviour
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            spriteRenderer.color = Color.blue;
+            if (spriteRenderer != null)
+            {
+                originalMaterial = spriteRenderer.material;
+                spriteRenderer.material = grayscaleMaterial;
+            }
             if (animator != null)
             {
                 animator.enabled = false;
@@ -347,13 +354,15 @@ public class Medusa : MonoBehaviour
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
-
     IEnumerator UnfreezeAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);
         isFrozen = false;
         speed = originalSpeed;
-        spriteRenderer.color = Color.white;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.material = originalMaterial;
+        }
         if (animator != null)
         {
             animator.enabled = true;
