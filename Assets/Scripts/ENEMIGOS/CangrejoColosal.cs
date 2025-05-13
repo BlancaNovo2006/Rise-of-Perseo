@@ -69,7 +69,6 @@ public class CangrejoColosal : MonoBehaviour
 
     protected void Girar()
     {
-        Debug.Log("girar");
         moviendoDerecha = !moviendoDerecha;
 
         Vector3 escala = transform.localScale;

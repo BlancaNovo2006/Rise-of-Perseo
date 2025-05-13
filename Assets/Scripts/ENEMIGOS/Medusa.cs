@@ -19,7 +19,7 @@ public class Medusa : MonoBehaviour
     public int experienciaSoltar = 20;
     public GameObject SerpientePrefab;
     public float velocidadSerpiente;
-    private MovimientoPersonaje movimientopersonaje;
+    private MovimientoPersonaje movimientoPersonaje;
 
     protected Rigidbody2D rb;
     protected Vector2 movement;
@@ -61,7 +61,7 @@ public class Medusa : MonoBehaviour
 
         if (player != null)
         {
-            movimientopersonaje = player.GetComponent<MovimientoPersonaje>();
+            movimientoPersonaje = player.GetComponent<MovimientoPersonaje>();
         }
     }
 
@@ -82,7 +82,7 @@ public class Medusa : MonoBehaviour
         animator.SetBool("EnMovimiento", EnMovimiento);
         animator.SetBool("AtaqueCola", AtaqueCola);
         animator.SetBool("AtaqueGrito", AtaqueGrito);
-        if (movimientopersonaje != null &&  movimientopersonaje.vida <= 0)
+        if (movimientoPersonaje != null &&  movimientoPersonaje.vida <= 0)
         {
             playervivo = false;
             if (!esperandoMuertePlayer)

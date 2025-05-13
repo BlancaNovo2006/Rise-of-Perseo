@@ -32,7 +32,7 @@ public class Ceto : MonoBehaviour
     protected Animator animator;
     private bool esperandoMuertePlayer = false;
     public Transform posicionInicial;
-    private MovimientoPersonaje movimientopersonaje;
+    private MovimientoPersonaje movimientoPersonaje;
     public static bool EstaMuerto = false;
 
     public Material grayscaleMaterial;
@@ -49,7 +49,7 @@ public class Ceto : MonoBehaviour
         originalSpeed = speed;
         if (player != null)
         {
-            movimientopersonaje = player.GetComponent<MovimientoPersonaje>();
+            movimientoPersonaje = player.GetComponent<MovimientoPersonaje>();
         }
     }
 
@@ -69,7 +69,7 @@ public class Ceto : MonoBehaviour
         {
             movement = Vector2.zero;
         }
-        if (movimientopersonaje != null && movimientopersonaje.vida <= 0)
+        if (movimientoPersonaje != null && movimientoPersonaje.vida <= 0)
         {
             playervivo = false;
             if (!esperandoMuertePlayer)

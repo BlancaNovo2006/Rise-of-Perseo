@@ -105,7 +105,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 44d1d830264e6374abcdfec4767abaff, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -149,11 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837e1fe73452529489ce48c68ced9a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CheetTp1: {fileID: 0}
-  CheetTp2: {fileID: 0}
-  CheetTpSpawn: {fileID: 0}
   vida: 10
-  vialRegenerativo: 5
   velocidad: 6
   fuerzaSalto: 5
   fuerzaRebote: 5
@@ -161,36 +157,20 @@ MonoBehaviour:
   capaSuelo:
     serializedVersion: 2
     m_Bits: 8
-  cooldownTime: 3
-  CooldownFill: {fileID: 0}
-  CooldownText: {fileID: 0}
-  freezeRadius: 1.5
   Enemy:
     serializedVersion: 2
     m_Bits: 128
-  freezeDuration: 3
-  cooldownFreezeTime: 5
-  CooldownFreezeFill: {fileID: 0}
-  CooldownFreezeText: {fileID: 0}
-  pegasoHabilidad: {fileID: 0}
-  cooldownPegasoTime: 4
-  CooldownFillPegaso: {fileID: 0}
-  CooldownTextPegaso: {fileID: 0}
-  CooldownFillBloqueo: {fileID: 0}
-  CooldownTextBloqueo: {fileID: 0}
   muerto: 0
+  atacando: 0
   experienciaActual: 0
   contadorExperiencia: {fileID: 0}
   puntoRespawn: {fileID: 0}
-  tiempoRespawn: 2
+  tiempoRespawn: 0.6
   tiempoRodar: 0.5
   velocidadRodar: 10
+  invencible: 0
   animator: {fileID: 7214833674661798206}
   coyoteTimeDuration: 0.2
-  habilidadIcons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!70 &3840065463512822066
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
