@@ -9,8 +9,7 @@ public class CangrejoColosal : MonoBehaviour
     public float distancia;
     private bool moviendoDerecha;
     private Rigidbody2D rb;
-    public Transform controladorPared;
-    public float distanciaPared = 0.5f;
+   
 
 
     protected bool AtaquePinzas;
@@ -51,11 +50,10 @@ public class CangrejoColosal : MonoBehaviour
         {
             RaycastHit2D informacionSuelo = Physics2D.Raycast(controladorSuelo.position, Vector2.down, distancia);
             Vector2 direccion = moviendoDerecha ? Vector2.right : Vector2.left;
-            RaycastHit2D informacionPared = Physics2D.Raycast(controladorPared.position, direccion, distanciaPared);
 
             rb.velocity = new Vector2(speed, rb.velocity.y);
 
-            if (!informacionSuelo || informacionPared)
+            if (!informacionSuelo)
             {
                 Girar();
             }
@@ -113,8 +111,8 @@ public class CangrejoColosal : MonoBehaviour
             else
             {
                 // Si no ha muerto, aplicar el rebote
-                //Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
-                //rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+                Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
+                rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
             }
 
 
@@ -245,9 +243,6 @@ public class CangrejoColosal : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(controladorSuelo.transform.position, controladorSuelo.transform.position + Vector3.down * distancia);
-        Gizmos.color = Color.blue;
-        Vector3 direccion = moviendoDerecha ? Vector3.right : Vector3.left;
-        Gizmos.DrawLine(controladorPared.position, controladorPared.position + direccion * distanciaPared);
     }
 
     

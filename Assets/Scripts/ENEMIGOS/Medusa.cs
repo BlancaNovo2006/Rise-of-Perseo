@@ -139,7 +139,7 @@ public class Medusa : MonoBehaviour
 
         if (distanceToPlayer < shootRadius)
         {
-            if (!AtaqueGrito)
+            if (!AtaqueGrito && !recibiendoDanio && !muerto)
             {
                 //AtaqueGrito = true;
                 //animator.SetBool("AtaqueGrito", AtaqueGrito);
@@ -240,7 +240,7 @@ public class Medusa : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!recibiendoDanio)
+        if (!recibiendoDanio && rb != null)
         {
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
@@ -290,8 +290,8 @@ public class Medusa : MonoBehaviour
             else
             {
                 // Si no ha muerto, aplicar el rebote
-                //Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
-                //rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
+                Vector2 rebote = new Vector2(transform.position.x - direccion.x, 1).normalized;
+                rb.AddForce(rebote * fuerzaRebote, ForceMode2D.Impulse);
             }
 
 

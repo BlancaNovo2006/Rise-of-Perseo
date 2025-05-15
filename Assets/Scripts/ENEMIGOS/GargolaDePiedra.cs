@@ -183,7 +183,7 @@ public class GargolaDePiedra : MonoBehaviour
 
             Atacando = false;
             animator.SetBool("Atacando", false);
-            animator.Play("Idle", 0);
+            //animator.Play("Idle", 0);
 
             // Si las vidas son 0 o menos, destruir al enemigo
             if (vidas <= 0)

@@ -14,21 +14,14 @@ public class MovimientoPersonaje : MonoBehaviour
 
     public int vida = 10;
     public float velocidad = 7f;
-    public float fuerzaSalto = 10f;
+    public float fuerzaSalto = 7f;
     public float fuerzaRebote = 6f;
     public float longitudRaycast = 0.3f;
     public LayerMask capaSuelo;
-    
     private SpriteRenderer spriteRenderer;
     private int enemyLayer;
     
     public LayerMask Enemy;
-    
-
-    
-
-    
-    
 
     private bool enSuelo = true;
     private bool recibiendoDanio = false;
@@ -37,9 +30,6 @@ public class MovimientoPersonaje : MonoBehaviour
     private bool caminar =false;
     private bool planeando = false;
     private bool enDash = false;
-
-
-    
 
     public int experienciaActual = 0;
     public TextMeshProUGUI contadorExperiencia;
@@ -62,9 +52,6 @@ public class MovimientoPersonaje : MonoBehaviour
     public float coyoteTimeDuration = 0.2f;
 
     private Vector2 ultimoPuntoRespawn;
-
-    
-
 
     void Start()
     {
@@ -121,7 +108,7 @@ public class MovimientoPersonaje : MonoBehaviour
                         rodando = false;
                         enDash = false;
                         invencible = false;
-                        animator.ResetTrigger("Rodar"); // Para evitar conflicto de animaciones
+                        animator.SetBool("endash", false); // Para evitar conflicto de animaciones
                     }
                     rb.velocity = new Vector2(0, fuerzaSalto);
                     coyoteTimeCounter = 0f; // Evita que se pueda saltar varias veces en el aire
@@ -146,6 +133,11 @@ public class MovimientoPersonaje : MonoBehaviour
                     Atacando();
                 } 
             }
+            if (!recibiendoDanio && Mathf.Abs(rb.velocity.x) > 0.1f && enSuelo && !rodando && !atacando)
+            {
+                rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0f, Time.deltaTime * 5f), rb.velocity.y);
+            }
+
         }
 
         animator.SetBool("ensuelo", enSuelo);
@@ -163,7 +155,7 @@ public class MovimientoPersonaje : MonoBehaviour
         rodando = true;
         enDash = true;
         invencible = true;
-        animator.SetTrigger("Rodar");
+        animator.SetBool("endash", true);
 
         // Ignorar colisión entre Jugador y Enemigos
         //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
@@ -256,11 +248,12 @@ public class MovimientoPersonaje : MonoBehaviour
     public void Atacando()
     {
         atacando = true;
-        animator.SetTrigger("ataqueplayer");
+        animator.SetBool("Atacando", true);
     }
     public void DesactivarAtaque()
     {
         atacando = false;
+        animator.SetBool("Atacando", false);
     }
     
     

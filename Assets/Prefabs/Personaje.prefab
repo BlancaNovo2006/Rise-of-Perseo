@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 10
-  velocidad: 6
-  fuerzaSalto: 5
+  velocidad: 7
+  fuerzaSalto: 7
   fuerzaRebote: 5
   longitudRaycast: 0.8
   capaSuelo:

@@ -177,7 +177,7 @@ MonoBehaviour:
   detectionRadius: 3
   attackRadius: 1
   speed: 3
-  fuerzaRebote: 0
+  fuerzaRebote: -2
   vidas: 3
   experienciaPrefab: {fileID: 0}
   experienciaSoltar: 20

@@ -148,13 +148,6 @@ public class SoldadoDePiedra : MonoBehaviour
 
             RecibeDanio(direcciondanio, 1);
         }
-        if (collision.CompareTag("Hoz"))
-        {
-            Debug.Log("Golpe con Hoz (ataque fuerte)");
-            Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
-
-            RecibeDanio(direcciondanio, 2);
-        }
         if (collision.CompareTag("Pegaso"))
         {
             Vector2 direcciondanio = new Vector2(collision.gameObject.transform.position.x, 0);
@@ -174,7 +167,7 @@ public class SoldadoDePiedra : MonoBehaviour
 
             Atacando = false;
             animator.SetBool("Atacando", false);
-            animator.Play("Idle", 0);
+            //animator.Play("Idle", 0);
             
 
             // Si las vidas son 0 o menos, destruir al enemigo
