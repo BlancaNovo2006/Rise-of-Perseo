@@ -195,6 +195,9 @@ public class MovimientoPersonaje : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir.normalized, longitudRaycast/2.5f, capaSuelo);
         if (hit.collider == null)
         {
+            Vector2 spd = rb.velocity;
+            spd.x = 0;
+            rb.velocity = spd;
             transform.position = transform.position + dir;
         }
         
