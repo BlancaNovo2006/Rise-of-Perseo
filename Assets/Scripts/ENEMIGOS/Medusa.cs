@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Medusa : MonoBehaviour
 {
+    public AudioClip sonidoImpactoEspada;
+    public AudioClip sonidoMuerteEnemigo;
     public Transform player;
     public Transform posicionInicial;
     public float detectionRadius;
@@ -272,6 +274,7 @@ public class Medusa : MonoBehaviour
     {
         if (!recibiendoDanio)
         {
+            AudioManager.instance.ReporducirSonido(sonidoImpactoEspada);
             recibiendoDanio = true;
             animator.SetBool("recibiendoDanio", true);
 
@@ -314,6 +317,7 @@ public class Medusa : MonoBehaviour
     }
     public void Muerte()
     {
+        AudioManager.instance.ReporducirSonido(sonidoMuerteEnemigo);
         EstaMuerto = true;
         animator.SetBool("EstaMuerta", true );
         Debug.Log("Medusa ha muerto.");

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SistemaHabilidades : MonoBehaviour
 {
+    public AudioClip sonidoRegenerarVida;
     public Animator animator;
     public LayerMask Enemy;
     public LayerMask capaSuelo;
@@ -279,6 +280,7 @@ public class SistemaHabilidades : MonoBehaviour
         {
             if (vialRegenerativo > 0)
             {
+                AudioManager.instance.ReporducirSonido(sonidoRegenerarVida);
                 // Cambiar el color a rojo
                 spriteRenderer.color = Color.green;
 

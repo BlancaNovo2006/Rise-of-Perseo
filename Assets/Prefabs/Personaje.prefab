@@ -14,6 +14,9 @@ GameObject:
   - component: {fileID: 7214833674661798206}
   - component: {fileID: 6993854450524018602}
   - component: {fileID: 3840065463512822066}
+  - component: {fileID: 6101316432391351586}
+  - component: {fileID: 6570964487262461611}
+  - component: {fileID: 5454633713226284447}
   m_Layer: 6
   m_Name: Personaje
   m_TagString: Player
@@ -29,13 +32,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72674776495957112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.811, y: 0.7, z: 0}
+  m_LocalPosition: {x: -24.24, y: -52.289, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4485216592676188293}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1505551858231243068
 SpriteRenderer:
@@ -105,7 +108,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 6200000, guid: 44d1d830264e6374abcdfec4767abaff, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -149,6 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837e1fe73452529489ce48c68ced9a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonidoSalto: {fileID: 8300000, guid: 78cba5d507afab3479349516fb3be806, type: 3}
+  sonidoAtaque: {fileID: 8300000, guid: 1f75be6749d97294783dc4377afdca85, type: 3}
+  sonidoMuerte: {fileID: 8300000, guid: 27f8323ead7504e4ab696d18fb4e37ee, type: 3}
+  sonidoReaparicion: {fileID: 8300000, guid: 4884b071bf9e6d748baae09709abba5c, type: 3}
   vida: 10
   velocidad: 7
   fuerzaSalto: 7
@@ -164,7 +171,7 @@ MonoBehaviour:
   atacando: 0
   experienciaActual: 0
   contadorExperiencia: {fileID: 0}
-  puntoRespawn: {fileID: 0}
+  puntoRespawn: {fileID: 3743162523478358526, guid: a7ca49fe22a0d024299f8b28ad2f3ede, type: 3}
   tiempoRespawn: 0.6
   tiempoRodar: 0.5
   velocidadRodar: 10
@@ -206,6 +213,91 @@ CapsuleCollider2D:
   m_Offset: {x: 0.017745972, y: -0.21192536}
   m_Size: {x: 0.38477325, y: 0.9726961}
   m_Direction: 0
+--- !u!58 &6101316432391351586
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72674776495957112}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.51006997}
+  serializedVersion: 2
+  m_Radius: 0.19154014
+--- !u!114 &6570964487262461611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72674776495957112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad95c8378f2f174fb43328b09e8b922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CheetTp1: {fileID: 0}
+  CheetTp2: {fileID: 0}
+  CheetTpSpawn: {fileID: 0}
+--- !u!114 &5454633713226284447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72674776495957112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0334bccb303b2924ba361aed40be4f9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sonidoRegenerarVida: {fileID: 8300000, guid: 96aba81fdc420b44f8da7d6916e38019, type: 3}
+  animator: {fileID: 7214833674661798206}
+  Enemy:
+    serializedVersion: 2
+    m_Bits: 128
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 8
+  habilidadIcons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  freezeRadius: 1.5
+  freezeDuration: 3
+  cooldownFreezeTime: 10
+  CooldownFreezeFill: {fileID: 0}
+  CooldownFreezeText: {fileID: 0}
+  cooldownPegasoTime: 6
+  CooldownFillPegaso: {fileID: 0}
+  CooldownTextPegaso: {fileID: 0}
+  vialRegenerativo: 5
+  CooldownFillVida: {fileID: 0}
+  CooldownTextVida: {fileID: 0}
 --- !u!1 &8420862206652500912
 GameObject:
   m_ObjectHideFlags: 0
