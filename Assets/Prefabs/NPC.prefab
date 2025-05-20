@@ -154,6 +154,8 @@ MonoBehaviour:
   - 'Hermes: Te otorgo estos viales curativos que te ayudaran a encontrarte mejor, '
   - 'Hermes: por lo tanto, cuando te hieran pulsa [R].'
   - 'Hermes: Si se te acaban toca una de estas estatuas sagradas de Zeus.'
+  audioManager: {fileID: 0}
+  sonidoDialogo: {fileID: 8300000, guid: a14bbefce53a69d43bb97cb7b74925d2, type: 3}
 --- !u!95 &2519370998837825715
 Animator:
   serializedVersion: 5

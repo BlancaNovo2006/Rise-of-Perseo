@@ -11,6 +11,10 @@ using UnityEngine.SceneManagement;
 public class MovimientoPersonaje : MonoBehaviour
 {
     SistemaHabilidades sistemaHabilidades;
+    public AudioClip sonidoSalto;
+    public AudioClip sonidoAtaque;
+    public AudioClip sonidoMuerte;
+    public AudioClip sonidoReaparicion;
 
     public int vida = 10;
     public float velocidad = 7f;
@@ -112,6 +116,7 @@ public class MovimientoPersonaje : MonoBehaviour
                     }
                     rb.velocity = new Vector2(0, fuerzaSalto);
                     coyoteTimeCounter = 0f; // Evita que se pueda saltar varias veces en el aire
+                    AudioManager.instance.ReporducirSonido(sonidoSalto);
                 }
                 //Planear
                 if (!enSuelo && Input.GetKey(KeyCode.Space))
@@ -130,6 +135,8 @@ public class MovimientoPersonaje : MonoBehaviour
                 //Atacar
                 if (Input.GetKeyDown(KeyCode.Mouse0) && !atacando && enSuelo)
                 {
+                    AudioManager.instance.ReporducirSonido(sonidoAtaque);
+
                     Atacando();
                 } 
             }
@@ -215,6 +222,7 @@ public class MovimientoPersonaje : MonoBehaviour
             animator.SetBool("Atacando", false);
             if (vida <= 0)
             {
+                AudioManager.instance.ReporducirSonido(sonidoMuerte);
                 muerto = true;
                 animator.SetBool("muelto", true);
                 StartCoroutine(Respawnear());
@@ -230,6 +238,7 @@ public class MovimientoPersonaje : MonoBehaviour
     }
     IEnumerator Respawnear()
     {
+        AudioManager.instance.ReporducirSonido(sonidoReaparicion);
         yield return new WaitForSeconds(tiempoRespawn);
         transform.position = ultimoPuntoRespawn;
         vida = 10;
@@ -308,6 +317,9 @@ public class MovimientoPersonaje : MonoBehaviour
         }
         if (collision.CompareTag("Respawn"))
         {
+            AudioManager.instance.ReporducirSonido(sonidoMuerte);
+            muerto = true;
+            vida = 0;
             StartCoroutine(Respawnear());
         }
         if (collision.CompareTag("PuntoRespawn"))

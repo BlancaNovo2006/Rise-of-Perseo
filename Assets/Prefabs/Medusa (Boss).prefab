@@ -194,6 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db943fc04ac56846a8c489502e4de77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sonidoImpactoEspada: {fileID: 8300000, guid: 09cd800f3ba11524abee39db9fd40f40, type: 3}
+  sonidoMuerteEnemigo: {fileID: 8300000, guid: 39d1c5c2fe7e4ba4eb3d6b8bb69b0ac9, type: 3}
   player: {fileID: 0}
   posicionInicial: {fileID: 0}
   detectionRadius: 8

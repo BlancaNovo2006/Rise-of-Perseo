@@ -16,14 +16,15 @@ public class Dialogo : MonoBehaviour
     private bool DialogoEmpezado;
     private int lineIndex;
 
-
-    // Start is called before the first frame update
+    private AudioSource audioSource;
+    public AudioClip sonidoDialogo;
     void Start()
     {
-
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
@@ -43,6 +44,15 @@ public class Dialogo : MonoBehaviour
             }
         }
     }
+    private void ReproducirSonidoDialogo()
+    {
+        if (sonidoDialogo != null)
+        {
+            audioSource.clip = sonidoDialogo;
+            audioSource.Play();
+        }
+    }
+
     private void StartDialogue()
     {
         DialogoEmpezado = true;
@@ -50,14 +60,19 @@ public class Dialogo : MonoBehaviour
         MarcaDialogo.SetActive(false);
         lineIndex = 0;
         Time.timeScale = 0f;
+        ReproducirSonidoDialogo();
         StartCoroutine(ShowLine());
     }
 
+
     private void SiguienteLinea()
     {
+        audioSource.Stop(); // Detener sonido antes de continuar
         lineIndex++;
+
         if (lineIndex < LineasDialogo.Length)
         {
+            ReproducirSonidoDialogo();
             StartCoroutine(ShowLine());
         }
         else
@@ -66,8 +81,10 @@ public class Dialogo : MonoBehaviour
             PanelDialogo.SetActive(false);
             MarcaDialogo.SetActive(true);
             Time.timeScale = 1f;
+            audioSource.Stop(); // Detener sonido al finalizar diálogo
         }
     }
+
 
     private IEnumerator ShowLine()
     {

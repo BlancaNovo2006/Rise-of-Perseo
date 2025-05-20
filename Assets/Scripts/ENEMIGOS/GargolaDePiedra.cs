@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GargolaDePiedra : MonoBehaviour
 {
+    public AudioClip sonidoImpactoEspada;
+    public AudioClip sonidoMuerteEnemigo;
     public Transform player;
     public float detectionRadius;
     public float attackRadius;
@@ -175,6 +177,7 @@ public class GargolaDePiedra : MonoBehaviour
     {
         if (!recibiendoDanio)
         {
+            AudioManager.instance.ReporducirSonido(sonidoImpactoEspada);
             recibiendoDanio = true;
             animator.SetBool("recibiendoDanio", true);
 
@@ -210,6 +213,7 @@ public class GargolaDePiedra : MonoBehaviour
 
     protected void Muerte()
     {
+        AudioManager.instance.ReporducirSonido(sonidoMuerteEnemigo);
         muerto = true;
         //if (experienciaPrefab != null)
         {

@@ -1173,97 +1173,73 @@ PrefabInstance:
       propertyPath: m_Name
       value: Personaje
       objectReference: {fileID: 0}
-    - target: {fileID: 3840065463512822066, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: m_UsedByEffector
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6673883391572317446, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: m_Material
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: CooldownFillVida
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      objectReference: {fileID: 1232455435}
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: CooldownTextVida
+      value: 
+      objectReference: {fileID: 2083044844}
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: CooldownFillPegaso
+      value: 
+      objectReference: {fileID: 68133185}
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: CooldownFreezeFill
+      value: 
+      objectReference: {fileID: 823977316}
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: CooldownFreezeText
+      value: 
+      objectReference: {fileID: 801330541}
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: CooldownTextPegaso
+      value: 
+      objectReference: {fileID: 279043079}
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: habilidadIcons.Array.data[0]
+      value: 
+      objectReference: {fileID: 521411762}
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: habilidadIcons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1214491689}
+    - target: {fileID: 5454633713226284447, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+      propertyPath: habilidadIcons.Array.data[2]
+      value: 
+      objectReference: {fileID: 574801848}
+    - target: {fileID: 6570964487262461611, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: CheetTp1
       value: 
       objectReference: {fileID: 1732247466}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+    - target: {fileID: 6570964487262461611, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: CheetTp2
       value: 
       objectReference: {fileID: 322027074}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: velocidad
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
+    - target: {fileID: 6570964487262461611, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: CheetTpSpawn
       value: 
       objectReference: {fileID: 1362829116}
     - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: puntoRespawn
+      propertyPath: audioManager
       value: 
-      objectReference: {fileID: 3743162523478358526, guid: a7ca49fe22a0d024299f8b28ad2f3ede, type: 3}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: pegasoHabilidad
-      value: 
-      objectReference: {fileID: 1958441953}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: CooldownFillPegaso
-      value: 
-      objectReference: {fileID: 574801848}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: CooldownFreezeFill
-      value: 
-      objectReference: {fileID: 1214491689}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: CooldownFreezeText
-      value: 
-      objectReference: {fileID: 801330541}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: CooldownTextPegaso
-      value: 
-      objectReference: {fileID: 279043079}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: cooldownFreezeTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: cooldownPegasoTime
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: CooldownFillBloqueo
-      value: 
-      objectReference: {fileID: 521411762}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: CooldownTextBloqueo
-      value: 
-      objectReference: {fileID: 2083044844}
+      objectReference: {fileID: 982254622}
     - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: contadorExperiencia
       value: 
       objectReference: {fileID: 407997821}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: habilidadIcons.Array.data[0]
-      value: 
-      objectReference: {fileID: 521411762}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: habilidadIcons.Array.data[1]
-      value: 
-      objectReference: {fileID: 1214491689}
-    - target: {fileID: 6993854450524018602, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      propertyPath: habilidadIcons.Array.data[2]
-      value: 
-      objectReference: {fileID: 574801848}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.24
+      value: -24.195
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -52.289
+      value: -52.26
       objectReference: {fileID: 0}
     - target: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1300,22 +1276,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 72674776495957112, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2029169417}
-    - targetCorrespondingSourceObject: {fileID: 72674776495957112, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2029169423}
-    - targetCorrespondingSourceObject: {fileID: 72674776495957112, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2029169424}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
---- !u!1 &276017532 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 72674776495957112, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-  m_PrefabInstance: {fileID: 276017531}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &279043077
 GameObject:
   m_ObjectHideFlags: 0
@@ -130025,6 +129987,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1061364999}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 982254622}
+    - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.data[0]
       value: '???: Hola Perseo, mi nombre es Hermes, dios mensajero, y sere tu maestro.'
       objectReference: {fileID: 0}
@@ -131002,7 +130968,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0643831e549580547b272f8957749471, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -131098,7 +131064,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 547cc835535302549b54be82cb4ca132, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -134618,6 +134584,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1061364999}
     - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 982254622}
+    - target: {fileID: 3728094562760759866, guid: 35f56d0af8ec7af419a0194635780da6, type: 3}
       propertyPath: LineasDialogo.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -134919,17 +134889,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 547b766ec8b8b3a40b1f9dee61fa1900, type: 3}
---- !u!114 &1958441953 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4608931461191004308, guid: 547b766ec8b8b3a40b1f9dee61fa1900, type: 3}
-  m_PrefabInstance: {fileID: 1958441952}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 050fbbe2ba9619d4e8eefdffc1ec1ba0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1965746950
 GameObject:
   m_ObjectHideFlags: 0
@@ -135182,95 +135141,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9034855241150292450, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
   m_PrefabInstance: {fileID: 276017531}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &2029169417
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276017532}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.51006997}
-  serializedVersion: 2
-  m_Radius: 0.19154014
---- !u!95 &2029169420 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7214833674661798206, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
-  m_PrefabInstance: {fileID: 276017531}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2029169423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276017532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad95c8378f2f174fb43328b09e8b922, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CheetTp1: {fileID: 1732247466}
-  CheetTp2: {fileID: 322027074}
-  CheetTpSpawn: {fileID: 1362829116}
---- !u!114 &2029169424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276017532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0334bccb303b2924ba361aed40be4f9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2029169420}
-  Enemy:
-    serializedVersion: 2
-    m_Bits: 128
-  capaSuelo:
-    serializedVersion: 2
-    m_Bits: 8
-  habilidadIcons:
-  - {fileID: 521411762}
-  - {fileID: 1214491689}
-  - {fileID: 574801848}
-  freezeRadius: 1.5
-  freezeDuration: 3
-  cooldownFreezeTime: 10
-  CooldownFreezeFill: {fileID: 823977316}
-  CooldownFreezeText: {fileID: 801330541}
-  cooldownPegasoTime: 6
-  CooldownFillPegaso: {fileID: 68133185}
-  CooldownTextPegaso: {fileID: 279043079}
-  vialRegenerativo: 5
-  CooldownFillVida: {fileID: 1232455435}
-  CooldownTextVida: {fileID: 2083044844}
 --- !u!1 &2029410303
 GameObject:
   m_ObjectHideFlags: 0
