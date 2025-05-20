@@ -9,12 +9,16 @@ public class Medusa : MonoBehaviour
     public AudioClip sonidoMuerteEnemigo;
     public Transform player;
     public Transform posicionInicial;
+
+    public Columna columna;
+
     public float detectionRadius;
     public float attackRadius;
     public float shootRadius;
     public float speed;
     public float fuerzaRebote;
     public int vidas = 5;  // Vidas del enemigo
+
 
     public GameObject experienciaPrefab;
     public Collider2D colaMedusaCollider;
@@ -329,6 +333,10 @@ public class Medusa : MonoBehaviour
         //}
         // Puedes agregar animaciones de muerte aquí si lo deseas
         // Por ejemplo: animator.SetTrigger("Muerte");
+        if (columna != null)
+        {
+            columna.Activar(); // Llama a la columna para que regrese
+        }
 
         StartCoroutine(EsperarMuerte());
     }

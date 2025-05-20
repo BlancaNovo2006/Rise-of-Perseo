@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
     }
     public void RegistrarEnemigo(GameObject enemigo)
     {
-        enemigo.AddComponent(enemigo);
+        enemigo.AddComponent<SoldadoDePiedra>();
     }
     public void EliminarEnemigo(GameObject enemigo)
     {

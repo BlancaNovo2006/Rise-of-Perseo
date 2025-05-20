@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - ColaMedusa
   - PuntoRespawn
+  - Columna
   layers:
   - Default
   - TransparentFX

@@ -146,4 +146,4 @@ MonoBehaviour:
   puntosMovimiento:
   - {fileID: 0}
   - {fileID: 0}
-  velocidadMovimiento: 5
+  velocidadMovimiento: 3

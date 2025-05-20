@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CangrejoColosal : MonoBehaviour
 {
+    public AudioClip sonidoImpactoEspada;
+    public AudioClip sonidoMuerteEnemigo;
     public float speed;
     public Transform controladorSuelo;
     public float distancia;
     private bool moviendoDerecha;
     private Rigidbody2D rb;
-   
 
+
+    protected bool Petrificado = false;
 
     protected bool AtaquePinzas;
     protected bool AtaquePinchos;
@@ -96,6 +99,7 @@ public class CangrejoColosal : MonoBehaviour
     {
         if (!recibiendoDanio)
         {
+            AudioManager.instance.ReporducirSonido(sonidoImpactoEspada);
             recibiendoDanio = true;
             animator.SetBool("recibiendoDanio", true);
 
@@ -128,6 +132,7 @@ public class CangrejoColosal : MonoBehaviour
     }
     protected void Muerte()
     {
+        AudioManager.instance.ReporducirSonido(sonidoMuerteEnemigo);
         rb.velocity = Vector2.zero;
         muerto = true;
         animator.SetBool("EstaMuerto", true);
@@ -152,18 +157,20 @@ public class CangrejoColosal : MonoBehaviour
     {
         if (!isFrozen)
         {
+            Petrificado = true;
+            animator.SetBool("Petrificado", true);
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            if (spriteRenderer != null)
+            /*if (spriteRenderer != null)
             {
                 originalMaterial = spriteRenderer.material;
                 spriteRenderer.material = grayscaleMaterial;
-            }
-            if (animator != null)
+            }*/
+            /*if (animator != null)
             {
                 animator.enabled = false;
-            }
+            }*/
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
@@ -171,15 +178,17 @@ public class CangrejoColosal : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         isFrozen = false;
+        Petrificado = false;
+        animator.SetBool("Petrificado", false);
         speed = originalSpeed;
-        if (spriteRenderer != null)
+        /*if (spriteRenderer != null)
         {
             spriteRenderer.material = originalMaterial;
-        }
-        if (animator != null)
+        }*/
+        /*if (animator != null)
         {
             animator.enabled = true;
-        }
+        }*/
     }
     protected void ActivarAtaquePinchos()
     {

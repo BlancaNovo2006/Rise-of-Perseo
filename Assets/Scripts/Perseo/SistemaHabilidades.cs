@@ -42,8 +42,8 @@ public class SistemaHabilidades : MonoBehaviour
         habilidades = new List<Habilidad>
         {
             new Habilidad(() => StartCoroutine(RegenerarVida()), PuedeUsarRegenerarVida),
-            new Habilidad(FreezeEnemies, PuedeUsarFreezeEnemies),
-            new Habilidad(Pegaso, PuedeUsarPegaso)
+            //new Habilidad(FreezeEnemies, PuedeUsarFreezeEnemies),
+            //new Habilidad(Pegaso, PuedeUsarPegaso)
         };
         movimientoPersonaje = GetComponent<MovimientoPersonaje>();
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
