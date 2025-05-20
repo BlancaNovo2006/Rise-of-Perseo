@@ -7,6 +7,9 @@ public class GargolaDePiedra : MonoBehaviour
     public AudioClip sonidoImpactoEspada;
     public AudioClip sonidoMuerteEnemigo;
     public AudioClip sonidoLanzarAtaque;
+    public AudioClip sonidoVolar;
+    private AudioSource audioSource;
+
     public Transform player;
     public float detectionRadius;
     public float attackRadius;
@@ -46,6 +49,9 @@ public class GargolaDePiedra : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalSpeed = speed;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = sonidoVolar;
+        audioSource.loop = true;  // Para que suene continuamente mientras camin
     }
 
     protected void Update()
@@ -64,6 +70,16 @@ public class GargolaDePiedra : MonoBehaviour
         {
             movement = Vector2.zero;
         }
+        // Reproducir sonido de volar solo si se está moviendo
+        if (movement != Vector2.zero && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        else if (movement == Vector2.zero && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
     }
     protected void Movimiento()
     {
@@ -111,7 +127,6 @@ public class GargolaDePiedra : MonoBehaviour
         {
             if (!Atacando)
             {
-                AudioManager.instance.ReporducirSonido(sonidoLanzarAtaque);
                 Atacando = true;
                 animator.SetBool("Atacando", Atacando);
             }
@@ -125,6 +140,7 @@ public class GargolaDePiedra : MonoBehaviour
 
     protected void LanzarAtaque()
     {
+        AudioManager.instance.ReporducirSonido(sonidoLanzarAtaque);
         if (player ==  null) return;
         if (ProyectilPrefab == null)
         {

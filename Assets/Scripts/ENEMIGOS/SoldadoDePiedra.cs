@@ -8,6 +8,8 @@ public class SoldadoDePiedra : MonoBehaviour
     public AudioClip sonidoImpactoEspada;
     public AudioClip sonidoMuerteEnemigo;
     public AudioClip sonidoAtaqueSoldado;
+    private AudioSource audioSource;
+
     public Transform player;
     public float detectionRadius;
     public float attackRadius;
@@ -44,6 +46,9 @@ public class SoldadoDePiedra : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalSpeed = speed; DesactivarEspadaCollider();
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = sonidoAtaqueSoldado;
+        audioSource.loop = true;  // Para que suene continuamente mientras camina
     }
 
     protected void Update()
@@ -68,6 +73,15 @@ public class SoldadoDePiedra : MonoBehaviour
             Atacando = false;
             movement = Vector2.zero;
         }
+        if (EnMovimiento && !audioSource.isPlaying)
+        {
+            audioSource.Play();
+        }
+        else if (!EnMovimiento && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
     }
     protected void Movimiento()
     {
@@ -115,7 +129,6 @@ public class SoldadoDePiedra : MonoBehaviour
         {
             if (!Atacando)
             {
-                //AudioManager.instance.ReporducirSonido(sonidoAtaqueSoldado);
                 Atacando = true;
                 EnMovimiento = false;
                 movement = Vector2.zero;
