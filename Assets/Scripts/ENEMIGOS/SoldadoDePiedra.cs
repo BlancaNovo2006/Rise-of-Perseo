@@ -7,6 +7,7 @@ public class SoldadoDePiedra : MonoBehaviour
 {
     public AudioClip sonidoImpactoEspada;
     public AudioClip sonidoMuerteEnemigo;
+    public AudioClip sonidoAtaqueSoldado;
     public Transform player;
     public float detectionRadius;
     public float attackRadius;
@@ -114,6 +115,7 @@ public class SoldadoDePiedra : MonoBehaviour
         {
             if (!Atacando)
             {
+                //AudioManager.instance.ReporducirSonido(sonidoAtaqueSoldado);
                 Atacando = true;
                 EnMovimiento = false;
                 movement = Vector2.zero;

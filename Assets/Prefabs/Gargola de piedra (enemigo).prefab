@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sonidoImpactoEspada: {fileID: 8300000, guid: 09cd800f3ba11524abee39db9fd40f40, type: 3}
   sonidoMuerteEnemigo: {fileID: 8300000, guid: 39d1c5c2fe7e4ba4eb3d6b8bb69b0ac9, type: 3}
+  sonidoLanzarAtaque: {fileID: 8300000, guid: 6b6be8a715e8ae5478cfdf7d5c5027fc, type: 3}
   player: {fileID: 0}
   detectionRadius: 4
   attackRadius: 2

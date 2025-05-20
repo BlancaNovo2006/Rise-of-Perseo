@@ -196,8 +196,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sonidoImpactoEspada: {fileID: 8300000, guid: 09cd800f3ba11524abee39db9fd40f40, type: 3}
   sonidoMuerteEnemigo: {fileID: 8300000, guid: 39d1c5c2fe7e4ba4eb3d6b8bb69b0ac9, type: 3}
+  sonidoLanzarSerpientes: {fileID: 8300000, guid: a0d3255bc5093f5419918bf89d4e4b66, type: 3}
   player: {fileID: 0}
   posicionInicial: {fileID: 0}
+  columna: {fileID: 0}
   detectionRadius: 8
   attackRadius: 2
   shootRadius: 7.5

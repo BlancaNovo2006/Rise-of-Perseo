@@ -6,6 +6,7 @@ public class CangrejoColosal : MonoBehaviour
 {
     public AudioClip sonidoImpactoEspada;
     public AudioClip sonidoMuerteEnemigo;
+    public AudioClip sonidoCangrejo;
     public float speed;
     public Transform controladorSuelo;
     public float distancia;
@@ -230,6 +231,7 @@ public class CangrejoColosal : MonoBehaviour
     {
         if (!isFrozen)
         {
+            AudioManager.instance.ReporducirSonido(sonidoCangrejo);
             Pinzas.enabled = false;
         }
     }

@@ -7,6 +7,7 @@ public class Medusa : MonoBehaviour
 {
     public AudioClip sonidoImpactoEspada;
     public AudioClip sonidoMuerteEnemigo;
+    public AudioClip sonidoLanzarSerpientes;
     public Transform player;
     public Transform posicionInicial;
 
@@ -147,6 +148,7 @@ public class Medusa : MonoBehaviour
         {
             if (!AtaqueGrito && !recibiendoDanio && !muerto)
             {
+                
                 //AtaqueGrito = true;
                 //animator.SetBool("AtaqueGrito", AtaqueGrito);
                 Invoke("DesactivarAtaqueGrito", 0.7f);
@@ -179,7 +181,7 @@ public class Medusa : MonoBehaviour
 
         Vector2 direccion = (player.position - transform.position).normalized;
         Vector2 spawnPos = (Vector2)transform.position + direccion * 0.5f;
-
+        AudioManager.instance.ReporducirSonido(sonidoLanzarSerpientes);
         GameObject Serpiente = Instantiate(SerpientePrefab, spawnPos, Quaternion.identity);
 
         Rigidbody2D rbSerpiente = Serpiente.GetComponent<Rigidbody2D>();

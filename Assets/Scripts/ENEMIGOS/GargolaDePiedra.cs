@@ -6,6 +6,7 @@ public class GargolaDePiedra : MonoBehaviour
 {
     public AudioClip sonidoImpactoEspada;
     public AudioClip sonidoMuerteEnemigo;
+    public AudioClip sonidoLanzarAtaque;
     public Transform player;
     public float detectionRadius;
     public float attackRadius;
@@ -110,6 +111,7 @@ public class GargolaDePiedra : MonoBehaviour
         {
             if (!Atacando)
             {
+                AudioManager.instance.ReporducirSonido(sonidoLanzarAtaque);
                 Atacando = true;
                 animator.SetBool("Atacando", Atacando);
             }
