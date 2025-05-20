@@ -41,6 +41,7 @@ public class ControladorEnemigos : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalSpeed = speed;
+        EnemyManager.Instance.RegistrarEnemigo(gameObject);
     }
 
     protected void Update()
@@ -161,16 +162,8 @@ public class ControladorEnemigos : MonoBehaviour
     protected void Muerte()
     {
         muerto = true;
-        //if (experienciaPrefab != null)
-        {
-            //Vector3 posicion = transform.position;
-            //GameObject Experiencia = Instantiate(experienciaPrefab, posicion, experienciaPrefab.transform.rotation);
-            //Experiencia.GetComponent<Experiencia>().cantidadExperiencia = experienciaSoltar;
-        }
-        // Puedes agregar animaciones de muerte aquÃ­ si lo deseas
-        // Por ejemplo: animator.SetTrigger("Muerte");
-
-        // Destruir al enemigo
+        EnemyManager.Instance.EliminarEnemigo(gameObject);
+        
         Destroy(gameObject);
     }
 
@@ -207,7 +200,6 @@ public class ControladorEnemigos : MonoBehaviour
             animator.enabled = true;
         }
     }
-
     protected void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

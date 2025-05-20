@@ -6,6 +6,8 @@ public class Puerta : MonoBehaviour
 {
     public GameObject puerta;
     private bool abierta = false;
+    public Animator puertaAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +27,6 @@ public class Puerta : MonoBehaviour
         Debug.Log("!Todos los enemigos estan muertos! Puerta abierta.");
         abierta = true;
         puerta.SetActive(false);
+        puertaAnimator.SetTrigger("Abrir");
     }
 }
