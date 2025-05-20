@@ -238,7 +238,6 @@ public class MovimientoPersonaje : MonoBehaviour
     }
     IEnumerator Respawnear()
     {
-        AudioManager.instance.ReporducirSonido(sonidoReaparicion);
         yield return new WaitForSeconds(tiempoRespawn);
         transform.position = ultimoPuntoRespawn;
         vida = 10;
@@ -324,6 +323,7 @@ public class MovimientoPersonaje : MonoBehaviour
         }
         if (collision.CompareTag("PuntoRespawn"))
         {
+            AudioManager.instance.ReporducirSonido(sonidoReaparicion);
             ultimoPuntoRespawn = collision.transform.position;
             Debug.Log("Nuevo punto de respawn activado");
             vida = 10;

@@ -224,6 +224,7 @@ public class CangrejoColosal : MonoBehaviour
     {
         if (!isFrozen)
         {
+            AudioManager.instance.ReporducirSonido(sonidoCangrejo);
             Pinzas.enabled = true;
         }
     }
@@ -231,7 +232,6 @@ public class CangrejoColosal : MonoBehaviour
     {
         if (!isFrozen)
         {
-            AudioManager.instance.ReporducirSonido(sonidoCangrejo);
             Pinzas.enabled = false;
         }
     }
