@@ -25,20 +25,28 @@ public class ResolucionOpciones : MonoBehaviour
         List<string> opciones = new List<string>();
         int resolucionActual = 0;
 
-        for(int i = 0; i < resoluciones.Length; i++)
+        for (int i = 0; i < resoluciones.Length; i++)
         {
             string opcion = resoluciones[i].width + "x" + resoluciones[i].height;
             opciones.Add(opcion);
-            if(Screen.fullScreen && resoluciones[i].width == Screen.currentResolution.width 
-                && resoluciones[i].height == Screen.currentResolution.height)
+
+            if (resoluciones[i].width == Screen.currentResolution.width &&
+                resoluciones[i].height == Screen.currentResolution.height)
             {
                 resolucionActual = i;
             }
         }
+
         resolucionesDropDown.AddOptions(opciones);
-        resolucionesDropDown.value = resolucionActual;
+
+        // Recuperar índice guardado (si existe)
+        int indiceGuardado = PlayerPrefs.GetInt("numeroResolucion", resolucionActual);
+        resolucionesDropDown.value = indiceGuardado;
         resolucionesDropDown.RefreshShownValue();
-        resolucionesDropDown.value = PlayerPrefs.GetInt("numeroResolucion", 0);
+
+        // Aplicar la resolución guardada
+        Resolution resolucion = resoluciones[indiceGuardado];
+        Screen.SetResolution(resolucion.width, resolucion.height, Screen.fullScreen);
     }
     public void CambiarResolucion(int indiceResolucion)
     {
