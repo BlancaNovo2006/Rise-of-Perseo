@@ -5,11 +5,11 @@ using UnityEngine;
 public class Ceto : MonoBehaviour
 {
     public Transform player;
-    public float detectionRadius;
-    public float attackRadius;
-    public float speed;
-    public float fuerzaRebote;
-    public int vidas;  // Vidas del enemigo
+    public float detectionRadius = 8;
+    public float attackRadius = 1.3f;
+    public float speed = 3;
+    public float fuerzaRebote = -2;
+    public int vidas = 10;  // Vidas del enemigo
 
     public GameObject experienciaPrefab;
     public int experienciaSoltar = 20;

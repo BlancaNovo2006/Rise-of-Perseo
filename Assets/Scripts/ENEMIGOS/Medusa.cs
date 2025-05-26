@@ -57,6 +57,13 @@ public class Medusa : MonoBehaviour
     public Material grayscaleMaterial;
     private Material originalMaterial;
 
+    public float cooldownAtaqueCola = 2f;
+    private float tiempoUltimoAtaqueCola = -Mathf.Infinity;
+    private float duracionAnimacionCola = 0.7f;
+    private float tiempoFinAnimacionCola = -Mathf.Infinity;
+
+
+
     void Start()
     {
         transform.position = posicionInicial.position;
@@ -215,23 +222,40 @@ public class Medusa : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (distanceToPlayer < attackRadius)
+        // Si está dentro del rango de ataque y puede atacar (cooldown cumplido)
+        if (distanceToPlayer < attackRadius && Time.time >= tiempoUltimoAtaqueCola + cooldownAtaqueCola && !recibiendoDanio && !muerto)
         {
-            if (!AtaqueCola)
-            {
-                AtaqueCola = true;
-                EnMovimiento = false;
-                movement = Vector2.zero;
-            }
+            // Ejecutar ataque
+            AtaqueCola = true;
+            animator.SetBool("AtaqueCola", true);
+            EnMovimiento = false;
+            movement = Vector2.zero;
+
+            // Guardar tiempo de inicio y fin del ataque
+            tiempoUltimoAtaqueCola = Time.time;
+            tiempoFinAnimacionCola = Time.time + duracionAnimacionCola;
+
+            //ActivarColaCollider(); // Opcional: activar daño
         }
-        else
+
+        // Si está atacando pero ya terminó la animación, la desactivamos
+        if (AtaqueCola && Time.time >= tiempoFinAnimacionCola)
         {
             AtaqueCola = false;
-            EnMovimiento = true;
-            Movimiento();
+            animator.SetBool("AtaqueCola", false);
+            DesactivarColaCollider(); // Opcional: desactivar daño
+        }
+
+        // Si está fuera de rango, asegúrate de desactivar la animación también
+        if (distanceToPlayer >= attackRadius)
+        {
+            AtaqueCola = false;
+            animator.SetBool("AtaqueCola", false);
             DesactivarColaCollider();
         }
     }
+
+
     public void ActivarColaCollider()
     {
         if (colaMedusaCollider != null)

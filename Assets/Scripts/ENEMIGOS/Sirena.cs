@@ -20,6 +20,7 @@ public class Sirena : MonoBehaviour
     protected bool muerto;
     protected bool recibiendoDanio;
     protected bool Atacando;
+    private bool Petrificado = false;
 
     protected bool canseePlayer = true;
 
@@ -217,18 +218,20 @@ public class Sirena : MonoBehaviour
     {
         if (!isFrozen)
         {
+            Petrificado = true;
+            animator.SetBool("Petrificado", true);
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
-            if (spriteRenderer != null)
+            /*if (spriteRenderer != null)
             {
                 originalMaterial = spriteRenderer.material;
                 spriteRenderer.material = grayscaleMaterial;
-            }
-            if (animator != null)
+            }*/
+            /*if (animator != null)
             {
                 animator.enabled = false;
-            }
+            }*/
             StartCoroutine(UnfreezeAfterTime(duration));
         }
     }
@@ -236,15 +239,17 @@ public class Sirena : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         isFrozen = false;
+        Petrificado = false;
+        animator.SetBool("Petrificado", false);
         speed = originalSpeed;
-        if (spriteRenderer != null)
+        /*if (spriteRenderer != null)
         {
             spriteRenderer.material = originalMaterial;
-        }
-        if (animator != null)
+        }*/
+        /*if (animator != null)
         {
             animator.enabled = true;
-        }
+        }*/
     }
 
     protected void OnDrawGizmosSelected()
