@@ -292,6 +292,7 @@ MonoBehaviour:
   cooldownFreezeTime: 10
   CooldownFreezeFill: {fileID: 0}
   CooldownFreezeText: {fileID: 0}
+  pegasoHabilidad: {fileID: 0}
   cooldownPegasoTime: 6
   CooldownFillPegaso: {fileID: 0}
   CooldownTextPegaso: {fileID: 0}

@@ -24,7 +24,7 @@ public class CambiarEscena : MonoBehaviour
             {
                 //Debug.Log("Cambiando a escena NivelMaritimo...");
                 Debug.Log("Medusa está muerta. Cambiando a escena NivelMaritimo...");
-                SceneManager.LoadScene("Creditos");//cambiar a nivel maritimo despues de DEMODAY
+                SceneManager.LoadScene("NivelMaritimo");//cambiar a nivel maritimo despues de DEMODAY
             }
             else
             {

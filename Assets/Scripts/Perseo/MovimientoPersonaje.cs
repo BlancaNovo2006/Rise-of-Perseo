@@ -91,8 +91,6 @@ public class MovimientoPersonaje : MonoBehaviour
                     }
 
                     enSuelo = hit.collider != null;
-
-                    
                 }
                 //CoyoteTime
                 if (enSuelo)

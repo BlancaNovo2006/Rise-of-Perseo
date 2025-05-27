@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SistemaHabilidades : MonoBehaviour
 {
+    private string escenaActual;
     public AudioClip sonidoRegenerarVida;
     public Animator animator;
     public LayerMask Enemy;
@@ -39,35 +41,32 @@ public class SistemaHabilidades : MonoBehaviour
     void Start()
     {
         ActualizarUIVidas();
+        escenaActual = SceneManager.GetActiveScene().name;
+
         habilidades = new List<Habilidad>
+    {
+        new Habilidad(() => StartCoroutine(RegenerarVida()), PuedeUsarRegenerarVida),
+        new Habilidad(FreezeEnemies, PuedeUsarFreezeEnemies),
+        new Habilidad(Pegaso, PuedeUsarPegaso)
+    };
+
+        // Si estamos en NivelCueva, eliminar habilidades que no deben usarse
+        if (escenaActual == "NivelCueva")
         {
-            new Habilidad(() => StartCoroutine(RegenerarVida()), PuedeUsarRegenerarVida),
-            new Habilidad(FreezeEnemies, PuedeUsarFreezeEnemies),
-            new Habilidad(Pegaso, PuedeUsarPegaso)
-        };
+            habilidades.RemoveAll(h => h.Ejecutar == FreezeEnemies || h.Ejecutar == Pegaso);
+        }
+
         movimientoPersonaje = GetComponent<MovimientoPersonaje>();
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
-
-        if (CooldownFreezeFill != null)
-        {
-            CooldownFreezeFill.fillAmount = 1;
-        }
-        if (CooldownFreezeText != null)
-        {
-            CooldownFreezeText.text = "";
-        }
-        if (CooldownFillPegaso != null)
-        {
-            CooldownFillPegaso.fillAmount = 1;
-        }
-        if (CooldownTextPegaso != null)
-        {
-            CooldownTextPegaso.text = "";
-        }
+        if (CooldownFreezeFill != null) CooldownFreezeFill.fillAmount = 1;
+        if (CooldownFreezeText != null) CooldownFreezeText.text = "";
+        if (CooldownFillPegaso != null) CooldownFillPegaso.fillAmount = 1;
+        if (CooldownTextPegaso != null) CooldownTextPegaso.text = "";
     }
+
     void Update()
     {
         CambiarHabilidad();
@@ -77,6 +76,8 @@ public class SistemaHabilidades : MonoBehaviour
 
     protected void CambiarHabilidad()
     {
+        if (escenaActual == "NivelCueva") return;
+
         float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         if (scroll < 0f)
@@ -88,6 +89,7 @@ public class SistemaHabilidades : MonoBehaviour
             habilidadActual = (habilidadActual - 1 + habilidades.Count) % habilidades.Count;
         }
     }
+
     protected void UsarHabilidad()
     {
         if (Input.GetKeyDown(KeyCode.Mouse1))
