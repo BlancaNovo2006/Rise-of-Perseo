@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PegasoHabilidad : MonoBehaviour
@@ -12,91 +11,90 @@ public class PegasoHabilidad : MonoBehaviour
     private Camera camara;
     private Collider2D pegasoCollider;
     private Collider2D perseoCollider;
-    private bool enMovimiento = false;
+    private Coroutine movimientoCoroutine;
 
-    void Start()
+    void Awake()
     {
         camara = Camera.main;
         pegasoCollider = GetComponent<Collider2D>();
 
-        if (player != null)
-        {
-            perseoCollider = player.GetComponent<Collider2D>();
-        }
-        else
+        if (player == null)
         {
             GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
             if (playerObj != null)
-                perseoCollider = playerObj.GetComponent<Collider2D>();
+                player = playerObj.transform;
         }
+
+        if (player != null)
+            perseoCollider = player.GetComponent<Collider2D>();
 
         gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-        if (enMovimiento)
-        {
-            transform.position += direccion * velocidad * Time.deltaTime;
-
-            if (FueraDePantalla())
-            {
-                FinalizarCarga();
-            }
-
-            Vector2 direction = (player.position - transform.position).normalized;
-            transform.localScale = new Vector3(direction.x > 0 ? -1 : 1, 1, 0);
-        }
     }
 
     public void ActivarCarga(Vector3 posicionInicial, Vector3 direccionCarga)
     {
         Debug.Log("Pegaso Activado " + posicionInicial);
+
         posicionInicial.z -= 5;
         transform.position = posicionInicial;
         direccion = new Vector3(direccionCarga.x, 0, 0).normalized;
 
-        if (pegasoCollider != null && perseoCollider != null)
+        if (pegasoCollider && perseoCollider)
             Physics2D.IgnoreCollision(pegasoCollider, perseoCollider, true);
 
         gameObject.SetActive(true);
-        enMovimiento = true;
-
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-            rb.gravityScale = 0f;
-
-        StartCoroutine(DesactivarPegaso());
+        movimientoCoroutine = StartCoroutine(MoverDuranteCarga());
     }
 
-    IEnumerator DesactivarPegaso()
+    private IEnumerator MoverDuranteCarga()
     {
-        yield return new WaitForSeconds(duracion);
-        enMovimiento = false;
+        float tiempoTranscurrido = 0f;
 
-        if (pegasoCollider != null && perseoCollider != null)
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb) rb.gravityScale = 0f;
+
+        while (tiempoTranscurrido < duracion)
+        {
+            transform.position += direccion * velocidad * Time.deltaTime;
+
+            if (FueraDePantalla())
+                break;
+
+            if (player)
+            {
+                Vector2 direction = (player.position - transform.position).normalized;
+                transform.localScale = new Vector3(direction.x > 0 ? -1 : 1, 1, 0);
+            }
+
+            tiempoTranscurrido += Time.deltaTime;
+            yield return null;
+        }
+
+        FinalizarCarga();
+        yield break; // evita el error CS0161
+    }
+
+    private void FinalizarCarga()
+    {
+        if (movimientoCoroutine != null)
+        {
+            StopCoroutine(movimientoCoroutine);
+            movimientoCoroutine = null;
+        }
+
+        if (pegasoCollider && perseoCollider)
             Physics2D.IgnoreCollision(pegasoCollider, perseoCollider, false);
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb) rb.gravityScale = 1f;
 
         gameObject.SetActive(false);
     }
 
-    void FinalizarCarga()
+    private bool FueraDePantalla()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        if (rb != null)
-            rb.gravityScale = 1f;
+        if (!camara) return false;
 
-        enMovimiento = false;
-
-        if (pegasoCollider != null && perseoCollider != null)
-            Physics2D.IgnoreCollision(pegasoCollider, perseoCollider, false);
-
-        gameObject.SetActive(false);
-    }
-
-    bool FueraDePantalla()
-    {
-        if (camara == null) return false;
         Vector3 pos = camara.WorldToViewportPoint(transform.position);
         return pos.x < -0.1f || pos.x > 1.1f;
     }

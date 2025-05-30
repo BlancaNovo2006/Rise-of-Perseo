@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -33,6 +33,8 @@ public class SistemaHabilidades : MonoBehaviour
     private bool onCooldownPegaso = false;
     public Image CooldownFillPegaso;
     public TextMeshProUGUI CooldownTextPegaso;
+    public GameObject pegasoPrefab; // Asigna el prefab en el Inspector
+
 
     public int vialRegenerativo = 5;
     public Image CooldownFillVida;
@@ -58,6 +60,14 @@ public class SistemaHabilidades : MonoBehaviour
 
         movimientoPersonaje = GetComponent<MovimientoPersonaje>();
         pegasoHabilidad = FindObjectOfType<PegasoHabilidad>();
+        if (pegasoHabilidad == null && pegasoPrefab != null)
+        {
+            GameObject instancia = Instantiate(pegasoPrefab, transform.position, Quaternion.identity);
+            instancia.SetActive(true); // âœ… Activar antes de usar
+            pegasoHabilidad = instancia.GetComponent<PegasoHabilidad>();
+        }
+
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
@@ -111,12 +121,12 @@ public class SistemaHabilidades : MonoBehaviour
             if (i == habilidadActual)
             {
                 habilidadIcons[i].color = Color.white; // Habilidad seleccionada
-                habilidadIcons[i].transform.localScale = Vector3.one * 2f; // Más grande
+                habilidadIcons[i].transform.localScale = Vector3.one * 2f; // MÃ¡s grande
             }
             else
             {
-                habilidadIcons[i].color = new Color(1f, 1f, 1f, 0.5f); // Más opaca
-                habilidadIcons[i].transform.localScale = Vector3.one; // Tamaño normal
+                habilidadIcons[i].color = new Color(1f, 1f, 1f, 0.5f); // MÃ¡s opaca
+                habilidadIcons[i].transform.localScale = Vector3.one; // TamaÃ±o normal
             }
         }
     }
@@ -124,7 +134,12 @@ public class SistemaHabilidades : MonoBehaviour
     // ==== CONDICIONES DE USO ====
 
     bool PuedeUsarFreezeEnemies() => !onFreezeCooldown;
-    bool PuedeUsarPegaso() => pegasoHabilidad != null && !onCooldownPegaso;
+    bool PuedeUsarPegaso()
+    {
+        Debug.Log($"Â¿Puede usar Pegaso? pegasoHabilidad != null: {pegasoHabilidad != null}, onCooldownPegaso: {onCooldownPegaso}");
+        return pegasoHabilidad != null && !onCooldownPegaso;
+    }
+
     bool PuedeUsarRegenerarVida() => true;
 
     // ==== ESTRUCTURA DE HABILIDAD ====
@@ -144,7 +159,7 @@ public class SistemaHabilidades : MonoBehaviour
     {
         animator.SetBool("AtaqueMedusa", true);
 
-        Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto según la distancia que quieras delante del personaje
+        Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto segÃºn la distancia que quieras delante del personaje
         bool mirandoDerecha = transform.localScale.x > 0;
         Vector2 freezePosition = (Vector2)transform.position + (mirandoDerecha ? offset : -offset);
 
@@ -238,7 +253,7 @@ public class SistemaHabilidades : MonoBehaviour
     }
     void Pegaso()
     {
-        Debug.LogError("Función Pegaso ejecutada");
+        Debug.LogError("FunciÃ³n Pegaso ejecutada");
         Vector3 direccionCarga = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
         pegasoHabilidad.ActivarCarga(transform.position, direccionCarga);
         //animator.SetBool("pegaso", true);
@@ -314,7 +329,7 @@ public class SistemaHabilidades : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto según la distancia que quieras delante del personaje
+        Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto segÃºn la distancia que quieras delante del personaje
         bool mirandoDerecha = transform.localScale.x > 0;
         Vector2 freezePosition = (Vector2)transform.position + (mirandoDerecha ? offset : -offset);
         Gizmos.color = Color.green;
