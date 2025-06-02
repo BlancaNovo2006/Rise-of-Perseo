@@ -38,6 +38,9 @@ public class CangrejoColosal : MonoBehaviour
 
     public Material grayscaleMaterial;
     private Material originalMaterial;
+    private bool direccionAntesDeCongelarse;
+    private Vector3 escalaOriginal;
+
 
     protected void Start()
     {
@@ -46,6 +49,7 @@ public class CangrejoColosal : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalSpeed = speed;
+        escalaOriginal = transform.localScale;
     }
 
     protected void FixedUpdate()
@@ -160,6 +164,7 @@ public class CangrejoColosal : MonoBehaviour
         {
             Petrificado = true;
             animator.SetBool("Petrificado", true);
+            direccionAntesDeCongelarse = moviendoDerecha;
             isFrozen = true;
             speed = 0;
             rb.velocity = Vector2.zero;
@@ -178,10 +183,19 @@ public class CangrejoColosal : MonoBehaviour
     IEnumerator UnfreezeAfterTime(float duration)
     {
         yield return new WaitForSeconds(duration);
+        moviendoDerecha = direccionAntesDeCongelarse;
         isFrozen = false;
         Petrificado = false;
         animator.SetBool("Petrificado", false);
-        speed = originalSpeed;
+
+        // Restaurar velocidad según dirección original
+        speed = Mathf.Abs(originalSpeed) * (moviendoDerecha ? 1 : -1);
+
+        // Restaurar la escala del sprite según la dirección
+        Vector3 escala = escalaOriginal;
+        escala.x = Mathf.Abs(escala.x) * (moviendoDerecha ? 1 : -1);
+        transform.localScale = escala;
+
         /*if (spriteRenderer != null)
         {
             spriteRenderer.material = originalMaterial;
