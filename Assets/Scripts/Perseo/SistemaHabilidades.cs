@@ -10,6 +10,8 @@ public class SistemaHabilidades : MonoBehaviour
 {
     private string escenaActual;
     public AudioClip sonidoRegenerarVida;
+    public AudioClip sonidoCabezaMedusa;
+    public AudioClip sonidoPegaso;
     public Animator animator;
     public LayerMask Enemy;
     public LayerMask capaSuelo;
@@ -157,6 +159,7 @@ public class SistemaHabilidades : MonoBehaviour
     }
     void FreezeEnemies()
     {
+        AudioManager.instance.ReporducirSonido(sonidoCabezaMedusa);
         animator.SetBool("AtaqueMedusa", true);
 
         Vector2 offset = new Vector2(1.5f, 0f); // Ajusta esto según la distancia que quieras delante del personaje
@@ -253,6 +256,7 @@ public class SistemaHabilidades : MonoBehaviour
     }
     void Pegaso()
     {
+        AudioManager.instance.ReporducirSonido(sonidoPegaso);
         Debug.LogError("Función Pegaso ejecutada");
         Vector3 direccionCarga = transform.localScale.x > 0 ? Vector3.right : Vector3.left;
         pegasoHabilidad.ActivarCarga(transform.position, direccionCarga);

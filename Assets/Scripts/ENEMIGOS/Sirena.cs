@@ -5,6 +5,8 @@ using UnityEngine;
 public class Sirena : MonoBehaviour
 {
     public Transform player;
+    public AudioClip sonidoImpactoEspada;
+    public AudioClip sonidoMuerteEnemigo;
     public float detectionRadius;
     public float attackRadius;
     public float speed;
@@ -158,6 +160,7 @@ public class Sirena : MonoBehaviour
     {
         if (!recibiendoDanio)
         {
+            AudioManager.instance.ReporducirSonido(sonidoImpactoEspada);
             recibiendoDanio = true;
             animator.SetBool("recibiendoDanio", true);
 
@@ -194,6 +197,7 @@ public class Sirena : MonoBehaviour
 
     protected void Muerte()
     {
+        AudioManager.instance.ReporducirSonido(sonidoMuerteEnemigo);
         muerto = true;
         animator.SetBool("EstaMuerta", true);
         //if (experienciaPrefab != null)

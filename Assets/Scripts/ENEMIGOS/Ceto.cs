@@ -5,6 +5,8 @@ using UnityEngine;
 public class Ceto : MonoBehaviour
 {
     public Transform player;
+    public AudioClip sonidoImpactoEspada;
+    public AudioClip sonidoMuerteEnemigo;
     public float detectionRadius = 8;
     public float attackRadius = 1.3f;
     public float speed = 3;
@@ -181,6 +183,7 @@ public class Ceto : MonoBehaviour
     {
         if (!recibiendoDanio)
         {
+            AudioManager.instance.ReporducirSonido(sonidoImpactoEspada);
             recibiendoDanio = true;
             animator.SetBool("recibiendoDanio", true);
 
@@ -217,6 +220,7 @@ public class Ceto : MonoBehaviour
 
     public void Muerte()
     {
+        AudioManager.instance.ReporducirSonido(sonidoMuerteEnemigo);
         EstaMuerto = true;
         animator.SetBool("EstaMuerto", true);
         Debug.Log("Ceto ha muerto.");
