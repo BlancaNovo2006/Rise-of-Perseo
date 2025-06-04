@@ -7,6 +7,12 @@ public class Sirena : MonoBehaviour
     public Transform player;
     public AudioClip sonidoImpactoEspada;
     public AudioClip sonidoMuerteEnemigo;
+    public AudioClip sonidoSirena;
+    private AudioSource audioSource;
+    private bool sonidoSirenaActivo = false;
+    private Coroutine fadeOutCoroutine = null;
+    public float fadeDuration = 2f; // Puedes ajustar la duración del fade out
+
     public float detectionRadius;
     public float attackRadius;
     public float speed;
@@ -43,6 +49,9 @@ public class Sirena : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalSpeed = speed;
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 1f; // Asegura que empieza al máximo
+
     }
 
     protected void Update()
@@ -61,6 +70,33 @@ public class Sirena : MonoBehaviour
         {
             movement = Vector2.zero;
         }
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer < detectionRadius)
+        {
+            if (!sonidoSirenaActivo)
+            {
+                if (fadeOutCoroutine != null)
+                {
+                    StopCoroutine(fadeOutCoroutine);
+                    fadeOutCoroutine = null;
+                }
+
+                audioSource.clip = sonidoSirena;
+                audioSource.loop = true;
+                audioSource.volume = 1f;
+                audioSource.Play();
+                sonidoSirenaActivo = true;
+            }
+        }
+        else
+        {
+            if (sonidoSirenaActivo && fadeOutCoroutine == null)
+            {
+                fadeOutCoroutine = StartCoroutine(FadeOut(audioSource, fadeDuration));
+            }
+        }
+
     }
     protected void Movimiento()
     {
@@ -100,6 +136,22 @@ public class Sirena : MonoBehaviour
             rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
         }
     }
+    IEnumerator FadeOut(AudioSource source, float duration)
+    {
+        float startVolume = source.volume;
+
+        while (source.volume > 0)
+        {
+            source.volume -= startVolume * Time.deltaTime / duration;
+            yield return null;
+        }
+
+        source.Stop();
+        source.volume = 1f; // Reinicia volumen para la próxima vez
+        sonidoSirenaActivo = false;
+        fadeOutCoroutine = null;
+    }
+
     protected void AtaqueEnemigo()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);

@@ -106,13 +106,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8800523748271775430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 182.71313, y: 0.62, z: 0}
+  m_LocalPosition: {x: 263.7, y: 2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7678204210343872538}
   m_Father: {fileID: 0}
-  m_RootOrder: 42
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8039250199565646696
 SpriteRenderer:
@@ -202,6 +202,7 @@ MonoBehaviour:
   player: {fileID: 0}
   sonidoImpactoEspada: {fileID: 8300000, guid: 09cd800f3ba11524abee39db9fd40f40, type: 3}
   sonidoMuerteEnemigo: {fileID: 8300000, guid: 39d1c5c2fe7e4ba4eb3d6b8bb69b0ac9, type: 3}
+  sonidoAtaque: {fileID: 8300000, guid: 4663c68c864e8a846ac1f352ee2f99e6, type: 3}
   detectionRadius: 8
   attackRadius: 1.3
   speed: 3
@@ -245,7 +246,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.051086426, y: -0.19968605}
+  m_Offset: {x: -0.051086426, y: 0.044442654}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -256,7 +257,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.96377563, y: 2.072379}
+  m_Size: {x: 0.96377563, y: 1.584122}
   m_EdgeRadius: 0
 --- !u!50 &1659905007951201885
 Rigidbody2D:

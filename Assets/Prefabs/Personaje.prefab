@@ -276,6 +276,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sonidoRegenerarVida: {fileID: 8300000, guid: 96aba81fdc420b44f8da7d6916e38019, type: 3}
+  sonidoCabezaMedusa: {fileID: 8300000, guid: 7ca4e3ceabc590546880b4980f2534d5, type: 3}
+  sonidoPegaso: {fileID: 8300000, guid: db3560880d8138248ac26d9e005839ad, type: 3}
   animator: {fileID: 7214833674661798206}
   Enemy:
     serializedVersion: 2
@@ -296,6 +298,7 @@ MonoBehaviour:
   cooldownPegasoTime: 6
   CooldownFillPegaso: {fileID: 0}
   CooldownTextPegaso: {fileID: 0}
+  pegasoPrefab: {fileID: 0}
   vialRegenerativo: 5
   CooldownFillVida: {fileID: 0}
   CooldownTextVida: {fileID: 0}

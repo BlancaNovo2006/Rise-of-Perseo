@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class ActivadorBoss : MonoBehaviour
 {
-    private MusicaManager musicaManager;
+    private MusicaManagerAgua musicaManagerAgua; 
 
     private void Start()
     {
-        musicaManager = FindObjectOfType<MusicaManager>();
+        musicaManagerAgua = FindObjectOfType<MusicaManagerAgua>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            musicaManager.ActivarMusicaBoss();
+            musicaManagerAgua.ActivarMusicaBoss();
         }
     }
 
@@ -23,7 +23,7 @@ public class ActivadorBoss : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            musicaManager.ActivarMusicaNivelCueva();
+            musicaManagerAgua.ActivarMusicaNivelMar();
         }
     }
 }

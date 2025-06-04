@@ -960,7 +960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 706446433}
-  sliderValue: 0
+  sliderValue: 0.5
   imageMute: {fileID: 2077107114}
 --- !u!4 &570980438
 Transform:

@@ -7,6 +7,7 @@ public class Ceto : MonoBehaviour
     public Transform player;
     public AudioClip sonidoImpactoEspada;
     public AudioClip sonidoMuerteEnemigo;
+    public AudioClip sonidoAtaque;
     public float detectionRadius = 8;
     public float attackRadius = 1.3f;
     public float speed = 3;
@@ -138,6 +139,7 @@ public class Ceto : MonoBehaviour
         {
             if (!Atacando)
             {
+                AudioManager.instance.ReporducirSonido(sonidoAtaque);
                 Atacando = true;
                 animator.SetBool("Atacando", Atacando);
             }

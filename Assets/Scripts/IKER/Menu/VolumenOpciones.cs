@@ -6,15 +6,17 @@ using UnityEngine.UI;
 public class VolumenOpciones : MonoBehaviour
 {
     public Slider slider;
-    public float sliderValue;
+    public float sliderValue = 0.5f;
     public Image imageMute;
     // Start is called before the first frame update
     void Start()
     {
-        slider.value = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
-        AudioListener.volume = slider.value;
+        sliderValue = PlayerPrefs.GetFloat("volumenAudio", 0.5f);
+        slider.SetValueWithoutNotify(sliderValue); // <- evita llamar onValueChanged automáticamente
+        AudioListener.volume = sliderValue;
         RevisarSiEstoyMute();
     }
+
 
     // Update is called once per frame
     void Update()
