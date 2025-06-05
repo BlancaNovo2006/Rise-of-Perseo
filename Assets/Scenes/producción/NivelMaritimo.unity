@@ -97522,7 +97522,7 @@ PrefabInstance:
       objectReference: {fileID: 322027074}
     - target: {fileID: 6570964487262461611, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6570964487262461611, guid: 4f2f4489e45c82a4b9178424c9ac38cd, type: 3}
       propertyPath: CheetTpSpawn

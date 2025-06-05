@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-//using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BarraBossCeto : MonoBehaviour
 {
-    public UnityEngine.UI.Image fillImage;
+    public Image fillImage;
     public GameObject boss;
     public Transform player;
     public float mostrarBarraDistancia = 8f;
 
     private Ceto CetoScript;
     private CanvasGroup canvasGroup;
+    private bool bossMuerto = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         CetoScript = boss.GetComponent<Ceto>();
@@ -26,12 +25,19 @@ public class BarraBossCeto : MonoBehaviour
         canvasGroup.alpha = 0f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (CetoScript == null || player == null) return;
+        if (CetoScript == null || player == null || bossMuerto) return;
+
+        if (CetoScript.muerto || CetoScript.vidas <= 0)
+        {
+            OcultarBarra();
+            bossMuerto = true; // No volver a mostrarla
+            return;
+        }
+
         float distanciaAlJugador = Vector2.Distance(boss.transform.position, player.position);
-        if (!CetoScript.muerto && distanciaAlJugador <= mostrarBarraDistancia)
+        if (distanciaAlJugador <= mostrarBarraDistancia)
         {
             canvasGroup.alpha = 1f;
             float fillAmount = Mathf.Clamp01((float)CetoScript.vidas / 10f);
@@ -41,5 +47,11 @@ public class BarraBossCeto : MonoBehaviour
         {
             canvasGroup.alpha = 0f;
         }
+    }
+
+    void OcultarBarra()
+    {
+        canvasGroup.alpha = 0f;
+        fillImage.fillAmount = 0f;
     }
 }
